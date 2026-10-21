@@ -1,0 +1,20 @@
+/* Shared light-blue palette for every feature; incorrect answers retain their warm tint. */
+:root {
+  color-scheme: light;
+  --canvas: #edf6ff;
+  --surface: #fafdff;
+  --surface-nav: #f3f9ff;
+  --surface-tint: #deeeff;
+  --field: #f4f9ff;
+  --text: #27485f;
+  --muted: #5b7589;
+  --accent: #2b6da3;
+  --accent-soft: #e2effc;
+  --accent-muted: #3f6e92;
+  --decoration: #b7d5ee;
+  --border: #cddfec;
+  --border-strong: #93b3c8;
+  --placeholder: #71899b;
+  --focus: #5086b0;
+  --overlay: #163a5570;
+}

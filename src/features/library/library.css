@@ -29,17 +29,17 @@
 
 .library-item summary small {
   display: block;
-  color: #83907d;
+  color: var(--muted);
   margin-top: 5px;
 }
 
 .library-item[open] summary {
   padding-bottom: 18px;
-  border-bottom: 1px solid #e2e7dc;
+  border-bottom: 1px solid var(--border);
 }
 
 .review-meta {
-  border-top: 1px solid #e2e7dc;
+  border-top: 1px solid var(--border);
   padding-top: 15px;
   font-size: 11px !important;
   margin-bottom: 0;

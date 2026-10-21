@@ -40,16 +40,16 @@
 }
 .audio-bindings small {
   display: block;
-  color: #85917e;
+  color: var(--muted);
   overflow-wrap: anywhere;
 }
 .audio-bindings select {
   width: 100%;
   min-width: 0;
   padding: 10px;
-  border: 1px solid #c5d1bd;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
-  background: #f7faf2;
+  background: var(--field);
 }
 .listening-filters {
   display: flex;
@@ -89,7 +89,7 @@
 }
 .playback-controls select {
   padding: 8px;
-  border: 1px solid #d1ddc8;
+  border: 1px solid var(--border);
   border-radius: 8px;
   background: white;
 }
@@ -98,10 +98,10 @@
 }
 .listening-question legend {
   font-size: 12px;
-  color: #75856d;
+  color: var(--muted);
 }
 .listening-question > p {
-  color: #263c35;
+  color: var(--text);
   font-size: 18px;
   white-space: pre-wrap;
 }
@@ -120,9 +120,9 @@
   flex: 1;
   font-size: 20px;
   padding: 13px;
-  border: 1px solid #bdccb3;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
-  background: #f8faf5;
+  background: var(--field);
 }
 .listening-feedback {
   margin: 25px 0;
@@ -144,7 +144,7 @@
 }
 .error-note {
   margin-top: 20px;
-  border-top: 1px solid #dce4d5;
+  border-top: 1px solid var(--border);
   padding-top: 18px;
 }
 .error-note legend,
@@ -168,8 +168,8 @@
   width: 100%;
   min-height: 70px;
   resize: vertical;
-  background: #f8faf4;
-  border: 1px solid #c5d1bc;
+  background: var(--field);
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
   padding: 10px;
   font: inherit;

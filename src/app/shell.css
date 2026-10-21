@@ -10,8 +10,8 @@
   display: flex;
   flex-direction: column;
   padding: 36px 22px 26px;
-  border-right: 1px solid #e2e5db;
-  background: #f9f9f4;
+  border-right: 1px solid var(--border);
+  background: var(--surface-nav);
 }
 
 .brand {
@@ -40,7 +40,7 @@
   font-size: 12px;
   margin-top: 25px;
   padding-left: 10px;
-  color: #87948c;
+  color: var(--muted);
 }
 
 .sidebar nav {
@@ -61,8 +61,8 @@
 }
 
 .sidebar nav button[aria-current] {
-  background: #e5eee3;
-  color: #245c4b;
+  background: var(--accent-soft);
+  color: var(--accent);
   font-weight: 650;
 }
 
@@ -80,14 +80,14 @@
 .local-note small {
   display: block;
   margin: 7px 0 0 15px;
-  color: #8b968d;
+  color: var(--muted);
 }
 
 .status-dot {
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: #568765;
+  background: var(--accent);
   border-radius: 50%;
   margin-right: 8px;
   vertical-align: middle;
@@ -100,12 +100,11 @@ main {
 
 .topbar {
   height: 78px;
-  border-bottom: 1px solid #e2e5db;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 44px;
-  color: #77867b;
+  color: var(--muted);
   font-size: 12px;
 }
 

@@ -6,3 +6,7 @@ export const pages: { id: Page; icon: string; title: string }[] = [
   { id: 'mistakes', icon: '↺', title: '错题本' },
   { id: 'transfer', icon: '⇄', title: '题包与数据' },
 ];
+// Mobile puts the study desk in the center without changing desktop navigation.
+export const mobilePages = (['words', 'listening', 'home', 'mistakes', 'transfer'] as const).map(
+  (id) => pages.find((page) => page.id === id)!,
+);

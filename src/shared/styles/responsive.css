@@ -162,8 +162,8 @@
     right: 0;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    border-top: 1px solid #dfe5d9;
-    background: #fafbf7;
+    border-top: 1px solid var(--border);
+    background: var(--surface-nav);
     padding: 7px 10px calc(7px + env(safe-area-inset-bottom));
     z-index: 5;
   }
@@ -177,7 +177,7 @@
     background: transparent;
     font-size: 10px;
     font-weight: 400;
-    color: #899781;
+    color: var(--muted);
     min-height: 47px;
   }
   .mobile-nav button span {
@@ -185,7 +185,7 @@
     line-height: 1.4;
   }
   .mobile-nav button[aria-current] {
-    color: #245c4b;
+    color: var(--accent);
     font-weight: 650;
   }
   .onboarding {

@@ -12,18 +12,18 @@
   letter-spacing: inherit;
   text-align: inherit;
   box-shadow: none;
-  text-decoration: underline dotted #9aa99d;
+  text-decoration: underline dotted var(--border-strong);
   text-underline-offset: 3px;
 }
 .lookup-word:hover,
 .lookup-word:focus-visible {
-  background: #eaf1e6;
-  color: #245c4b;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 .meaning-dialog {
-  color: #273b32;
-  background: #fffefa;
-  border: 1px solid #dce4d6;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 24px;
   width: min(540px, calc(100vw - 32px));
@@ -32,7 +32,7 @@
   overscroll-behavior: contain;
 }
 .meaning-dialog::backdrop {
-  background: #152c2470;
+  background: var(--overlay);
 }
 .meaning-dialog h3 {
   margin: 0;

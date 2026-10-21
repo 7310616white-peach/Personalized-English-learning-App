@@ -1,3 +1,4 @@
+@import './shared/styles/theme.css';
 @import './shared/styles/base.css';
 @import './app/shell.css';
 @import './features/dashboard/dashboard.css';
