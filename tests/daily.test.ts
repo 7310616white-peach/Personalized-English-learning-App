@@ -1,4 +1,5 @@
 import 'fake-indexeddb/auto';
+import { appFailure } from '../src/domain/appFailure';
 import { readFile } from 'node:fs/promises';
 import { expect, it } from 'vitest';
 import { cetTypesForDate } from '../src/domain/daily';
@@ -180,4 +181,14 @@ it('同一拼写提交ID不能拿来提交不同答案，避免结果与页面�
   } finally {
     await s.delete();
   }
+});
+
+it('资源版本错误与数据库错误区分，未知错误不谎报数据损坏', () => {
+  expect(
+    appFailure(new TypeError('Failed to fetch dynamically imported module: /assets/old.js')).title,
+  ).toBe('页面资源已更新');
+  expect(appFailure(new DOMException('Database open failed', 'QuotaExceededError')).title).toBe(
+    '暂时无法打开学习库',
+  );
+  expect(appFailure(new Error('Unexpected render bug')).title).toBe('页面暂时无法打开');
 });

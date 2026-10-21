@@ -11,7 +11,7 @@ import { Library } from '../features/library/Library';
 
 import { Dashboard } from '../features/dashboard/Dashboard';
 import { ReadingProvider } from '../features/reading/ReadingProvider';
-import { StorageBoundary } from '../shared/components/StorageBoundary';
+import { AppBoundary } from '../shared/components/AppBoundary';
 import { useBackAction } from '../shared/useBackAction';
 import { vocabularyPackId } from '../data/vocabulary';
 import { usePlatformInbox } from './usePlatformInbox';
@@ -41,9 +41,9 @@ const CetExperience = lazy(() =>
 
 export function App() {
   return (
-    <StorageBoundary>
+    <AppBoundary>
       <LearningApp />
-    </StorageBoundary>
+    </AppBoundary>
   );
 }
 

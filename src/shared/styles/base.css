@@ -296,7 +296,7 @@ fieldset {
 }
 
 .loading,
-.storage-error {
+.app-error {
   margin: 40px;
   padding: 30px;
 }
@@ -326,4 +326,9 @@ fieldset {
 
 .skip-link:focus-visible {
   top: 12px;
+}
+
+.app-error {
+  max-width: min(560px, calc(100% - 40px));
+  margin: 40px auto;
 }
