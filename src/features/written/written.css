@@ -1,0 +1,83 @@
+.written-session {
+  max-width: 850px;
+  margin: 0 auto;
+}
+.written-session .tag {
+  display: block;
+  white-space: normal;
+  line-height: 1.7;
+}
+.written-material,
+.written-answers,
+.written-result {
+  margin: 18px 0;
+}
+.written-passage {
+  white-space: pre-wrap;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+.word-bank {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 8px;
+  padding: 16px;
+  background: var(--surface-tint);
+  border-radius: 14px;
+}
+.gap-link {
+  display: inline;
+  min-height: 40px;
+  padding: 3px 9px;
+  margin: 2px;
+  border-bottom: 2px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.written-answers {
+  min-width: 0;
+}
+.written-answers label {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0;
+  line-height: 1.7;
+}
+.written-answers select,
+.written-answers textarea {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+  font-size: 16px;
+  padding: 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--field);
+}
+.written-answers textarea {
+  resize: vertical;
+  line-height: 1.8;
+}
+.written-result > div {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.cet-format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.cet-format-grid .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.cet-format-grid .card button {
+  margin-top: auto;
+}
+.cet-entry {
+  margin-top: 24px;
+}

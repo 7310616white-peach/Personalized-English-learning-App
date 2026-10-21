@@ -4,7 +4,7 @@ import type { LearningDB } from '../db';
 
 /** Must run inside the importing pack's database transaction. */
 export async function registerListeningQuestions(pack: Pack, store: LearningDB) {
-  if (pack.schemaVersion !== 2) return;
+  if (pack.schemaVersion === 1) return;
   for (const set of pack.listening) {
     const library = await store.listeningLibraries.get(set.libraryId);
     if (!library?.manifest.tracks.some((t) => t.id === set.trackId))

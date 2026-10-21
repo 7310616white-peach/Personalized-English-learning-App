@@ -138,3 +138,12 @@ AndroidX 回调仅在有可返回层时启用；提交期间保持拦截，等�
 IncomingFilesPlugin 仅处理用户交来的本地 content URI 或分享文本，在后台限量读取 UTF-8 JSON。
 不申请整盘读取权限、不请求网络 URL。data/intake 负责格式预览；确认后调用已有导入事务。
 外部文件在练习中到达会等待退出，备份不能伪装成题包自动恢复。
+
+## 拓展题型（0.4）
+
+v3 题包在 v2 上增加 written 区分联合，domain/written 定义与判分，data/written 管理事务，
+features/written 负责题型列表、答题和串行草稿。学习台入口复用现有选择题/听力组件，不增加底部栏目。
+数据库 version 3 只新增三表，不更改名称与原表。选词/匹配整篇调用 nextSchedule，
+作文/翻译 correct=null，只有待批改作答、没有伪评分进度。
+备份 version 3 保存全部记录并验证引用和重算评分，兼容 v1/v2 的显式恢复；媒体 ZIP 沿用现有适配。
+完整契约见 [CET_EXPERIENCE.md](CET_EXPERIENCE.md)。

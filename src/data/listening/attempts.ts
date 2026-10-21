@@ -35,7 +35,7 @@ export async function submitListening(
       }
       const pack = await store.packs.get(packId);
       const current =
-        pack?.schemaVersion === 2 ? pack.listening.find((s) => s.id === set.id) : undefined;
+        pack && pack.schemaVersion !== 1 ? pack.listening.find((s) => s.id === set.id) : undefined;
       if (!current || JSON.stringify(current) !== JSON.stringify(set))
         throw new Error('题包已变化，请重新进入听力');
       const library = await store.listeningLibraries.get(set.libraryId);

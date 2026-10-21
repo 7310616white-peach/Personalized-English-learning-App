@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 3,
+  "id": "cet4-format-demo-v1",
+  "title": "四级全题型 · 原创仿真体验",
+  "date": "2026-10-22",
+  "words": [],
+  "choices": [
+    {
+      "id": "close-1",
+      "prompt": "What was the main purpose of the quiet hour?",
+      "passage": "A university introduced a quiet hour in one of its dining halls last term. During this hour, background music was turned off and announcements were limited to urgent messages. The change followed requests from students who found busy dining spaces tiring.\n\nThe university did not expect everyone to prefer the same environment. A second hall continued its usual service, allowing students to choose where to eat. Staff also placed signs near the entrances so that visitors knew what to expect.\n\nAfter six weeks, an online survey received responses from 240 students. Many respondents said the quiet hour helped them feel more comfortable. However, the survey was voluntary, and students who had strong opinions may have been more likely to respond. The organisers therefore avoided claiming that the results represented all students.\n\nThe university plans to continue the quiet hour next term while collecting feedback in other ways. Staff will invite brief comments at different times of day and speak with students who rarely use either hall. They hope a broader range of views will help improve the service.",
+      "options": [
+        {
+          "id": "A",
+          "text": "To reduce the cost of dining."
+        },
+        {
+          "id": "B",
+          "text": "To offer a less tiring dining environment."
+        },
+        {
+          "id": "C",
+          "text": "To increase the number of announcements."
+        },
+        {
+          "id": "D",
+          "text": "To make all students eat together."
+        }
+      ],
+      "answerId": "B",
+      "explanation": "首段提到学生觉得嘈杂就餐空间令人疲惫，安静时段回应了这一需求。"
+    },
+    {
+      "id": "close-2",
+      "prompt": "Why did a second hall keep its usual service?",
+      "passage": "A university introduced a quiet hour in one of its dining halls last term. During this hour, background music was turned off and announcements were limited to urgent messages. The change followed requests from students who found busy dining spaces tiring.\n\nThe university did not expect everyone to prefer the same environment. A second hall continued its usual service, allowing students to choose where to eat. Staff also placed signs near the entrances so that visitors knew what to expect.\n\nAfter six weeks, an online survey received responses from 240 students. Many respondents said the quiet hour helped them feel more comfortable. However, the survey was voluntary, and students who had strong opinions may have been more likely to respond. The organisers therefore avoided claiming that the results represented all students.\n\nThe university plans to continue the quiet hour next term while collecting feedback in other ways. Staff will invite brief comments at different times of day and speak with students who rarely use either hall. They hope a broader range of views will help improve the service.",
+      "options": [
+        {
+          "id": "A",
+          "text": "To give students a choice."
+        },
+        {
+          "id": "B",
+          "text": "To test a new music system."
+        },
+        {
+          "id": "C",
+          "text": "To prevent visitors from entering."
+        },
+        {
+          "id": "D",
+          "text": "To shorten the lunch break."
+        }
+      ],
+      "answerId": "A",
+      "explanation": "第二段强调偏好不同，因此保留另一种环境供选择。"
+    },
+    {
+      "id": "close-3",
+      "prompt": "What is one limitation of the survey?",
+      "passage": "A university introduced a quiet hour in one of its dining halls last term. During this hour, background music was turned off and announcements were limited to urgent messages. The change followed requests from students who found busy dining spaces tiring.\n\nThe university did not expect everyone to prefer the same environment. A second hall continued its usual service, allowing students to choose where to eat. Staff also placed signs near the entrances so that visitors knew what to expect.\n\nAfter six weeks, an online survey received responses from 240 students. Many respondents said the quiet hour helped them feel more comfortable. However, the survey was voluntary, and students who had strong opinions may have been more likely to respond. The organisers therefore avoided claiming that the results represented all students.\n\nThe university plans to continue the quiet hour next term while collecting feedback in other ways. Staff will invite brief comments at different times of day and speak with students who rarely use either hall. They hope a broader range of views will help improve the service.",
+      "options": [
+        {
+          "id": "A",
+          "text": "It lasted for a full year."
+        },
+        {
+          "id": "B",
+          "text": "It contained no questions."
+        },
+        {
+          "id": "C",
+          "text": "Its volunteers might not represent all students."
+        },
+        {
+          "id": "D",
+          "text": "It was completed only by staff."
+        }
+      ],
+      "answerId": "C",
+      "explanation": "自愿参与可能存在选择偏倚，不能据此代表所有学生。"
+    },
+    {
+      "id": "close-4",
+      "prompt": "What will staff do next term?",
+      "passage": "A university introduced a quiet hour in one of its dining halls last term. During this hour, background music was turned off and announcements were limited to urgent messages. The change followed requests from students who found busy dining spaces tiring.\n\nThe university did not expect everyone to prefer the same environment. A second hall continued its usual service, allowing students to choose where to eat. Staff also placed signs near the entrances so that visitors knew what to expect.\n\nAfter six weeks, an online survey received responses from 240 students. Many respondents said the quiet hour helped them feel more comfortable. However, the survey was voluntary, and students who had strong opinions may have been more likely to respond. The organisers therefore avoided claiming that the results represented all students.\n\nThe university plans to continue the quiet hour next term while collecting feedback in other ways. Staff will invite brief comments at different times of day and speak with students who rarely use either hall. They hope a broader range of views will help improve the service.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Stop collecting feedback."
+        },
+        {
+          "id": "B",
+          "text": "Close both dining halls."
+        },
+        {
+          "id": "C",
+          "text": "Remove the entrance signs."
+        },
+        {
+          "id": "D",
+          "text": "Seek opinions from a wider range of students."
+        }
+      ],
+      "answerId": "D",
+      "explanation": "最后一段计划在不同时段收集反馈，并接触不常使用食堂的学生。"
+    },
+    {
+      "id": "close-5",
+      "prompt": "What is the best title for the passage?",
+      "passage": "A university introduced a quiet hour in one of its dining halls last term. During this hour, background music was turned off and announcements were limited to urgent messages. The change followed requests from students who found busy dining spaces tiring.\n\nThe university did not expect everyone to prefer the same environment. A second hall continued its usual service, allowing students to choose where to eat. Staff also placed signs near the entrances so that visitors knew what to expect.\n\nAfter six weeks, an online survey received responses from 240 students. Many respondents said the quiet hour helped them feel more comfortable. However, the survey was voluntary, and students who had strong opinions may have been more likely to respond. The organisers therefore avoided claiming that the results represented all students.\n\nThe university plans to continue the quiet hour next term while collecting feedback in other ways. Staff will invite brief comments at different times of day and speak with students who rarely use either hall. They hope a broader range of views will help improve the service.",
+      "options": [
+        {
+          "id": "A",
+          "text": "A New Menu for All Students"
+        },
+        {
+          "id": "B",
+          "text": "Offering Choice through a Quiet Dining Hour"
+        },
+        {
+          "id": "C",
+          "text": "Why Online Surveys Always Fail"
+        },
+        {
+          "id": "D",
+          "text": "The End of University Dining Halls"
+        }
+      ],
+      "answerId": "B",
+      "explanation": "文章围绕安静就餐时段、保留选择和改进服务展开。"
+    }
+  ],
+  "listening": [],
+  "written": [
+    {
+      "id": "bank-garden",
+      "type": "word-bank",
+      "title": "选词填空 · 校园花园",
+      "source": "拾词原创 CET-4 仿真体验题；非历年真题。题型参考教育部教育考试院 CET-4 结构。",
+      "instructions": "从词库中为10个空选择最合适的词，每个词只能使用一次；词库中有5个干扰词。点击空号或在下方选择答案。",
+      "passage": "A student garden has become a small but meaningful part of campus life. The project began when a group of students noticed that a piece of land behind the library was [[q1]]. They asked the university for permission to turn it into a garden. Their main [[q2]] was to create a place where people could learn about growing food together.\n\nAt first, few students had any practical [[q3]]. A local farmer showed them how to prepare the soil and choose suitable plants. The volunteers then developed a [[q4]] schedule so that someone could water the plants every day. They also kept careful [[q5]] of the weather and the growth of different vegetables.\n\nThe work was not always easy. During a dry week, several young plants began to die. Instead of giving up, the students discussed possible [[q6]] and built a simple system to collect rainwater. This helped them use water more [[q7]].\n\nBy the end of the term, the garden was producing enough vegetables for a small community meal. Students said that the experience had [[q8]] their understanding of food production. It also gave them an [[q9]] to meet people from other departments. The garden now serves as a reminder that small actions can make a [[q10]] difference.",
+      "options": [
+        {
+          "id": "A",
+          "text": "broadened"
+        },
+        {
+          "id": "B",
+          "text": "confidence"
+        },
+        {
+          "id": "C",
+          "text": "efficiently"
+        },
+        {
+          "id": "D",
+          "text": "experience"
+        },
+        {
+          "id": "E",
+          "text": "goal"
+        },
+        {
+          "id": "F",
+          "text": "immediate"
+        },
+        {
+          "id": "G",
+          "text": "opportunity"
+        },
+        {
+          "id": "H",
+          "text": "records"
+        },
+        {
+          "id": "I",
+          "text": "regular"
+        },
+        {
+          "id": "J",
+          "text": "significant"
+        },
+        {
+          "id": "K",
+          "text": "solutions"
+        },
+        {
+          "id": "L",
+          "text": "unused"
+        },
+        {
+          "id": "M",
+          "text": "variety"
+        },
+        {
+          "id": "N",
+          "text": "voluntary"
+        },
+        {
+          "id": "O",
+          "text": "wealth"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "第 1 空",
+          "answerId": "L",
+          "explanation": "was 后接形容词，unused 意为闲置的。"
+        },
+        {
+          "id": "q2",
+          "prompt": "第 2 空",
+          "answerId": "E",
+          "explanation": "main goal 意为主要目标。"
+        },
+        {
+          "id": "q3",
+          "prompt": "第 3 空",
+          "answerId": "D",
+          "explanation": "practical experience 指实践经验。"
+        },
+        {
+          "id": "q4",
+          "prompt": "第 4 空",
+          "answerId": "I",
+          "explanation": "regular schedule 指规律的时间安排。"
+        },
+        {
+          "id": "q5",
+          "prompt": "第 5 空",
+          "answerId": "H",
+          "explanation": "keep records of 指记录。"
+        },
+        {
+          "id": "q6",
+          "prompt": "第 6 空",
+          "answerId": "K",
+          "explanation": "discuss possible solutions 讨论可能的解决办法。"
+        },
+        {
+          "id": "q7",
+          "prompt": "第 7 空",
+          "answerId": "C",
+          "explanation": "efficiently 是副词，修饰 use water。"
+        },
+        {
+          "id": "q8",
+          "prompt": "第 8 空",
+          "answerId": "A",
+          "explanation": "broadened their understanding 指拓宽认识。"
+        },
+        {
+          "id": "q9",
+          "prompt": "第 9 空",
+          "answerId": "G",
+          "explanation": "an opportunity to do sth. 表示做某事的机会。"
+        },
+        {
+          "id": "q10",
+          "prompt": "第 10 空",
+          "answerId": "J",
+          "explanation": "make a significant difference 表示产生显著影响。"
+        }
+      ]
+    },
+    {
+      "id": "matching-repair",
+      "type": "matching",
+      "title": "信息匹配 · 校园维修社",
+      "source": "拾词原创 CET-4 仿真体验题；非历年真题。题型参考教育部教育考试院 CET-4 结构。",
+      "instructions": "阅读A–J十个段落，为每条陈述选择包含对应信息的段落。段落字母可以重复使用。",
+      "paragraphs": [
+        {
+          "id": "A",
+          "text": "A university repair club opens its doors every Wednesday afternoon. Students bring small broken objects, including desk lamps, bags and headphones. The club aims to help people understand how everyday products work rather than simply replace them."
+        },
+        {
+          "id": "B",
+          "text": "The club was started by Maya, an engineering student who found a broken lamp outside her residence hall. A loose wire was the only problem. After repairing it, she wondered how many useful objects were being thrown away for similar reasons."
+        },
+        {
+          "id": "C",
+          "text": "New members do not begin with electrical equipment. They first practise simple tasks such as sewing a button or repairing the cover of a notebook. These tasks build confidence and show that useful repairs do not always require expensive tools."
+        },
+        {
+          "id": "D",
+          "text": "Safety comes before speed. Damaged batteries and equipment connected directly to household electricity are sent to qualified professionals. Club volunteers explain their limits clearly and never promise that every object can be repaired."
+        },
+        {
+          "id": "E",
+          "text": "A shared notebook records each repair. Members write down the problem, the steps they tried and the final result. Failed attempts are included because they can prevent the next person from repeating the same mistake."
+        },
+        {
+          "id": "F",
+          "text": "The repair sessions also bring together students from different subjects. A design student may notice a weak handle, while a business student may ask whether a replacement part is affordable. Different perspectives often lead to better decisions."
+        },
+        {
+          "id": "G",
+          "text": "The club does not charge for help. Small donations pay for thread, glue and basic spare parts. When a special part is needed, the owner decides whether to buy it after hearing the likely cost. Volunteers do not order parts without permission."
+        },
+        {
+          "id": "H",
+          "text": "Organisers have counted the objects brought to the club, but they are careful about claims of environmental benefit. Counting repaired objects alone cannot show exactly how much waste or energy has been saved. More detailed follow-up would be needed."
+        },
+        {
+          "id": "I",
+          "text": "To reach people who cannot attend, members have begun writing short repair guides. Each guide uses photographs and plain language. The authors ask beginners to test the instructions before publishing them on the university website."
+        },
+        {
+          "id": "J",
+          "text": "The club plans to work with a nearby community centre next term. Older residents will be invited to share skills such as repairing clothes. Organisers hope the exchange will preserve practical knowledge and connect the university with its neighbours."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Members document unsuccessful repairs as well as successful ones.",
+          "answerId": "E",
+          "explanation": "对应第 E 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q2",
+          "prompt": "One student’s experience with a discarded lamp inspired the project.",
+          "answerId": "B",
+          "explanation": "对应第 B 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q3",
+          "prompt": "People with little repair experience help check the clarity of the guides.",
+          "answerId": "I",
+          "explanation": "对应第 I 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q4",
+          "prompt": "Some objects are referred to trained specialists for safety reasons.",
+          "answerId": "D",
+          "explanation": "对应第 D 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q5",
+          "prompt": "The club hopes to learn practical skills from local residents.",
+          "answerId": "J",
+          "explanation": "对应第 J 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q6",
+          "prompt": "The club encourages understanding products instead of immediately replacing them.",
+          "answerId": "A",
+          "explanation": "对应第 A 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q7",
+          "prompt": "The organisers avoid making precise environmental claims from limited counts.",
+          "answerId": "H",
+          "explanation": "对应第 H 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q8",
+          "prompt": "Owners must agree before a special replacement part is purchased.",
+          "answerId": "G",
+          "explanation": "对应第 G 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q9",
+          "prompt": "Beginners start with simple repairs that do not involve electrical equipment.",
+          "answerId": "C",
+          "explanation": "对应第 C 段：请比较陈述中的同义改写与原文信息。"
+        },
+        {
+          "id": "q10",
+          "prompt": "Students from different academic backgrounds contribute different ideas.",
+          "answerId": "F",
+          "explanation": "对应第 F 段：请比较陈述中的同义改写与原文信息。"
+        }
+      ]
+    },
+    {
+      "id": "translation-library",
+      "type": "translation",
+      "title": "汉译英 · 公共图书馆",
+      "source": "拾词原创 CET-4 仿真体验题；非历年真题。题型参考教育部教育考试院 CET-4 结构。",
+      "instructions": "将下面的中文段落译成英文。答案自动保存；提交后显示参考译文，可导出给 ChatGPT 批改。",
+      "prompt": "近年来，许多城市的公共图书馆延长了开放时间，为读者提供了更加便利的服务。一些图书馆还开设免费课程，帮助老年人学习使用智能手机。对学生来说，图书馆不仅是借书的地方，也是安静学习和交流想法的空间。随着数字技术的发展，读者可以通过手机查找图书、预约座位，并阅读电子书。这些变化使更多人能够在日常生活中享受阅读。",
+      "reference": "In recent years, public libraries in many cities have extended their opening hours to offer readers more convenient services. Some libraries also provide free courses to help older people learn to use smartphones. For students, a library is not only a place to borrow books, but also a quiet space to study and exchange ideas. With the development of digital technology, readers can use their phones to search for books, reserve seats and read e-books. These changes allow more people to enjoy reading in their daily lives.",
+      "explanation": "参考表达：extend opening hours；not only ... but also ...；reserve a seat。译法可以多样，不按与参考译文逐字匹配判分。注意时态、主谓一致与信息完整性。"
+    },
+    {
+      "id": "writing-small-goals",
+      "type": "writing",
+      "title": "短文写作 · 小目标与坚持",
+      "source": "拾词原创 CET-4 仿真体验题；非历年真题。题型参考教育部教育考试院 CET-4 结构。",
+      "instructions": "建议用时30分钟，写120–180词。体验模式不强制计时，字数仅作提示。提交后再看范文和思路。",
+      "prompt": "Directions: Write an essay on the importance of setting small goals in learning. Explain your view and give an example from daily life.",
+      "minWords": 120,
+      "maxWords": 180,
+      "reference": "Setting small goals can make learning more manageable. A large ambition may give us direction, but a clear daily target helps us take action.\n\nFor example, a student who wants to improve English may feel discouraged by a long vocabulary list. Learning ten useful words each day is a more practical starting point. The student can review these words the next morning and use a few of them in sentences. This routine creates visible progress and makes it easier to continue. Small goals should also be flexible. On a busy day, a shorter review is often better than giving up completely.\n\nIn my view, small goals are valuable because they turn intention into regular effort. By choosing realistic targets and checking our progress, we can gradually build the knowledge and confidence needed for larger challenges.",
+      "explanation": "结构：观点 → 词汇学习的具体例子 → 总结。可借鉴句型：A clear daily target helps us ...；... is often better than ...。范文不代表唯一答案，提交后导出全文批改。"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-voluntary",
+      "term": "voluntary",
+      "meaning": "adj. 自愿的",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-respondents",
+      "term": "respondents",
+      "meaning": "n. 问卷受访者",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-represent",
+      "term": "represent",
+      "meaning": "v. 代表",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-feedback",
+      "term": "feedback",
+      "meaning": "n. 反馈",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-permission",
+      "term": "permission",
+      "meaning": "n. 许可",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-significant",
+      "term": "significant",
+      "meaning": "adj. 显著的",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-repair",
+      "term": "repair",
+      "meaning": "v./n. 修理",
+      "level": "CET-4"
+    },
+    {
+      "id": "g-qualified",
+      "term": "qualified",
+      "meaning": "adj. 具备资格的",
+      "level": "CET-4"
+    }
+  ]
+}

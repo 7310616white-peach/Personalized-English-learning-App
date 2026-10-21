@@ -1,3 +1,4 @@
+import type { WrittenAttempt, WrittenDraft, WrittenProgress } from '../domain/written';
 import Dexie, { type EntityTable } from 'dexie';
 import type {
   LibraryRecord,
@@ -21,6 +22,9 @@ export class LearningDB extends Dexie {
   listeningProgress!: EntityTable<ListeningProgress, 'key'>;
   listeningDrafts!: EntityTable<ListeningDraft, 'key'>;
   listeningNotes!: EntityTable<ListeningNote, 'key'>;
+  writtenAttempts!: EntityTable<WrittenAttempt, 'id'>;
+  writtenDrafts!: EntityTable<WrittenDraft, 'key'>;
+  writtenProgress!: EntityTable<WrittenProgress, 'key'>;
   constructor(name = 'english-pocket-v1') {
     super(name);
     this.version(1).stores({
@@ -37,6 +41,11 @@ export class LearningDB extends Dexie {
       listeningProgress: 'key,libraryId,due',
       listeningDrafts: 'key',
       listeningNotes: 'key,attemptId',
+    });
+    this.version(3).stores({
+      writtenAttempts: 'id,key,createdAt',
+      writtenDrafts: 'key',
+      writtenProgress: 'key,packId,due',
     });
   }
 }

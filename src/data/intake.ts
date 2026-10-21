@@ -29,5 +29,5 @@ export async function commitIncoming(preview: IncomingPreview, store: LearningDB
     return `材料清单已导入：${result.bound} 段已绑定，${result.missing} 段待补绑。请到听力训练底部选择对应 WAV。`;
   }
   const pack = await importPack(preview.value, store);
-  return `已导入「${pack.title}」：${pack.words.length} 个单词，${pack.choices.length} 道选择，${pack.schemaVersion === 2 ? pack.listening.length : 0} 组听力。`;
+  return `已导入「${pack.title}」：${pack.words.length} 个单词，${pack.choices.length} 道选择，${pack.schemaVersion !== 1 ? pack.listening.length : 0} 组听力${pack.schemaVersion === 3 ? `，${pack.written.length} 篇拓展题型` : ''}。`;
 }

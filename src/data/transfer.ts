@@ -15,11 +15,19 @@ export async function backup(store: LearningDB = db): Promise<Backup> {
       drafts: await store.drafts.toArray(),
     };
     const listeningLibraries = await store.listeningLibraries.toArray();
-    if (!listeningLibraries.length && !common.packs.some((p) => p.schemaVersion === 2))
+    const extended = common.packs.some((p) => p.schemaVersion === 3);
+    if (!extended && !listeningLibraries.length && !common.packs.some((p) => p.schemaVersion !== 1))
       return { ...common, version: 1 };
     return {
       ...common,
-      version: 2,
+      ...(extended
+        ? {
+            version: 3 as const,
+            writtenAttempts: await store.writtenAttempts.toArray(),
+            writtenDrafts: await store.writtenDrafts.toArray(),
+            writtenProgress: await store.writtenProgress.toArray(),
+          }
+        : { version: 2 as const }),
       mediaIncluded: false,
       listeningLibraries,
       media: (await store.media.toArray()).map((m) =>
@@ -56,7 +64,12 @@ export async function restore(
     await store.progress.bulkAdd(data.progress);
     await store.attempts.bulkAdd(data.attempts);
     await store.drafts.bulkAdd(data.drafts);
-    if (data.version === 2) {
+    if (data.version === 3) {
+      await store.writtenAttempts.bulkAdd(data.writtenAttempts);
+      await store.writtenDrafts.bulkAdd(data.writtenDrafts);
+      await store.writtenProgress.bulkAdd(data.writtenProgress);
+    }
+    if (data.version !== 1) {
       await store.listeningLibraries.bulkAdd(data.listeningLibraries);
       await store.media.bulkAdd(
         data.media.map((m) => ({
@@ -76,6 +89,19 @@ export async function results(store: LearningDB = db) {
   const snapshot = await backup(store);
   const items = new Map(snapshot.packs.flatMap(exercises).map((e) => [e.key, e]));
   return {
+    ...(snapshot.version === 3
+      ? {
+          writtenAttempts: snapshot.writtenAttempts.map((a) => {
+            const pack = snapshot.packs.find((p) => p.id === a.packId);
+            return {
+              ...a,
+              task:
+                pack?.schemaVersion === 3 ? pack.written.find((t) => t.id === a.taskId) : undefined,
+              grading: a.correct === null ? '待批改' : '本地客观判分',
+            };
+          }),
+        }
+      : {}),
     format: 'english-pocket-results',
     version: snapshot.version,
     exportedAt: snapshot.exportedAt,
@@ -90,7 +116,7 @@ export async function results(store: LearningDB = db) {
         explanation: e?.kind === 'choice' ? e.item.explanation : undefined,
       };
     }),
-    ...(snapshot.version === 2
+    ...(snapshot.version !== 1
       ? {
           listeningAttempts: snapshot.listeningAttempts.map((a) => ({
             ...a,

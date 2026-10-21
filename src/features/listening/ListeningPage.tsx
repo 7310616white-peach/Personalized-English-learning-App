@@ -44,7 +44,7 @@ export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boo
   const questions = data.progress;
   const due = questions.filter((p) => p.due <= new Date().toISOString());
   const groups = data.packs
-    .flatMap((p) => (p.schemaVersion === 2 ? p.listening.map((set) => ({ pack: p, set })) : []))
+    .flatMap((p) => (p.schemaVersion !== 1 ? p.listening.map((set) => ({ pack: p, set })) : []))
     .filter(
       ({ set }) =>
         filter === 'all' ||

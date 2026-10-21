@@ -67,3 +67,8 @@ v2 题包在保留 words/choices 的同时增加 listening；材料清单单独�
 
 例：`"glossary":[{"id":"g01","term":"findings","level":"科研英语","meaning":"n. 研究发现"}]`。
 完整的手机提示词与音轨对应步骤见 PHONE_WORKFLOW.md，App 可直接复制首次/每日提示词。
+
+## v3 拓展任务
+
+v1/v2 继续支持。v3 保留 v2 字段并增加 written 数组，支持 word-bank、matching、translation、writing。
+格式与完整原创示例见 [四级体验协议](CET_EXPERIENCE.md#v3-每日题包)。

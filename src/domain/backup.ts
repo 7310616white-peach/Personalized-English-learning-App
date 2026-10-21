@@ -1,3 +1,10 @@
+import {
+  writtenAttemptSchema,
+  writtenDraftSchema,
+  writtenProgressSchema,
+  writtenKey,
+  gradeWritten,
+} from './written';
 import { z } from 'zod';
 import { packSchema, progressSchema, attemptSchema, draftSchema, exercises } from './models';
 import {
@@ -30,6 +37,11 @@ const listeningFields = {
   listeningDrafts: z.array(listeningDraftSchema),
   listeningNotes: z.array(listeningNoteSchema),
 };
+const writtenFields = {
+  writtenAttempts: z.array(writtenAttemptSchema),
+  writtenDrafts: z.array(writtenDraftSchema),
+  writtenProgress: z.array(writtenProgressSchema),
+};
 export const backupSchema = z.discriminatedUnion('version', [
   z.object({ ...common, version: z.literal(1) }).strict(),
   z
@@ -40,12 +52,50 @@ export const backupSchema = z.discriminatedUnion('version', [
       ...listeningFields,
     })
     .strict(),
+  z
+    .object({
+      ...common,
+      version: z.literal(3),
+      mediaIncluded: z.literal(false),
+      ...listeningFields,
+      ...writtenFields,
+    })
+    .strict(),
 ]);
 function unique(keys: string[]) {
   if (new Set(keys).size !== keys.length) throw new Error('备份含有重复记录');
 }
 export function validateBackup(input: unknown) {
   const data = backupSchema.parse(input);
+  if (data.version !== 3 && data.packs.some((p) => p.schemaVersion === 3))
+    throw new Error('旧版备份缺少扩展题型记录');
+  if (data.version === 3) {
+    unique(data.writtenAttempts.map((r) => r.id));
+    unique(data.writtenDrafts.map((r) => r.key));
+    unique(data.writtenProgress.map((r) => r.key));
+    for (const row of [...data.writtenAttempts, ...data.writtenDrafts, ...data.writtenProgress]) {
+      const pack = data.packs.find((p) => p.id === row.packId);
+      const task = pack?.schemaVersion === 3 && pack.written.find((t) => t.id === row.taskId);
+      if (!task || row.key !== writtenKey(row.packId, row.taskId))
+        throw new Error('扩展题型记录引用无效');
+      if ('answers' in row) {
+        if ('correct' in row || task.type === 'word-bank' || task.type === 'matching') {
+          const grade = gradeWritten(task, row.answers);
+          if ('correct' in row) {
+            const attempt = writtenAttemptSchema.parse(row);
+            if (
+              attempt.correct !== grade.correct ||
+              attempt.earned !== grade.earned ||
+              attempt.total !== grade.total
+            )
+              throw new Error('扩展题型评分无效');
+          }
+        } else if (Object.keys(row.answers).some((key) => key !== 'response'))
+          throw new Error('扩展题型草稿无效');
+      } else if (task.type === 'translation' || task.type === 'writing')
+        throw new Error('待批改任务不能冒充已评分复习进度');
+    }
+  }
   const items = new Map(data.packs.flatMap(exercises).map((e) => [e.key, e]));
   unique(data.packs.map((r) => r.id));
   unique(data.progress.map((r) => r.key));
@@ -58,7 +108,7 @@ export function validateBackup(input: unknown) {
   }
   if (data.drafts.some((d) => !items.has(d.key))) throw new Error('备份含有无法关联的草稿');
   if (data.version === 1) {
-    if (data.packs.some((p) => p.schemaVersion === 2)) throw new Error('v1 备份缺少听力资源数据');
+    if (data.packs.some((p) => p.schemaVersion !== 1)) throw new Error('v1 备份缺少听力资源数据');
     return data;
   }
   for (const table of [data.listeningLibraries, data.media, data.listeningAttempts])
@@ -90,7 +140,7 @@ export function validateBackup(input: unknown) {
       throw new Error('备份听力题引用无效');
   const draftKeys = new Set<string>();
   for (const p of data.packs) {
-    if (p.schemaVersion !== 2) continue;
+    if (p.schemaVersion === 1) continue;
     for (const s of p.listening) {
       draftKeys.add(setDraftKey(p.id, s));
       for (const q of s.questions) {
@@ -106,7 +156,7 @@ export function validateBackup(input: unknown) {
   }
   for (const a of data.listeningAttempts) {
     const p = data.packs.find((p) => p.id === a.packId);
-    const set = p?.schemaVersion === 2 ? p.listening.find((s) => s.id === a.setId) : undefined;
+    const set = p && p.schemaVersion !== 1 ? p.listening.find((s) => s.id === a.setId) : undefined;
     if (
       !set ||
       a.libraryId !== set.libraryId ||

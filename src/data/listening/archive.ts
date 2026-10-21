@@ -11,7 +11,7 @@ export async function completeBackup(store: LearningDB = db) {
   const entries: Record<string, Uint8Array> = {
     'data.json': new TextEncoder().encode(JSON.stringify(snapshot)),
   };
-  if (snapshot.version === 2) {
+  if (snapshot.version !== 1) {
     let total = entries['data.json'].length;
     for (const meta of snapshot.media) {
       total += meta.byteLength;
@@ -39,7 +39,7 @@ export async function readBackupFile(file: File): Promise<PendingBackup> {
     JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(entries['data.json'])),
   );
   const audio: Record<string, Uint8Array> = {};
-  const media = snapshot.version === 2 ? snapshot.media : [];
+  const media = snapshot.version !== 1 ? snapshot.media : [];
   if (Object.keys(entries).length !== media.length + 1) throw new Error('ZIP 媒体数量与清单不一致');
   for (const meta of media) {
     const bytes = entries[`media/${meta.id}.wav`];
@@ -56,7 +56,7 @@ export async function readBackupFile(file: File): Promise<PendingBackup> {
 export async function restoreBackup(pending: PendingBackup, store: LearningDB = db) {
   const data = validateBackup(pending.snapshot);
   const media: MediaRecord[] = [];
-  if (data.version === 2)
+  if (data.version !== 1)
     for (const meta of data.media) {
       const bytes = pending.audio[meta.id];
       if (bytes) {

@@ -51,7 +51,7 @@ export function IncomingImport({ file, onClose }: { file: IncomingFile; onClose:
           <p>「{preview.data.value.title}」</p>
           <p>
             {preview.data.kind === 'pack'
-              ? `${preview.data.value.words.length} 个单词，${preview.data.value.choices.length} 道选择，${preview.data.value.schemaVersion === 2 ? preview.data.value.listening.length : 0} 组听力`
+              ? `${preview.data.value.words.length} 个单词，${preview.data.value.choices.length} 道选择，${preview.data.value.schemaVersion !== 1 ? preview.data.value.listening.length : 0} 组听力${preview.data.value.schemaVersion === 3 ? `，${preview.data.value.written.length} 篇拓展题型` : ''}`
               : `${preview.data.value.tracks.length} 段音轨清单，WAV 需要在听力训练底部另行选择。`}
           </p>
           <p>确认后才写入本机学习库，不替换已有学习记录。</p>

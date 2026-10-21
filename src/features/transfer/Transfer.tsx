@@ -66,6 +66,7 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
             ...(data.listeningAttempts ?? []).map(
               (a) => `\n听力 ${a.libraryId} / ${a.trackId}\n${JSON.stringify(a, null, 2)}`,
             ),
+            ...(data.writtenAttempts ?? []).map((a) => `\n扩展题型：${JSON.stringify(a, null, 2)}`),
             ...data.attempts.map(
               (a, i) =>
                 `\n${i + 1}. ${a.prompt}\n${a.passage ?? ''}\n${a.options?.map((o) => `${o.id}. ${o.text}`).join('\n') ?? ''}\n我的答案：${a.answer}\n参考答案：${a.expected}\n${a.explanation ?? ''}\n本地判定：${a.correct ? '正确' : '错误'}；作答时间：${a.createdAt}`,
@@ -209,9 +210,10 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
             备份时间：{new Date(pending.snapshot.exportedAt).toLocaleString('zh-CN')}；
             {pending.snapshot.packs.length} 个题包，
             {pending.snapshot.attempts.length +
-              (pending.snapshot.version === 2 ? pending.snapshot.listeningAttempts.length : 0)}{' '}
+              (pending.snapshot.version !== 1 ? pending.snapshot.listeningAttempts.length : 0) +
+              (pending.snapshot.version === 3 ? pending.snapshot.writtenAttempts.length : 0)}{' '}
             条答题记录。恢复后，本机当前数据会被替换。
-            {pending.snapshot.version === 2 &&
+            {pending.snapshot.version !== 1 &&
               !Object.keys(pending.audio).length &&
               '这份 JSON 不含 WAV，缺少的音频需补绑。'}
           </p>

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { listeningSetSchema } from './listening';
+import { writtenTaskSchema } from './written';
 const text = z.string().trim().min(1).max(10000);
 const id = z.string().regex(/^[a-zA-Z0-9_-]{1,80}$/, 'ID 仅允许字母、数字、下划线和短横线');
 export const wordSchema = z
@@ -58,15 +59,27 @@ export const packSchema = z
         glossary: z.array(wordSchema).max(1000).optional(),
       })
       .strict(),
+    z
+      .object({
+        ...packFields,
+        schemaVersion: z.literal(3),
+        listening: z.array(listeningSetSchema).max(100),
+        glossary: z.array(wordSchema).max(1000).optional(),
+        written: z.array(writtenTaskSchema).max(100),
+      })
+      .strict(),
   ])
   .superRefine((p, ctx) => {
-    const ids = [...p.words, ...p.choices, ...(p.schemaVersion === 2 ? p.listening : [])].map(
-      (i) => i.id,
-    );
+    const ids = [
+      ...p.words,
+      ...p.choices,
+      ...(p.schemaVersion !== 1 ? p.listening : []),
+      ...(p.schemaVersion === 3 ? p.written : []),
+    ].map((i) => i.id);
     if (!ids.length || new Set(ids).size !== ids.length)
       ctx.addIssue({ code: 'custom', message: '题包不能为空，题目/听力组 ID 必须唯一' });
     const keys =
-      p.schemaVersion === 2
+      p.schemaVersion !== 1
         ? p.listening.flatMap((s) => s.questions.map((q) => JSON.stringify([s.libraryId, q.id])))
         : [];
     if (new Set(keys).size !== keys.length)

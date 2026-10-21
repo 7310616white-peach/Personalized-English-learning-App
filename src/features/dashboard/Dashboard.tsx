@@ -11,6 +11,7 @@ type DashboardProps = {
   queues: ReturnType<typeof makeQueues>;
   onPackChange: (id: string) => void;
   onNavigate: (page: Page) => void;
+  onExperience: () => void;
   onStart: (title: string, queue: Exercise[]) => void;
 };
 export function Dashboard({
@@ -23,6 +24,7 @@ export function Dashboard({
   onPackChange,
   onNavigate,
   onStart,
+  onExperience,
 }: DashboardProps) {
   const today = attempts.filter((a) => localDate(new Date(a.createdAt)) === localDate(now));
   const todayCorrect = today.filter((a) => a.correct).length;
@@ -145,6 +147,14 @@ export function Dashboard({
           </section>
         </div>
       )}
+      <section className="card cet-entry">
+        <p className="eyebrow">试一试不同的答题方式</p>
+        <h2>四级全题型体验</h2>
+        <p>新闻、对话、篇章听力，以及选词、匹配、阅读、翻译和写作。原创仿真，提交后看答案。</p>
+        <button className="secondary" onClick={onExperience}>
+          打开四级题型体验 →
+        </button>
+      </section>
       <div className="section-heading lower-heading">
         <h2>每一次练习，都有迹可循</h2>
         <button className="text-button" onClick={() => onNavigate('mistakes')}>

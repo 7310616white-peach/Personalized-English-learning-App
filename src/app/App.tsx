@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { makeQueues } from '../domain/queue';
 import type { Exercise } from '../domain/models';
 
+import { WrittenSummary } from '../features/written/WrittenSummary';
 import { ListeningSummary } from '../features/listening/ListeningSummary';
 import { Practice } from '../features/practice/Practice';
 import { Library } from '../features/library/Library';
@@ -28,6 +29,10 @@ const IncomingImport = lazy(() =>
   import('../features/transfer/IncomingImport').then((m) => ({ default: m.IncomingImport })),
 );
 
+const CetExperience = lazy(() =>
+  import('../features/written/CetExperience').then((m) => ({ default: m.CetExperience })),
+);
+
 type Session = { title: string; queue: Exercise[] };
 export function App() {
   return (
@@ -38,6 +43,7 @@ export function App() {
 }
 
 function LearningApp() {
+  const [experience, setExperience] = useState(false);
   const [listeningActive, setListeningActive] = useState(false);
   const [page, setPage] = useState<Page>('home');
   const [packId, setPackId] = useState('');
@@ -89,11 +95,11 @@ function LearningApp() {
     };
   }, []);
   useEffect(() => {
-    if (pendingLookup && !session && !listeningActive) {
+    if (pendingLookup && !session && !listeningActive && !experience) {
       setExternalLookup({ text: incoming, token: Date.now() });
       setPendingLookup(false);
     }
-  }, [pendingLookup, incoming, session, listeningActive]);
+  }, [pendingLookup, incoming, session, listeningActive, experience]);
   useEffect(() => {
     let cancelled = false;
     let remove: (() => void) | undefined;
@@ -108,7 +114,9 @@ function LearningApp() {
       remove?.();
     };
   }, []);
-  useBackAction(page !== 'home' && !session && !listeningActive, () => setPage('home'));
+  useBackAction(page !== 'home' && !session && !listeningActive && !experience, () =>
+    setPage('home'),
+  );
   if (!data)
     return (
       <div className="loading" role="status">
@@ -128,16 +136,20 @@ function LearningApp() {
   }
   return (
     <ReadingProvider packs={packs} external={externalLookup}>
-      <AppShell page={page} practicing={!!session || listeningActive} onNavigate={setPage}>
+      <AppShell
+        page={page}
+        practicing={!!session || listeningActive || experience}
+        onNavigate={setPage}
+      >
         {nativeError && (
           <p className="notice" role="status">
             {nativeError}
           </p>
         )}
-        {files.length > 0 && (session || listeningActive) && (
+        {files.length > 0 && (session || listeningActive || experience) && (
           <p className="notice">已收到题包文件，保存退出本组后再确认导入。</p>
         )}
-        {files[0] && !session && !listeningActive && (
+        {files[0] && !session && !listeningActive && !experience && (
           <Suspense fallback={<p role="status">正在检查分享的文件…</p>}>
             <IncomingImport
               key={files[0].token}
@@ -153,6 +165,10 @@ function LearningApp() {
             )}
             <Practice queue={session.queue} title={session.title} onExit={exitPractice} />
           </>
+        ) : experience ? (
+          <Suspense fallback={<p role="status">正在打开题型体验…</p>}>
+            <CetExperience onExit={() => setExperience(false)} onChoice={start} />
+          </Suspense>
         ) : (
           <>
             {page === 'home' && (
@@ -167,6 +183,7 @@ function LearningApp() {
                   onPackChange={setPackId}
                   onNavigate={setPage}
                   onStart={start}
+                  onExperience={() => setExperience(true)}
                 />
               </>
             )}
@@ -189,6 +206,7 @@ function LearningApp() {
                   </button>
                 </div>
                 <ListeningSummary onOpen={() => setPage('listening')} mistakes />
+                <WrittenSummary onOpen={() => setExperience(true)} />
                 <Library packs={packs} progress={progress} mistakes />
               </>
             )}
