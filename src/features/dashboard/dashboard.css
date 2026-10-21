@@ -1,0 +1,183 @@
+.welcome > p:last-child {
+  font-size: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px 0 26px;
+  border: 1px solid #dee3d9;
+  background: #fafbf6;
+  border-radius: 14px;
+  padding: 24px 0;
+}
+
+.stats > div {
+  padding: 0 28px;
+  border-right: 1px solid #dee3d9;
+}
+
+.stats > div:last-child {
+  border: 0;
+}
+
+.stats span {
+  display: block;
+  color: #78867b;
+  font-size: 12px;
+}
+
+.stats strong {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.stats strong small {
+  font-size: 13px;
+  color: #8a968b;
+  font-weight: 400;
+}
+
+.pack-select {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: #7e8b80;
+  margin: 20px 0;
+}
+
+.pack-select select {
+  border: 0;
+  background: transparent;
+  max-width: 75%;
+  color: #425d4d;
+  padding: 10px;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.main-task {
+  grid-column: span 2;
+  background: #eaf0e4;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-task h2 {
+  font-size: 24px;
+}
+
+.task-grid .eyebrow {
+  color: #7a8b6e;
+}
+
+.task-grid p {
+  font-size: 13px;
+}
+
+.task-symbol {
+  font-family: Georgia, serif;
+  font-size: 115px;
+  color: #d0ddc5;
+  position: absolute;
+  right: 48px;
+  top: 0;
+  line-height: 1.5;
+  transform: rotate(-9deg);
+  pointer-events: none;
+}
+
+.task-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: 28px;
+}
+
+.task-bottom > span {
+  font-size: 12px;
+  color: #77896c;
+}
+
+.task-count {
+  font-size: 32px;
+  display: block;
+  margin: 18px 0;
+}
+
+.task-count small {
+  font-size: 12px;
+  color: #8a9686;
+  font-weight: 400;
+}
+
+.task-grid > .card:not(.main-task) button {
+  width: 100%;
+}
+
+.lower-heading {
+  margin-top: 32px;
+}
+
+.lower-heading h2 {
+  font-size: 16px;
+}
+
+.progress-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 23px 26px;
+  gap: 20px;
+}
+
+.progress-card b {
+  font-size: 14px;
+}
+
+.progress-card p {
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.onboarding {
+  position: relative;
+  min-height: 245px;
+  padding: 30px 34px;
+  overflow: hidden;
+  background: #eaf0e4;
+}
+
+.onboarding p {
+  max-width: 65%;
+  font-size: 13px;
+}
+
+.onboarding h2 {
+  position: relative;
+  z-index: 1;
+}
+
+.onboarding-art {
+  position: absolute;
+  right: 32px;
+  top: 30px;
+  font-family: Georgia, serif;
+  font-size: 80px;
+  color: #b1c6a5;
+  transform: rotate(-9deg);
+  pointer-events: none;
+}
+
+.onboarding-art span {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}

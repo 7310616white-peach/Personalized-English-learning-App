@@ -1,0 +1,7 @@
+node_modules/
+dist/
+work/
+outputs/
+android/
+pnpm-lock.yaml
+src/features/lookup/glossary.json

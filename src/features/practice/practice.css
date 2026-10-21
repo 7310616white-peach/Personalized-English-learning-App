@@ -1,0 +1,148 @@
+.practice-wrap {
+  max-width: 780px;
+  margin: auto;
+}
+
+.practice-wrap progress {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border: 0;
+  accent-color: #245c4b;
+  margin: -4px 0 24px;
+}
+
+.practice-wrap progress::-webkit-progress-bar {
+  background: #e1e7da;
+  border-radius: 4px;
+}
+
+.practice-wrap progress::-webkit-progress-value {
+  background: #245c4b;
+  border-radius: 4px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.answer-card .muted {
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.question {
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.65;
+  margin: 0 0 32px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.spelling-input {
+  width: 100%;
+  font-size: 25px;
+  font-family: Georgia, serif;
+  border: 1px solid #becdb8;
+  background: #f8faf5;
+  border-radius: 10px;
+  min-height: 66px;
+  padding: 14px 16px;
+  color: #263c35;
+  appearance: none;
+}
+
+.spelling-input::placeholder {
+  font-family: inherit;
+  font-size: 18px;
+  color: #a2aea0;
+}
+
+.answer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 28px;
+}
+
+.save-status {
+  font-size: 11px;
+  color: #87927f;
+}
+
+.answer-actions button {
+  min-width: 140px;
+}
+
+.feedback {
+  margin: 22px 0;
+  border-radius: 10px;
+  padding: 20px;
+  background: #eaf2e5;
+  border: 1px solid #d5e2ce;
+}
+
+.feedback.incorrect {
+  background: #fbf2e6;
+  border-color: #ead9bf;
+}
+
+.feedback strong {
+  font-size: 14px;
+}
+
+.feedback p {
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+
+.passage {
+  white-space: pre-wrap;
+  border-bottom: 1px solid #dfe4d8;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #dce2d5;
+  border-radius: 10px;
+  cursor: pointer;
+  min-height: 56px;
+  overflow-wrap: anywhere;
+}
+
+.option input {
+  accent-color: #245c4b;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.option.selected {
+  background: #edf3e8;
+  border-color: #6e8e67;
+}
+
+.option-id {
+  font-size: 12px;
+  font-weight: 700;
+  color: #79926f;
+}

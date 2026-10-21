@@ -1,0 +1,85 @@
+.transfer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.transfer-grid .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.transfer-grid h3 {
+  margin: 0;
+}
+
+.transfer-grid p {
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+
+.transfer-grid button,
+.file-button {
+  width: 100%;
+  text-align: center;
+}
+
+.transfer-grid a {
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.transfer-grid small {
+  color: #8b9584;
+  font-size: 11px;
+}
+
+.step-number {
+  font-size: 12px;
+  color: #829276;
+  font-family: Georgia, serif;
+}
+
+.file-button {
+  display: block;
+  background: #245c4b;
+  color: white;
+  border-color: #245c4b;
+  position: relative;
+  overflow: hidden;
+}
+
+.file-button input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-button:focus-within {
+  outline: 3px solid #c59342;
+  outline-offset: 3px;
+}
+
+.file-button.subtle {
+  background: transparent;
+  color: #245c4b;
+  border-color: #d9dfd7;
+}
+
+.transfer-grid:disabled .file-button {
+  opacity: 0.45;
+}
+
+.restore-panel {
+  margin-top: 25px;
+  border-color: #c59342;
+}
+
+.restore-panel p {
+  font-size: 13px;
+}

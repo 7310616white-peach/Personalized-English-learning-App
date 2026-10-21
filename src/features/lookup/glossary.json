@@ -1,0 +1,758 @@
+[
+  {
+    "id": "glossary-1",
+    "term": "abstract",
+    "level": "科研英语",
+    "meaning": "n. 摘要；adj. 抽象的",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-2",
+    "term": "analysis",
+    "level": "科研英语",
+    "meaning": "n. 分析；复数形式为 analyses",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-3",
+    "term": "association",
+    "level": "科研英语",
+    "meaning": "n. 关联；联系；关联本身不表示因果关系",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-4",
+    "term": "baseline",
+    "level": "科研英语",
+    "meaning": "n. 基线；研究开始时的参照状态",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-5",
+    "term": "bias",
+    "level": "科研英语",
+    "meaning": "n. 偏倚；系统性偏离真实值的倾向",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-6",
+    "term": "causal",
+    "level": "科研英语",
+    "meaning": "adj. 因果的",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-7",
+    "term": "confounding",
+    "level": "科研英语",
+    "meaning": "n. 混杂；暴露与结局的关联受到其他因素影响",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-8",
+    "term": "confidence interval",
+    "level": "科研英语",
+    "meaning": "n. 置信区间；基于抽样方法计算的参数区间估计",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-9",
+    "term": "consent",
+    "level": "科研英语",
+    "meaning": "n. 同意；v. 同意",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-10",
+    "term": "correlation",
+    "level": "科研英语",
+    "meaning": "n. 相关；两个变量共同变化的程度",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-11",
+    "term": "dataset",
+    "level": "科研英语",
+    "meaning": "n. 数据集",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-12",
+    "term": "distribution",
+    "level": "科研英语",
+    "meaning": "n. 分布；分配",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-13",
+    "term": "effect",
+    "level": "科研英语",
+    "meaning": "n. 影响；效应；v. 使发生",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-14",
+    "term": "estimate",
+    "level": "科研英语",
+    "meaning": "v. 估计；n. 估计值",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-15",
+    "term": "exposure",
+    "level": "科研英语",
+    "meaning": "n. 暴露；接触",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-16",
+    "term": "finding",
+    "level": "科研英语",
+    "meaning": "n. 研究发现；调查结果",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-17",
+    "term": "hypothesis",
+    "level": "科研英语",
+    "meaning": "n. 假设；复数形式为 hypotheses",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-18",
+    "term": "incidence",
+    "level": "科研英语",
+    "meaning": "n. 发病频率；关注某段时间内的新发病例",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-19",
+    "term": "intervention",
+    "level": "科研英语",
+    "meaning": "n. 干预；介入",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-20",
+    "term": "longitudinal",
+    "level": "科研英语",
+    "meaning": "adj. 纵向的；沿时间观察的",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-21",
+    "term": "method",
+    "level": "科研英语",
+    "meaning": "n. 方法",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-22",
+    "term": "outcome",
+    "level": "科研英语",
+    "meaning": "n. 结局；结果",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-23",
+    "term": "participant",
+    "level": "科研英语",
+    "meaning": "n. 参与者；研究对象",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-24",
+    "term": "peer review",
+    "level": "科研英语",
+    "meaning": "n. 同行评审",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-25",
+    "term": "population",
+    "level": "科研英语",
+    "meaning": "n. 总体；人群；人口",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-26",
+    "term": "protocol",
+    "level": "科研英语",
+    "meaning": "n. 研究方案；规程",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-27",
+    "term": "randomization",
+    "level": "科研英语",
+    "meaning": "n. 随机化；随机分配",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-28",
+    "term": "regression",
+    "level": "科研英语",
+    "meaning": "n. 回归；用于研究变量之间关系的一类统计方法",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-29",
+    "term": "reliability",
+    "level": "科研英语",
+    "meaning": "n. 可靠性；信度",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-30",
+    "term": "sample",
+    "level": "科研英语",
+    "meaning": "n. 样本；v. 抽样",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-31",
+    "term": "selection",
+    "level": "科研英语",
+    "meaning": "n. 选择；筛选",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-32",
+    "term": "statistical",
+    "level": "科研英语",
+    "meaning": "adj. 统计的；统计学的",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-33",
+    "term": "systematic",
+    "level": "科研英语",
+    "meaning": "adj. 系统的；有条理的",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-34",
+    "term": "validity",
+    "level": "科研英语",
+    "meaning": "n. 有效性；效度",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-35",
+    "term": "variable",
+    "level": "科研英语",
+    "meaning": "n. 变量；adj. 可变的",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-36",
+    "term": "variance",
+    "level": "科研英语",
+    "meaning": "n. 方差；偏离；差异",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-37",
+    "term": "review",
+    "level": "科研英语",
+    "meaning": "n. 综述；评审；v. 复习；审查",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-38",
+    "term": "literature",
+    "level": "科研英语",
+    "meaning": "n. 文献；文学",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-39",
+    "term": "measure",
+    "level": "科研英语",
+    "meaning": "v. 测量；n. 指标；措施",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-40",
+    "term": "adjust",
+    "level": "科研英语",
+    "meaning": "v. 调整；校正",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-41",
+    "term": "conclusion",
+    "level": "科研英语",
+    "meaning": "n. 结论",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-42",
+    "term": "limitation",
+    "level": "科研英语",
+    "meaning": "n. 局限；限制",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-43",
+    "term": "recruit",
+    "level": "科研英语",
+    "meaning": "v. 招募；n. 新成员",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-44",
+    "term": "follow-up",
+    "level": "科研英语",
+    "meaning": "n. 随访；后续追踪",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-45",
+    "term": "manuscript",
+    "level": "科研英语",
+    "meaning": "n. 手稿；论文稿件",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-46",
+    "term": "replicate",
+    "level": "科研英语",
+    "meaning": "v. 重复；复现；n. 重复实验",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-47",
+    "term": "meta-analysis",
+    "level": "科研英语",
+    "meaning": "n. 荟萃分析；对多个研究结果进行统计合并的方法",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "glossary-48",
+    "term": "heterogeneity",
+    "level": "科研英语",
+    "meaning": "n. 异质性；不同研究或个体之间的差异",
+    "example": "",
+    "exampleTranslation": "",
+    "otherMeanings": [],
+    "collocations": [],
+    "confusion": "",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w01",
+    "term": "approach",
+    "level": "CET-4",
+    "meaning": "v. 接近；处理；n. 方法",
+    "example": "We need a new approach to this problem.",
+    "exampleTranslation": "我们需要一种处理这个问题的新方法。",
+    "collocations": [
+      "an approach to sth 处理某事的方法"
+    ],
+    "otherMeanings": [
+      "n. 路径；通路"
+    ],
+    "confusion": "approach 强调处理问题的方法；access 强调进入或使用的机会。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w02",
+    "term": "evidence",
+    "level": "CET-4",
+    "meaning": "n. 证据；依据",
+    "example": "There is little evidence to support this claim.",
+    "exampleTranslation": "支持这一说法的证据很少。",
+    "collocations": [
+      "provide evidence 提供证据"
+    ],
+    "otherMeanings": [],
+    "confusion": "evidence 通常为不可数名词；不要写成 an evidence。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w03",
+    "term": "maintain",
+    "level": "CET-4",
+    "meaning": "v. 维持；保养；坚持认为",
+    "example": "Regular exercise helps maintain good health.",
+    "exampleTranslation": "经常锻炼有助于保持健康。",
+    "collocations": [
+      "maintain a balance 保持平衡"
+    ],
+    "otherMeanings": [
+      "v. 坚持声称"
+    ],
+    "confusion": "maintain 强调维持状态；retain 强调保留已有事物。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w04",
+    "term": "significant",
+    "level": "CET-4",
+    "meaning": "adj. 重要的；显著的",
+    "example": "Sleep has a significant effect on memory.",
+    "exampleTranslation": "睡眠对记忆有重要影响。",
+    "collocations": [
+      "a significant difference 显著差异"
+    ],
+    "otherMeanings": [],
+    "confusion": "significant 在日常语境可指重要；统计学显著不等于效应大或具有实际意义。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w05",
+    "term": "available",
+    "level": "CET-4",
+    "meaning": "adj. 可获得的；有空的",
+    "example": "The report is available online.",
+    "exampleTranslation": "这份报告可以在线获取。",
+    "collocations": [
+      "be available to sb 可供某人使用"
+    ],
+    "otherMeanings": [],
+    "confusion": "available 指可以获取或有空；accessible 指可以接近、进入或理解。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w06",
+    "term": "require",
+    "level": "CET-4",
+    "meaning": "v. 需要；要求",
+    "example": "This task requires careful planning.",
+    "exampleTranslation": "这项任务需要周密规划。",
+    "collocations": [
+      "require sb to do sth 要求某人做某事"
+    ],
+    "otherMeanings": [],
+    "confusion": "require 表示需要或正式要求；request 更强调请求。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w07",
+    "term": "reduce",
+    "level": "CET-4",
+    "meaning": "v. 减少；降低",
+    "example": "Walking can help reduce stress.",
+    "exampleTranslation": "步行有助于减轻压力。",
+    "collocations": [
+      "reduce the risk 降低风险"
+    ],
+    "otherMeanings": [],
+    "confusion": "reduce 强调使数量变小；decrease 也可用作不及物动词，表示数量自行减少。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w08",
+    "term": "benefit",
+    "level": "CET-4",
+    "meaning": "n. 益处；v. 受益；有益于",
+    "example": "Students can benefit from regular reading.",
+    "exampleTranslation": "学生能从经常阅读中受益。",
+    "collocations": [
+      "benefit from 从……中受益"
+    ],
+    "otherMeanings": [
+      "n. 福利；补贴"
+    ],
+    "confusion": "benefit 作动词常搭配 from；profit 更常强调利润或获利。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w09",
+    "term": "conduct",
+    "level": "CET-4",
+    "meaning": "v. 进行；实施",
+    "example": "The team will conduct a survey next week.",
+    "exampleTranslation": "团队下周将开展一次调查。",
+    "collocations": [
+      "conduct a survey 开展调查"
+    ],
+    "otherMeanings": [
+      "n. 行为；举止",
+      "v. 导电；指挥"
+    ],
+    "confusion": "conduct 常搭配研究、调查或实验；conclude 表示结束或得出结论。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w10",
+    "term": "issue",
+    "level": "CET-4",
+    "meaning": "n. 问题；议题",
+    "example": "We discussed the issue at the meeting.",
+    "exampleTranslation": "我们在会议上讨论了这个问题。",
+    "collocations": [
+      "address an issue 处理问题"
+    ],
+    "otherMeanings": [
+      "n. 期号",
+      "v. 发布；发放"
+    ],
+    "confusion": "issue 常指待讨论议题；problem 更突出需要解决的困难。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w11",
+    "term": "prevalence",
+    "level": "科研英语",
+    "meaning": "n. 患病率；流行程度",
+    "example": "The study estimated the prevalence of asthma.",
+    "exampleTranslation": "这项研究估计了哮喘的患病率。",
+    "collocations": [
+      "disease prevalence 疾病患病率"
+    ],
+    "otherMeanings": [],
+    "confusion": "prevalence 描述特定人群在某一时间点或时期已有病例的比例；incidence 关注新发病例。",
+    "acceptedAnswers": []
+  },
+  {
+    "id": "w12",
+    "term": "cohort",
+    "level": "科研英语",
+    "meaning": "n. 队列；具有共同特征的一组人",
+    "example": "The researchers followed a cohort of 500 adults.",
+    "exampleTranslation": "研究者随访了一个由500名成年人组成的队列。",
+    "collocations": [
+      "cohort study 队列研究"
+    ],
+    "otherMeanings": [],
+    "confusion": "cohort 是具有共同特征或经历的一组人；sample 是从总体中选取的样本。",
+    "acceptedAnswers": []
+  }
+]
