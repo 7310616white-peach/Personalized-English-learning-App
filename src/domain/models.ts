@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { listeningSetSchema } from './listening';
+import { dailySchema } from './daily';
 import { writtenTaskSchema } from './written';
 const text = z.string().trim().min(1).max(10000);
 const id = z.string().regex(/^[a-zA-Z0-9_-]{1,80}$/, 'ID 仅允许字母、数字、下划线和短横线');
@@ -66,6 +67,7 @@ export const packSchema = z
         listening: z.array(listeningSetSchema).max(100),
         glossary: z.array(wordSchema).max(1000).optional(),
         written: z.array(writtenTaskSchema).max(100),
+        daily: dailySchema.optional(),
       })
       .strict(),
   ])
@@ -78,6 +80,39 @@ export const packSchema = z
     ].map((i) => i.id);
     if (!ids.length || new Set(ids).size !== ids.length)
       ctx.addIssue({ code: 'custom', message: '题包不能为空，题目/听力组 ID 必须唯一' });
+    if (p.schemaVersion === 3 && p.daily) {
+      const d = p.daily;
+      const choiceIds = [
+        ...d.researchChoiceIds,
+        ...d.cet.flatMap((c) => (c.type === 'choice' ? c.choiceIds : [])),
+      ];
+      if (
+        new Set(choiceIds).size !== choiceIds.length ||
+        choiceIds.some((id) => !p.choices.some((c) => c.id === id))
+      )
+        ctx.addIssue({
+          code: 'custom',
+          message: '每日阅读引用不存在或重复；文献与四级题不能使用同一题',
+        });
+      if (new Set(d.cet.map((c) => c.type)).size !== d.cet.length)
+        ctx.addIssue({ code: 'custom', message: '每日四级题型不可重复' });
+      for (const cet of d.cet)
+        if (
+          cet.type !== 'choice' &&
+          !p.written.some((t) => t.id === cet.taskId && t.type === cet.type)
+        )
+          ctx.addIssue({ code: 'custom', message: '每日四级任务类型或引用无效' });
+      if (d.researchChoiceIds.some((id) => !p.choices.find((q) => q.id === id)?.passage?.trim()))
+        ctx.addIssue({ code: 'custom', message: '文献阅读必须带英文原文' });
+      if (
+        d.sentenceTaskId &&
+        (!p.written.some((t) => t.id === d.sentenceTaskId && t.type === 'translation') ||
+          d.cet.some((c) => c.type !== 'choice' && c.taskId === d.sentenceTaskId))
+      )
+        ctx.addIssue({ code: 'custom', message: '每日一句必须引用独立的翻译任务' });
+      if (new Set(d.modelEssays.map((e) => e.id)).size !== d.modelEssays.length)
+        ctx.addIssue({ code: 'custom', message: '范文ID不可重复' });
+    }
     const keys =
       p.schemaVersion !== 1
         ? p.listening.flatMap((s) => s.questions.map((q) => JSON.stringify([s.libraryId, q.id])))

@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react';
-import { pages, mobilePages, type Page } from './navigation';
+import { pages, mobilePages, pageTitle, type Page } from './navigation';
 
 export function AppShell({
   page,
@@ -14,8 +14,9 @@ export function AppShell({
 }) {
   const main = useRef<HTMLElement>(null);
   useEffect(() => {
-    document.title = `${practicing ? '练习中' : pages.find((p) => p.id === page)?.title} · 拾词`;
+    document.title = `${practicing ? '练习中' : pageTitle(page)} · 拾词`;
     main.current?.focus({ preventScroll: true });
+    window.scrollTo(0, 0);
   }, [page, practicing]);
   const navigation = (items: typeof pages) =>
     items.map((p) => (
@@ -25,8 +26,18 @@ export function AppShell({
         disabled={practicing}
         onClick={() => onNavigate(p.id)}
       >
-        <span className="nav-icon" aria-hidden="true">
-          {p.icon}
+        <span
+          className={'nav-icon' + (p.id === 'home' ? ' study-home-icon' : '')}
+          aria-hidden="true"
+        >
+          {p.id === 'home' ? (
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 11.5 12 5l8 6.5v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" fill="currentColor" />
+              <path d="M9 13h6M12 10v6" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
+          ) : (
+            p.icon
+          )}
         </span>
         {p.title}
       </button>
@@ -59,8 +70,7 @@ export function AppShell({
       </aside>
       <main id="main-content" tabIndex={-1} ref={main}>
         <header className="topbar">
-          <span>{practicing ? '练习中' : pages.find((p) => p.id === page)?.title}</span>
-          <span>离线优先</span>
+          <span>{practicing ? '练习中' : pageTitle(page)}</span>
         </header>
         <div className="main-content">{children}</div>
       </main>

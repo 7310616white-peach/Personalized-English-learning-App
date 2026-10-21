@@ -131,3 +131,32 @@ main:focus {
 .is-practicing .mobile-nav {
   display: none;
 }
+
+.study-home-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #3d8dde;
+  color: white;
+  box-shadow: 0 4px 10px #2b6da32b;
+}
+.study-home-icon svg {
+  width: 23px;
+  height: 23px;
+}
+@media (max-width: 600px) {
+  .mobile-nav .study-home-icon {
+    width: 45px;
+    height: 34px;
+    border-radius: 12px;
+    margin-top: -3px;
+  }
+  .mobile-nav .study-home-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+}

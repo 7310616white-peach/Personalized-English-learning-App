@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { dailyPrompt, setupPrompt } from './prompts';
+import { dailyPromptForDate, setupPrompt } from './prompts';
 import { saveFile } from '../../platform/files';
 import { listeningIndex } from '../../data/listening/indexExport';
 
@@ -34,11 +34,14 @@ export function PhoneGuide() {
         导入后将“听力索引”发给每日英语，让它使用正确的材料库 ID、音轨 ID 和原题 ID。清单和题包是两种
         JSON，均可通过文件分享入口导入。
       </p>
+      <p>
+        今天的提示词会自动带上日期和四级阅读搭配；听力每天保留，段落翻译每三天一次，作文不在日常安排里。
+      </p>
       <div className="button-row">
         <button type="button" className="secondary" onClick={() => copy(setupPrompt)}>
           复制首次设置提示词
         </button>
-        <button type="button" className="secondary" onClick={() => copy(dailyPrompt)}>
+        <button type="button" className="secondary" onClick={() => copy(dailyPromptForDate())}>
           复制每日学习提示词
         </button>
         <button

@@ -72,3 +72,8 @@ v2 题包在保留 words/choices 的同时增加 listening；材料清单单独�
 
 v1/v2 继续支持。v3 保留 v2 字段并增加 written 数组，支持 word-bank、matching、translation、writing。
 格式与完整原创示例见 [四级体验协议](CET_EXPERIENCE.md#v3-每日题包)。
+
+## 每日安排扩展（1.0候选版）
+
+v3可选daily对象关联四级三选二、独立科研阅读、每日一句和范文。
+引用先验证再写入；旧题包无daily仍可做原有练习。详见[每日协议](DAILY_WORKFLOW.md#v3-的可选-daily-扩展)。

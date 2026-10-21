@@ -8,10 +8,12 @@ export function WrittenSession({
   packId,
   task,
   onExit,
+  returnLabel = '返回题型列表',
 }: {
   packId: string;
   task: WrittenTask;
   onExit: () => void;
+  returnLabel?: string;
 }) {
   const s = useWrittenSession(packId, task, onExit);
   useExitGestures(true, s.exit);
@@ -22,7 +24,7 @@ export function WrittenSession({
       <div className="section-heading">
         <h2>{task.title}</h2>
         <button className="secondary" disabled={s.busy} onClick={s.exit}>
-          {s.result ? '返回题型列表' : '保存退出'}
+          {s.result ? returnLabel : '保存退出'}
         </button>
       </div>
       <p className="tag">{task.source}</p>
@@ -184,12 +186,12 @@ export function WrittenSession({
               <h4>{task.type === 'writing' ? '参考范文' : '参考译文'}</h4>
               <p className="written-passage">{read(task.reference)}</p>
               <p>{read(task.explanation)}</p>
-              <p>你的作答已保存，可在“题包与数据”中导出全文交给 ChatGPT 批改。</p>
+              <p>你的作答已保存，可在“我的”中导出全文交给 ChatGPT 批改。</p>
             </>
           )}
           {objective && <p>已记录本篇练习次数与复习计划。错题可在“错题本”继续练习。</p>}
           <button className="secondary" onClick={s.exit}>
-            返回题型列表
+            {returnLabel}
           </button>
         </section>
       )}

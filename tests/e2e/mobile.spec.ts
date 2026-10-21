@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 async function swipe(page: Page, selector: string, dx: number, dy = 0) {
   await page.locator(selector).evaluate(
@@ -22,7 +23,7 @@ async function swipe(page: Page, selector: string, dx: number, dy = 0) {
 }
 async function words(page: Page) {
   await page.goto('/');
-  await page.getByRole('button', { name: '题包与数据', exact: true }).click();
+  await page.getByRole('button', { name: '我的', exact: true }).click();
   await page.getByRole('button', { name: '载入示例：10 个四级词 + 2 个科研词' }).click();
   await page.getByRole('button', { name: '学习台', exact: true }).click();
   await page.getByRole('button', { name: '开始拼写 →' }).click();
@@ -99,7 +100,7 @@ test('听力导入在任务最底部，题后原文可点词，水平滑动恢�
 });
 test('手机提示词可见，粘贴题包校验导入，错误内容不写入', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: '题包与数据', exact: true }).click();
+  await page.getByRole('button', { name: '我的', exact: true }).click();
   await page.getByText('手机使用流程与每日英语提示词', { exact: true }).click();
   await page.getByRole('button', { name: '复制首次设置提示词', exact: true }).click();
   await expect(page.getByLabel('可复制的提示词')).toContainText('schemaVersion');

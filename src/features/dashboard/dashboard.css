@@ -181,3 +181,118 @@
   text-align: center;
   font-size: 12px;
 }
+
+.daily-grid .daily-task {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  grid-column: auto;
+}
+.daily-grid .daily-task h2 {
+  font-size: 23px;
+  margin: 2px 0;
+}
+.daily-task-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.daily-task-heading .eyebrow {
+  margin: 0;
+}
+.task-state {
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--muted);
+}
+.task-state.done {
+  color: var(--accent);
+}
+.main-task .task-state {
+  background: #fff9;
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: var(--accent);
+}
+.daily-detail {
+  margin: 0 0 10px;
+  line-height: 1.8;
+}
+.daily-grid .daily-task > button {
+  margin-top: auto;
+  width: 100%;
+}
+.daily-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.daily-parts button {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--surface);
+}
+.daily-parts small {
+  display: block;
+  font-size: 10px;
+  opacity: 0.7;
+}
+.rotation-label {
+  display: block;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 7px;
+  color: var(--accent);
+}
+.essay-entry {
+  margin: 24px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.preview-entry {
+  margin-top: 18px;
+}
+.preview-entry summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .daily-grid {
+    grid-template-columns: 1fr;
+  }
+  .daily-grid > .daily-task,
+  .daily-grid > .daily-task:not(.main-task) {
+    grid-column: 1;
+  }
+  .daily-grid .daily-task h2 {
+    font-size: 21px;
+  }
+  .daily-task-heading {
+    align-items: flex-start;
+  }
+  .rotation-label {
+    font-size: 11px;
+  }
+  .essay-entry {
+    display: block;
+  }
+}
+.model-essay {
+  margin: 18px 0;
+}
+.model-essay summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+.my-progress {
+  margin-bottom: 32px;
+}

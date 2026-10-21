@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { readFile } from 'node:fs/promises';
 import { library, daily, wavBytes } from '../helpers/listeningFixtures';
 const json = (name: string, data: unknown) => ({
@@ -21,7 +21,7 @@ test('听力：导入、播放倍速、离线草稿、答案隐藏、待批改�
     .setInputFiles({ name: 'test.wav', mimeType: 'audio/wav', buffer: Buffer.from(wavBytes()) });
   await page.getByRole('button', { name: '确认保存清单与选中音频' }).click();
   await expect(page.getByRole('status').filter({ hasText: '1 段已绑定' })).toBeVisible();
-  await page.getByRole('button', { name: '题包与数据', exact: true }).click();
+  await page.getByRole('button', { name: '我的', exact: true }).click();
   await page.getByLabel('选择题包 JSON').setInputFiles(json('daily.json', daily));
   await expect(page.getByRole('status')).toContainText('已导入');
   await page.getByRole('button', { name: '听力训练', exact: true }).click();
@@ -68,7 +68,7 @@ test('听力：导入、播放倍速、离线草稿、答案隐藏、待批改�
   await page.getByRole('button', { name: '返回听力训练', exact: true }).click();
   await page.getByRole('button', { name: '历史错题', exact: true }).click();
   await expect(page.getByRole('button', { name: '开始本组听力' })).toBeVisible();
-  await page.getByRole('button', { name: '题包与数据', exact: true }).click();
+  await page.getByRole('button', { name: '我的', exact: true }).click();
   const outputPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: '导出为 JSON', exact: true }).click();
   const output = await outputPromise;
@@ -82,7 +82,7 @@ test('听力：导入、播放倍速、离线草稿、答案隐藏、待批改�
   const freshContext = await browser.newContext({ viewport: { width: 393, height: 851 } });
   const fresh = await freshContext.newPage();
   await fresh.goto('/');
-  await fresh.getByRole('button', { name: '题包与数据', exact: true }).click();
+  await fresh.getByRole('button', { name: '我的', exact: true }).click();
   await fresh.getByLabel('选择备份文件', { exact: true }).setInputFiles({
     name: 'backup.zip',
     mimeType: 'application/zip',

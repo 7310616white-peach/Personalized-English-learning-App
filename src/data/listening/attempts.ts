@@ -29,7 +29,11 @@ export async function submitListening(
     async () => {
       const existing = await store.listeningAttempts.get(id);
       if (existing) {
-        if (existing.packId !== packId || existing.setId !== set.id)
+        if (
+          existing.packId !== packId ||
+          existing.setId !== set.id ||
+          JSON.stringify(existing.answers) !== JSON.stringify(answers)
+        )
           throw new Error('提交 ID 冲突');
         return existing;
       }

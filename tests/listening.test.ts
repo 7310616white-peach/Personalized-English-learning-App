@@ -135,6 +135,9 @@ it('整组幂等提交、逐题复习与跨题包复用，附加错因不改原�
     submitListening(daily.id, set, answers, playback, 'once', s, now),
   ]);
   expect(await s.listeningAttempts.count()).toBe(1);
+  await expect(
+    submitListening(daily.id, set, { ...answers, 'extra-1': 'B' }, playback, 'once', s, now),
+  ).rejects.toThrow('冲突');
   expect(await s.listeningProgress.count()).toBe(2);
   expect((await s.listeningProgress.get(listeningKey(library.id, 'extra-1')))?.errors).toBe(1);
   expect(await s.listeningProgress.get(listeningKey(library.id, 'original-1'))).toBeUndefined();

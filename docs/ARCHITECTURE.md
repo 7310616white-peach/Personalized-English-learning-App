@@ -147,3 +147,12 @@ features/written 负责题型列表、答题和串行草稿。学习台入口复
 作文/翻译 correct=null，只有待批改作答、没有伪评分进度。
 备份 version 3 保存全部记录并验证引用和重算评分，兼容 v1/v2 的显式恢复；媒体 ZIP 沿用现有适配。
 完整契约见 [CET_EXPERIENCE.md](CET_EXPERIENCE.md)。
+
+## 每日流程与候选版整理
+
+domain/daily定义三选二日历与daily元数据；dailyPlan组织六项任务，dailyTasks计算阅读/翻译完成，
+dailyListening负责校考优先与音轨选择。均不依赖React/DOM或执行写入。
+Dashboard与DailyTaskCard展示顺延状态；StudySessionView通过StudyActivity复用原有练习组件；
+usePlatformInbox集中原生桥接，不让App继续堆积平台副作用。
+范文随Pack.daily保存，不新增数据库；每日完成从保存的attempt推导，不引入第二份完成标记。
+完整规则见[DAILY_WORKFLOW.md](DAILY_WORKFLOW.md)。

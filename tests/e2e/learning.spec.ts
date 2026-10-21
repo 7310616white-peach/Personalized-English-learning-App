@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { readFile } from 'node:fs/promises';
 
 async function loadSample(page: Page) {
@@ -35,7 +36,7 @@ test('手机端：草稿跨刷新、拼写反馈、连续答题、错题和选�
   await page.locator('summary').getByText('approach', { exact: true }).click();
   await expect(page.getByText(/累计错误 1 次/)).toBeVisible();
   await page.getByRole('button', { name: '学习台', exact: true }).click();
-  await page.getByRole('button', { name: '开始练题 →' }).click();
+  await page.getByRole('button', { name: '开始仔细阅读', exact: true }).click();
   await page.getByRole('radio', { name: 'A available', exact: true }).check();
   await page.getByRole('button', { name: '检查答案' }).click();
   await expect(page.getByRole('status').filter({ hasText: '回答正确' })).toBeVisible();
@@ -58,7 +59,7 @@ test('文件导入、结果导出、备份到全新学习库的恢复', async ({
   await page.getByRole('button', { name: '检查答案' }).click();
   await expect(page.getByRole('status').filter({ hasText: '回答正确' })).toBeVisible();
   await page.getByRole('button', { name: '暂时退出' }).click();
-  await page.getByRole('button', { name: '题包与数据', exact: true }).click();
+  await page.getByRole('button', { name: '我的', exact: true }).click();
   const exportedPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: '导出为 JSON', exact: true }).click();
   const exported = await exportedPromise;
@@ -77,7 +78,8 @@ test('文件导入、结果导出、备份到全新学习库的恢复', async ({
   await fresh.getByRole('button', { name: '确认替换并恢复' }).click();
   await expect(fresh.getByRole('status')).toContainText('恢复完成');
   await fresh.getByRole('button', { name: '学习台', exact: true }).click();
-  await expect(fresh.getByText('已练习 1 道题', { exact: true })).toBeVisible();
+  await fresh.getByRole('button', { name: '我的', exact: true }).click();
+  await expect(fresh.getByText('累计提交 1 次练习', { exact: true })).toBeVisible();
   await context.close();
 });
 
@@ -103,7 +105,7 @@ test('首次缓存完成后可断网重开并作答', async ({ page, context }) 
 test('答题后原位查词与收藏，没有独立查词导航', async ({ page }) => {
   await loadSample(page);
   await expect(page.getByRole('button', { name: '阅读查词', exact: true })).toHaveCount(0);
-  await page.getByRole('button', { name: '开始练题 →' }).click();
+  await page.getByRole('button', { name: '开始仔细阅读', exact: true }).click();
   await expect(page.getByRole('button', { name: /^查询 / })).toHaveCount(0);
   await page.getByRole('radio', { name: 'A available', exact: true }).check();
   await page.getByRole('button', { name: '检查答案' }).click();

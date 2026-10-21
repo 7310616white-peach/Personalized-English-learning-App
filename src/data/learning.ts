@@ -38,7 +38,8 @@ export async function submitAnswer(
     async () => {
       const existing = await store.attempts.get(attemptId);
       if (existing) {
-        if (existing.key !== exercise.key) throw new Error('重复提交 ID 与题目不一致');
+        if (existing.key !== exercise.key || existing.answer !== answer)
+          throw new Error('重复提交 ID 与题目或作答不一致');
         return existing;
       }
       const pack = await store.packs.get(exercise.packId);

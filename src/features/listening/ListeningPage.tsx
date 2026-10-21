@@ -69,7 +69,7 @@ export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boo
         </div>
         <span className="tag">到期 {due.length} 题</span>
       </div>
-      <p>选择一组开始练习。自己的音频可在页面底部导入，每日学习包在“题包与数据”中导入。</p>
+      <p>选择一组开始练习。自己的音频可在页面底部导入，每日学习包在“我的”中导入。</p>
       <ListeningDemo />
       <ListeningHistory />
       <div className="listening-filters" role="group" aria-label="听力练习筛选">

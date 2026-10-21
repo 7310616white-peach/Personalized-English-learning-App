@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 test('一键载入模拟题库、离线播放和提交，保留重复载入前的记录', async ({ page, context }) => {
   await page.goto('/');

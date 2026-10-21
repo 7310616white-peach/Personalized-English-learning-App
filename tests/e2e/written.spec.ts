@@ -1,6 +1,8 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from './fixtures';
 async function open(page: Page) {
   await page.goto('/');
+  await page.getByText('预览与题型演示（验收后移除入口）', { exact: true }).click();
   await page.getByRole('button', { name: '打开四级题型体验 →' }).click();
   await page.getByRole('button', { name: '载入四级全题型体验' }).click();
   await expect(page.getByRole('button', { name: '开始选词填空', exact: true })).toBeVisible();
@@ -33,6 +35,7 @@ test('匹配可复用段落；作文和翻译草稿恢复、字数提示、待�
   await expect(page.getByText('已写 7 词 · 建议 120–180 词 · 仅记录，不自动评分')).toBeVisible();
   await expect(page.getByText('草稿已保存', { exact: true })).toBeVisible();
   await page.reload();
+  await page.getByText('预览与题型演示（验收后移除入口）', { exact: true }).click();
   await page.getByRole('button', { name: '打开四级题型体验 →' }).click();
   await page.getByRole('button', { name: '开始短文写作', exact: true }).click();
   await expect(page.getByLabel('英文作答', { exact: true })).toHaveValue(

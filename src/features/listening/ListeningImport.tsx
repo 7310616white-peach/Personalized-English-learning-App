@@ -18,7 +18,7 @@ export function ListeningImport() {
       setMapping(matchAudio(parsed, files));
       setMessage('已读取清单，请核对每段音频绑定。');
     } catch {
-      setError('材料清单格式不正确，请使用听力材料清单 v1；每日题包请在题包与数据中导入。');
+      setError('材料清单格式不正确，请使用听力材料清单 v1；每日题包请在我的中导入。');
     }
   }
   async function submit() {

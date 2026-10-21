@@ -1,3 +1,4 @@
+import { loadDailyPreview } from '../../data/dailyPreview';
 import { useState } from 'react';
 import { ZodError } from 'zod';
 import { backup, readJson, results } from '../../data/transfer';
@@ -84,7 +85,7 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
       <div className="section-heading">
         <div>
           <p className="eyebrow">你的数据，由你保管</p>
-          <h2>题包与数据</h2>
+          <h2>我的</h2>
         </div>
         <span className="tag">仅存本机</span>
       </div>
@@ -136,6 +137,17 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
               校验并导入粘贴的 JSON
             </button>
           </details>
+          <button
+            className="secondary"
+            onClick={() =>
+              run(async () => {
+                await loadDailyPreview();
+                setMessage('每日流程预览已载入，回到学习台试试六项任务。');
+              })
+            }
+          >
+            载入每日六项流程预览（含音频）
+          </button>
           <button
             className="secondary"
             onClick={() =>
