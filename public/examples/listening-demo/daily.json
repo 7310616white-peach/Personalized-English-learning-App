@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 2,
+  "id": "original-campus-demo-day-v1",
+  "title": "模拟体验 · 12词＋2道选择＋4段听力",
+  "date": "2026-10-22",
+  "words": [
+    {
+      "id": "w01",
+      "term": "approach",
+      "level": "CET-4",
+      "meaning": "v. 接近；处理；n. 方法",
+      "example": "We need a new approach to this problem.",
+      "exampleTranslation": "我们需要一种处理这个问题的新方法。",
+      "collocations": ["an approach to sth 处理某事的方法"],
+      "otherMeanings": ["n. 路径；通路"],
+      "confusion": "approach 强调处理问题的方法；access 强调进入或使用的机会。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w02",
+      "term": "evidence",
+      "level": "CET-4",
+      "meaning": "n. 证据；依据",
+      "example": "There is little evidence to support this claim.",
+      "exampleTranslation": "支持这一说法的证据很少。",
+      "collocations": ["provide evidence 提供证据"],
+      "otherMeanings": [],
+      "confusion": "evidence 通常为不可数名词；不要写成 an evidence。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w03",
+      "term": "maintain",
+      "level": "CET-4",
+      "meaning": "v. 维持；保养；坚持认为",
+      "example": "Regular exercise helps maintain good health.",
+      "exampleTranslation": "经常锻炼有助于保持健康。",
+      "collocations": ["maintain a balance 保持平衡"],
+      "otherMeanings": ["v. 坚持声称"],
+      "confusion": "maintain 强调维持状态；retain 强调保留已有事物。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w04",
+      "term": "significant",
+      "level": "CET-4",
+      "meaning": "adj. 重要的；显著的",
+      "example": "Sleep has a significant effect on memory.",
+      "exampleTranslation": "睡眠对记忆有重要影响。",
+      "collocations": ["a significant difference 显著差异"],
+      "otherMeanings": [],
+      "confusion": "significant 在日常语境可指重要；统计学显著不等于效应大或具有实际意义。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w05",
+      "term": "available",
+      "level": "CET-4",
+      "meaning": "adj. 可获得的；有空的",
+      "example": "The report is available online.",
+      "exampleTranslation": "这份报告可以在线获取。",
+      "collocations": ["be available to sb 可供某人使用"],
+      "otherMeanings": [],
+      "confusion": "available 指可以获取或有空；accessible 指可以接近、进入或理解。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w06",
+      "term": "require",
+      "level": "CET-4",
+      "meaning": "v. 需要；要求",
+      "example": "This task requires careful planning.",
+      "exampleTranslation": "这项任务需要周密规划。",
+      "collocations": ["require sb to do sth 要求某人做某事"],
+      "otherMeanings": [],
+      "confusion": "require 表示需要或正式要求；request 更强调请求。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w07",
+      "term": "reduce",
+      "level": "CET-4",
+      "meaning": "v. 减少；降低",
+      "example": "Walking can help reduce stress.",
+      "exampleTranslation": "步行有助于减轻压力。",
+      "collocations": ["reduce the risk 降低风险"],
+      "otherMeanings": [],
+      "confusion": "reduce 强调使数量变小；decrease 也可用作不及物动词，表示数量自行减少。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w08",
+      "term": "benefit",
+      "level": "CET-4",
+      "meaning": "n. 益处；v. 受益；有益于",
+      "example": "Students can benefit from regular reading.",
+      "exampleTranslation": "学生能从经常阅读中受益。",
+      "collocations": ["benefit from 从……中受益"],
+      "otherMeanings": ["n. 福利；补贴"],
+      "confusion": "benefit 作动词常搭配 from；profit 更常强调利润或获利。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w09",
+      "term": "conduct",
+      "level": "CET-4",
+      "meaning": "v. 进行；实施",
+      "example": "The team will conduct a survey next week.",
+      "exampleTranslation": "团队下周将开展一次调查。",
+      "collocations": ["conduct a survey 开展调查"],
+      "otherMeanings": ["n. 行为；举止", "v. 导电；指挥"],
+      "confusion": "conduct 常搭配研究、调查或实验；conclude 表示结束或得出结论。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w10",
+      "term": "issue",
+      "level": "CET-4",
+      "meaning": "n. 问题；议题",
+      "example": "We discussed the issue at the meeting.",
+      "exampleTranslation": "我们在会议上讨论了这个问题。",
+      "collocations": ["address an issue 处理问题"],
+      "otherMeanings": ["n. 期号", "v. 发布；发放"],
+      "confusion": "issue 常指待讨论议题；problem 更突出需要解决的困难。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w11",
+      "term": "prevalence",
+      "level": "科研英语",
+      "meaning": "n. 患病率；流行程度",
+      "example": "The study estimated the prevalence of asthma.",
+      "exampleTranslation": "这项研究估计了哮喘的患病率。",
+      "collocations": ["disease prevalence 疾病患病率"],
+      "otherMeanings": [],
+      "confusion": "prevalence 描述特定人群在某一时间点或时期已有病例的比例；incidence 关注新发病例。",
+      "acceptedAnswers": []
+    },
+    {
+      "id": "w12",
+      "term": "cohort",
+      "level": "科研英语",
+      "meaning": "n. 队列；具有共同特征的一组人",
+      "example": "The researchers followed a cohort of 500 adults.",
+      "exampleTranslation": "研究者随访了一个由500名成年人组成的队列。",
+      "collocations": ["cohort study 队列研究"],
+      "otherMeanings": [],
+      "confusion": "cohort 是具有共同特征或经历的一组人；sample 是从总体中选取的样本。",
+      "acceptedAnswers": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "q01",
+      "prompt": "Which word best completes the sentence?",
+      "passage": "The library has made more digital books ____ to students, so they can read at home.",
+      "options": [
+        {
+          "id": "A",
+          "text": "available"
+        },
+        {
+          "id": "B",
+          "text": "similar"
+        },
+        {
+          "id": "C",
+          "text": "nervous"
+        },
+        {
+          "id": "D",
+          "text": "separate"
+        }
+      ],
+      "answerId": "A",
+      "explanation": "make sth available to sb 表示“使某物可供某人使用”。后半句“可在家阅读”提示这里强调资源可以获取。"
+    },
+    {
+      "id": "q02",
+      "passage": "Maya used to learn twenty new words every evening. A week later, she could remember only a few. She began learning fewer words and reviewing them after several days. Over time, she found it easier to use them in her writing.",
+      "prompt": "What helped Maya use new words more easily?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Learning more words each evening."
+        },
+        {
+          "id": "B",
+          "text": "Reviewing words over time."
+        },
+        {
+          "id": "C",
+          "text": "Avoiding writing practice."
+        },
+        {
+          "id": "D",
+          "text": "Reading only once a week."
+        }
+      ],
+      "answerId": "B",
+      "explanation": "文中说明 Maya 减少新词量并在数日后复习，后来更容易在写作中运用这些词。B 概括了这一变化。"
+    }
+  ],
+  "listening": [
+    {
+      "id": "news-set",
+      "libraryId": "original-campus-demo-v1",
+      "trackId": "news",
+      "questions": [
+        {
+          "id": "news-choice-1",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "What will open on Monday?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A new cafe."
+            },
+            {
+              "id": "B",
+              "text": "A new study room."
+            },
+            {
+              "id": "C",
+              "text": "A new sports hall."
+            },
+            {
+              "id": "D",
+              "text": "A new bookshop."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "B",
+            "explanation": "原创模拟题，已按配套朗读文本核对。原文开头是 a new study room。"
+          }
+        },
+        {
+          "id": "news-choice-2",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "How can students book a seat?",
+          "options": [
+            {
+              "id": "A",
+              "text": "By calling a teacher."
+            },
+            {
+              "id": "B",
+              "text": "At the school gate."
+            },
+            {
+              "id": "C",
+              "text": "Online."
+            },
+            {
+              "id": "D",
+              "text": "By sending a letter."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "C",
+            "explanation": "原创模拟题，已按配套朗读文本核对。原文明确说 book a seat online。"
+          }
+        },
+        {
+          "id": "news-cloze",
+          "type": "listening-cloze",
+          "origin": "chatgpt-extra",
+          "prompt": "The new room has {{b1}} seats. Students may bring {{b2}}.",
+          "blankIds": ["b1", "b2"],
+          "grading": {
+            "status": "verified",
+            "acceptedAnswers": {
+              "b1": ["forty", "40"],
+              "b2": ["water"]
+            },
+            "explanation": "根据本段合成朗读填空；此题按每空计分。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "conversation-set",
+      "libraryId": "original-campus-demo-v1",
+      "trackId": "conversation",
+      "questions": [
+        {
+          "id": "conversation-choice-1",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "When will the students meet?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Friday morning."
+            },
+            {
+              "id": "B",
+              "text": "Friday afternoon."
+            },
+            {
+              "id": "C",
+              "text": "Saturday morning."
+            },
+            {
+              "id": "D",
+              "text": "Saturday evening."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "C",
+            "explanation": "原创模拟题，已按配套朗读文本核对。周五有课，随后提议 Saturday morning 并得到同意。"
+          }
+        },
+        {
+          "id": "conversation-choice-2",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "What will Emma bring?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A camera."
+            },
+            {
+              "id": "B",
+              "text": "Some books."
+            },
+            {
+              "id": "C",
+              "text": "A new phone."
+            },
+            {
+              "id": "D",
+              "text": "The survey results."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "D",
+            "explanation": "原创模拟题，已按配套朗读文本核对。对话末尾安排 Emma 带 survey results。"
+          }
+        },
+        {
+          "id": "conversation-cloze",
+          "type": "listening-cloze",
+          "origin": "chatgpt-extra",
+          "prompt": "They will meet at {{b1}}. One student will bring a {{b2}}.",
+          "blankIds": ["b1", "b2"],
+          "grading": {
+            "status": "verified",
+            "acceptedAnswers": {
+              "b1": ["ten", "10", "ten o'clock", "10 o'clock"],
+              "b2": ["laptop"]
+            },
+            "explanation": "根据本段合成朗读填空；此题按每空计分。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sleep-set",
+      "libraryId": "original-campus-demo-v1",
+      "trackId": "sleep",
+      "questions": [
+        {
+          "id": "sleep-choice-1",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "What is the passage mainly about?",
+          "options": [
+            {
+              "id": "A",
+              "text": "The value of sleep for learning."
+            },
+            {
+              "id": "B",
+              "text": "How to buy a phone."
+            },
+            {
+              "id": "C",
+              "text": "The history of exams."
+            },
+            {
+              "id": "D",
+              "text": "How to organize a classroom."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "A",
+            "explanation": "原创模拟题，已按配套朗读文本核对。全文围绕睡眠如何帮助学习和记忆。"
+          }
+        },
+        {
+          "id": "sleep-choice-2",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "What does the speaker suggest?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Study all night."
+            },
+            {
+              "id": "B",
+              "text": "Review a little every day."
+            },
+            {
+              "id": "C",
+              "text": "Use a phone in bed."
+            },
+            {
+              "id": "D",
+              "text": "Skip all revision."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "B",
+            "explanation": "原创模拟题，已按配套朗读文本核对。结尾建议 review a little every day，其他选项与建议相反。"
+          }
+        },
+        {
+          "id": "sleep-cloze",
+          "type": "listening-cloze",
+          "origin": "chatgpt-extra",
+          "prompt": "During sleep, the brain organizes new {{b1}}. Keep a regular {{b2}}.",
+          "blankIds": ["b1", "b2"],
+          "grading": {
+            "status": "verified",
+            "acceptedAnswers": {
+              "b1": ["information"],
+              "b2": ["bedtime"]
+            },
+            "explanation": "根据本段合成朗读填空；此题按每空计分。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "survey-set",
+      "libraryId": "original-campus-demo-v1",
+      "trackId": "survey",
+      "questions": [
+        {
+          "id": "survey-choice-1",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "How many students were invited?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Sixteen."
+            },
+            {
+              "id": "B",
+              "text": "Thirty."
+            },
+            {
+              "id": "C",
+              "text": "Sixty."
+            },
+            {
+              "id": "D",
+              "text": "Six hundred."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "C",
+            "explanation": "原创模拟题，已按配套朗读文本核对。人数为 sixty，注意与 sixteen 的重音区别。"
+          }
+        },
+        {
+          "id": "survey-choice-2",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "What can the survey show?",
+          "options": [
+            {
+              "id": "A",
+              "text": "Exercise certainly causes better sleep."
+            },
+            {
+              "id": "B",
+              "text": "An association between exercise and sleep."
+            },
+            {
+              "id": "C",
+              "text": "Every student plays team sports."
+            },
+            {
+              "id": "D",
+              "text": "Walking is harmful."
+            }
+          ],
+          "grading": {
+            "status": "verified",
+            "answerId": "B",
+            "explanation": "原创模拟题，已按配套朗读文本核对。原文强调 association，并明确不能由这项调查证明因果。"
+          }
+        },
+        {
+          "id": "survey-cloze",
+          "type": "listening-cloze",
+          "origin": "chatgpt-extra",
+          "prompt": "They used an {{b1}} survey. They planned a larger study for the next {{b2}}.",
+          "blankIds": ["b1", "b2"],
+          "grading": {
+            "status": "verified",
+            "acceptedAnswers": {
+              "b1": ["anonymous"],
+              "b2": ["term"]
+            },
+            "explanation": "根据本段合成朗读填空；此题按每空计分。"
+          }
+        }
+      ]
+    }
+  ]
+}

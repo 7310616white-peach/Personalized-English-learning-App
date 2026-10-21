@@ -24,3 +24,4 @@ android/**/build/
 *.pptx
 *.PPTX
 user-materials/
+!public/examples/listening-demo/*.wav

@@ -1,0 +1,57 @@
+{
+  "format": "english-pocket-listening-library",
+  "schemaVersion": 1,
+  "id": "original-campus-demo-v1",
+  "title": "原创模拟体验 · 校园与科研英语",
+  "target": "campus",
+  "tracks": [
+    {
+      "id": "news",
+      "unit": "demo-unit",
+      "section": "news-report",
+      "title": "校园新闻 · 自习室开放",
+      "audioFile": "news.wav",
+      "transcript": {
+        "status": "verified",
+        "text": "The university library will open a new study room on Monday. It has forty seats and is open from eight in the morning until ten at night. Students can book a seat online. Food is not allowed, but students may bring water. The library hopes the room will help students prepare for their final exams."
+      },
+      "segments": []
+    },
+    {
+      "id": "conversation",
+      "unit": "demo-unit",
+      "section": "conversation",
+      "title": "校园对话 · 小组作业",
+      "audioFile": "conversation.wav",
+      "transcript": {
+        "status": "verified",
+        "text": "Hi Emma, can we meet on Friday to discuss our science project? I have a class on Friday afternoon. How about Saturday morning? That works for me. Shall we meet at the library at nine? Nine is a little early. Let us meet at ten instead. Great. I will bring my laptop, and you can bring the survey results."
+      },
+      "segments": []
+    },
+    {
+      "id": "sleep",
+      "unit": "demo-unit",
+      "section": "passage-1",
+      "title": "生活短文 · 睡眠与学习",
+      "audioFile": "sleep.wav",
+      "transcript": {
+        "status": "verified",
+        "text": "Many students study late at night before an exam. However, sleep is an important part of learning. During sleep, the brain organizes new information. Students who sleep well may find it easier to remember what they have learned. A simple plan is to review a little every day, stop using your phone before bed, and keep a regular bedtime."
+      },
+      "segments": []
+    },
+    {
+      "id": "survey",
+      "unit": "demo-unit",
+      "section": "passage-2",
+      "title": "科研入门 · 问卷调查",
+      "audioFile": "survey.wav",
+      "transcript": {
+        "status": "verified",
+        "text": "A group of students wanted to learn how often their classmates exercised. They invited sixty students to complete an anonymous survey. Most participants reported walking every day, while fewer students played team sports. The group found an association between exercise and better sleep. However, the survey could not prove that exercise caused better sleep. The students planned a larger study for the next term."
+      },
+      "segments": []
+    }
+  ]
+}

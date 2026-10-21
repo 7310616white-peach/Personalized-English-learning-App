@@ -5,6 +5,7 @@ import { listeningKey, type ListeningSet, type MediaRecord } from '../../domain/
 import { ListeningHistory } from './ListeningHistory';
 import { ListeningImport } from './ListeningImport';
 import { ListeningSession } from './ListeningSession';
+import { ListeningDemo } from './ListeningDemo';
 
 export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boolean) => void }) {
   const data = useLiveQuery(
@@ -72,6 +73,7 @@ export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boo
         先导入材料清单和 WAV，再在“题包与数据”导入每日 v2
         题包。原题无标准答案时只记录作答，不虚构正确率。
       </p>
+      <ListeningDemo />
       <ListeningImport />
       <ListeningHistory />
       {data.libraries.length > 0 && (
