@@ -15,7 +15,8 @@ export async function backup(store: LearningDB = db): Promise<Backup> {
       drafts: await store.drafts.toArray(),
     };
     const listeningLibraries = await store.listeningLibraries.toArray();
-    if (!listeningLibraries.length) return { ...common, version: 1 };
+    if (!listeningLibraries.length && !common.packs.some((p) => p.schemaVersion === 2))
+      return { ...common, version: 1 };
     return {
       ...common,
       version: 2,

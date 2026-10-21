@@ -42,6 +42,7 @@ export function useAnswerSession(exercise: Exercise, onNext: () => void, onExit:
   }, [loaded]);
 
   function change(value: string) {
+    if (!loaded || lock.current || result) return;
     setAnswer(value);
     setError('');
     setSaveStatus('正在保存草稿…');
@@ -97,7 +98,12 @@ export function useAnswerSession(exercise: Exercise, onNext: () => void, onExit:
   }
   async function exit() {
     if (lock.current) return;
+    if (!loaded) {
+      onExit();
+      return;
+    }
     lock.current = true;
+    setSaving(true);
     try {
       await flushDraft();
       onExit();
@@ -105,6 +111,7 @@ export function useAnswerSession(exercise: Exercise, onNext: () => void, onExit:
       setError('草稿尚未保存成功，请重试后再退出。');
     } finally {
       lock.current = false;
+      setSaving(false);
     }
   }
 

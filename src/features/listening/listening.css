@@ -215,7 +215,7 @@
     font-size: 12px;
   }
   .mobile-nav {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
   .mobile-nav button {
     font-size: 9px;

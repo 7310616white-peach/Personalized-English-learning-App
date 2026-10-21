@@ -11,12 +11,15 @@ import {
 import { saveBinaryFile } from '../../platform/binaryFiles';
 import { saveFile } from '../../platform/files';
 import example from '../../../public/examples/day-001.json';
+import { PhoneGuide } from './PhoneGuide';
+import { previewIncoming, commitIncoming } from '../../data/intake';
 
 export function Transfer({ onRestored }: { onRestored: () => void }) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [pending, setPending] = useState<PendingBackup>();
+  const [paste, setPaste] = useState('');
   async function run(action: () => Promise<void>) {
     setBusy(true);
     setMessage('');
@@ -84,6 +87,7 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
         </div>
         <span className="tag">仅存本机</span>
       </div>
+      <PhoneGuide />
       <fieldset className="transfer-grid" disabled={busy}>
         <div className="card">
           <span className="step-number">01</span>
@@ -108,6 +112,29 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
               }}
             />
           </label>
+          <details>
+            <summary>粘贴题包 JSON</summary>
+            <textarea
+              aria-label="粘贴题包 JSON"
+              value={paste}
+              maxLength={10 * 1024 * 1024}
+              onChange={(event) => setPaste(event.target.value)}
+              placeholder="只粘贴完整 JSON，不包含代码围栏"
+            />
+            <button
+              type="button"
+              className="secondary"
+              disabled={!paste.trim()}
+              onClick={() =>
+                run(async () => {
+                  setMessage(await commitIncoming(previewIncoming(paste)));
+                  setPaste('');
+                })
+              }
+            >
+              校验并导入粘贴的 JSON
+            </button>
+          </details>
           <button
             className="secondary"
             onClick={() =>

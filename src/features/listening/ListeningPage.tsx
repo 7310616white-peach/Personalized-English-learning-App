@@ -69,36 +69,9 @@ export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boo
         </div>
         <span className="tag">到期 {due.length} 题</span>
       </div>
-      <p>
-        先导入材料清单和 WAV，再在“题包与数据”导入每日 v2
-        题包。原题无标准答案时只记录作答，不虚构正确率。
-      </p>
+      <p>选择一组开始练习。自己的音频可在页面底部导入，每日学习包在“题包与数据”中导入。</p>
       <ListeningDemo />
-      <ListeningImport />
       <ListeningHistory />
-      {data.libraries.length > 0 && (
-        <details className="card material-status">
-          <summary>已导入材料与音频状态</summary>
-          {data.libraries.map((l) => (
-            <div key={l.id}>
-              <h3>{l.manifest.title}</h3>
-              {l.manifest.tracks.map((t) => {
-                const m = data.media.find((m) => m.id === l.bindings[t.id]);
-                return (
-                  <p key={t.id}>
-                    {t.title} · {m && m.storage !== 'missing' ? '已绑定' : '待补绑'} · 原文
-                    {t.transcript.status === 'missing'
-                      ? '缺失'
-                      : t.transcript.status === 'draft'
-                        ? '未核对'
-                        : '已核对'}
-                  </p>
-                );
-              })}
-            </div>
-          ))}
-        </details>
-      )}
       <div className="listening-filters" role="group" aria-label="听力练习筛选">
         {(
           [
@@ -176,6 +149,30 @@ export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boo
           );
         })}
       </div>
+      <ListeningImport />
+      {data.libraries.length > 0 && (
+        <details className="card material-status">
+          <summary>已导入材料与音频状态</summary>
+          {data.libraries.map((l) => (
+            <div key={l.id}>
+              <h3>{l.manifest.title}</h3>
+              {l.manifest.tracks.map((t) => {
+                const m = data.media.find((m) => m.id === l.bindings[t.id]);
+                return (
+                  <p key={t.id}>
+                    {t.title} · {m && m.storage !== 'missing' ? '已绑定' : '待补绑'} · 原文
+                    {t.transcript.status === 'missing'
+                      ? '缺失'
+                      : t.transcript.status === 'draft'
+                        ? '未核对'
+                        : '已核对'}
+                  </p>
+                );
+              })}
+            </div>
+          ))}
+        </details>
+      )}
       <p className="footnote">
         到期与错题按音轨整组练习；提前答对不会推进复习阶段。真实手机播放与文件分享仍须真机验证。
       </p>

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useAnswerSession } from './useAnswerSession';
 import type { Exercise } from '../../domain/models';
 import { WordDetails } from '../../shared/components/WordDetails';
+import { useExitGestures } from '../../shared/useBackAction';
+import { ReadableText } from '../reading/ReadableText';
 
 export function Practice({
   queue,
@@ -13,6 +15,7 @@ export function Practice({
   onExit: () => void;
 }) {
   const [index, setIndex] = useState(0);
+  useExitGestures(index >= queue.length, onExit);
   if (index >= queue.length)
     return (
       <section className="completion card">
@@ -58,6 +61,7 @@ function AnswerCard({
 }) {
   const { answer, loaded, saving, saveStatus, result, error, input, change, submit, exit } =
     useAnswerSession(exercise, onNext, onExit);
+  useExitGestures(true, exit);
 
   return (
     <section className="card answer-card">
@@ -69,6 +73,7 @@ function AnswerCard({
           暂时退出
         </button>
       </div>
+      <p className="input-hint">页面空白处向左或向右滑动，可保存并退出。</p>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -108,13 +113,21 @@ function AnswerCard({
           <>
             {exercise.item.passage && (
               <div className="passage" lang="en">
-                {exercise.item.passage}
+                <ReadableText
+                  text={exercise.item.passage}
+                  enabled={!!result}
+                  packId={exercise.packId}
+                />
               </div>
             )}
             <h3 className="question" lang="en">
-              {exercise.item.prompt}
+              <ReadableText
+                text={exercise.item.prompt}
+                enabled={!!result}
+                packId={exercise.packId}
+              />
             </h3>
-            <fieldset className="options" disabled={!!result || saving || !loaded}>
+            <fieldset className="options" disabled={saving || !loaded}>
               <legend className="sr-only">选择答案</legend>
               {exercise.item.options.map((option) => (
                 <label
@@ -126,10 +139,13 @@ function AnswerCard({
                     name="answer"
                     value={option.id}
                     checked={answer === option.id}
+                    disabled={!!result}
                     onChange={() => change(option.id)}
                   />
                   <span className="option-id">{option.id}</span>
-                  <span lang="en">{option.text}</span>
+                  <span lang="en">
+                    <ReadableText text={option.text} enabled={!!result} packId={exercise.packId} />
+                  </span>
                 </label>
               ))}
             </fieldset>
@@ -154,7 +170,9 @@ function AnswerCard({
                   正确答案：{exercise.item.answerId} ·{' '}
                   {exercise.item.options.find((o) => o.id === exercise.item.answerId)?.text}
                 </p>
-                <p>{exercise.item.explanation}</p>
+                <p>
+                  <ReadableText text={exercise.item.explanation} packId={exercise.packId} />
+                </p>
               </>
             )}
           </div>

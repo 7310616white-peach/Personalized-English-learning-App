@@ -3,6 +3,7 @@ import type { ListeningAttempt } from '../../domain/listening';
 import { scoreListening } from '../../domain/listeningGrading';
 import { saveListeningNote } from '../../data/listening/attempts';
 import { errorReasons as reasons } from './labels';
+import { ReadableText } from '../reading/ReadableText';
 export function ListeningFeedback({ attempt }: { attempt: ListeningAttempt }) {
   const score = scoreListening(attempt.grades);
   const choice = scoreListening(
@@ -32,9 +33,15 @@ export function ListeningFeedback({ attempt }: { attempt: ListeningAttempt }) {
           <div key={q.id} className="card listening-explanation">
             <strong>
               {grade.correct === null ? '待批改' : grade.correct ? '回答正确' : '需要再练'} ·{' '}
-              {q.prompt}
+              <ReadableText text={q.prompt} packId={attempt.packId} />
             </strong>
             <p>你的答案：{formatAnswer(attempt.answers[q.id])}</p>
+            {q.type === 'listening-choice' &&
+              q.options.map((option) => (
+                <p key={option.id}>
+                  {option.id} · <ReadableText text={option.text} packId={attempt.packId} />
+                </p>
+              ))}
             {q.grading.status === 'missing' ? (
               <p>尚无答案，记录已保存，可导出给 ChatGPT 辅助批改。</p>
             ) : (
@@ -47,7 +54,9 @@ export function ListeningFeedback({ attempt }: { attempt: ListeningAttempt }) {
                         .map(([b, a]) => `${b}: ${a.join(' / ')}`)
                         .join('；')}
                 </p>
-                <p>{q.grading.explanation}</p>
+                <p>
+                  <ReadableText text={q.grading.explanation} packId={attempt.packId} />
+                </p>
               </>
             )}
             {grade.correct === false && <ErrorNote attemptId={attempt.id} questionId={q.id} />}
@@ -59,7 +68,10 @@ export function ListeningFeedback({ attempt }: { attempt: ListeningAttempt }) {
           听力原文{attempt.transcriptSnapshot.status === 'draft' ? '（未核对）' : ''}
         </summary>
         <p lang="en">
-          {attempt.transcriptSnapshot.text ?? '原文尚未提供；不会用自动推测替代录音原文。'}
+          <ReadableText
+            text={attempt.transcriptSnapshot.text ?? '原文尚未提供；不会用自动推测替代录音原文。'}
+            packId={attempt.packId}
+          />
         </p>
       </details>
     </section>

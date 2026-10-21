@@ -4,6 +4,7 @@ import { AudioPlayer } from './AudioPlayer';
 import { QuestionFields } from './QuestionFields';
 import { ListeningFeedback } from './ListeningFeedback';
 import { useListeningSession } from './useListeningSession';
+import { useExitGestures } from '../../shared/useBackAction';
 
 export function ListeningSession({
   packId,
@@ -20,8 +21,9 @@ export function ListeningSession({
 }) {
   const state = useListeningSession(packId, set);
   const [ready, setReady] = useState(false);
+  useExitGestures(true, () => state.exit(onExit));
   return (
-    <section>
+    <section className="listening-session-gesture">
       <div className="section-heading">
         <div>
           <p className="eyebrow">离线听力 · 训练模式</p>
@@ -31,6 +33,7 @@ export function ListeningSession({
           暂存并退出
         </button>
       </div>
+      <p className="input-hint">页面空白处左右滑动均可暂存退出；音频进度条可正常拖动。</p>
       <div className="card">
         <AudioPlayer
           media={media}

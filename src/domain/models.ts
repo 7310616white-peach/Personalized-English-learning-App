@@ -55,6 +55,7 @@ export const packSchema = z
         ...packFields,
         schemaVersion: z.literal(2),
         listening: z.array(listeningSetSchema).max(100),
+        glossary: z.array(wordSchema).max(1000).optional(),
       })
       .strict(),
   ])

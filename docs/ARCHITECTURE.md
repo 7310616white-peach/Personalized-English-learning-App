@@ -122,3 +122,19 @@ Android 静态资源嵌入安装包。导入 JSON 不加载其中 HTML，不执�
 原题身份独立于每日题包，复用同一复习算法；听力界面放 features/listening，数据服务放 data/listening。
 媒体与纯 JSON 分开。完整迁移支持带 WAV 的受限 ZIP STORE，轻量 JSON 明确不含音频。
 详细协议、事务边界、限制与验证范围见 [LISTENING.md](LISTENING.md)。
+
+## 手机导航与原位查词（0.3）
+
+features/reading 只提供题后文本入口与释义浮层，不再有独立查词路由。
+ReadableText 的 enabled 在原题提交成功前为 false，前台不会生成查询按钮。
+v2 可选 glossary 使用现有 Word 契约，但不加入练习队列，旧 v1 和旧备份仍可读取。
+无听力库但有 v2 题包时，备份也必须用 v2，避免丢失或拒绝语境词数据。
+
+platform/backNavigation 和 domain/BackActions 分离原生桥接与返回优先级。
+AndroidX 回调仅在有可返回层时启用；提交期间保持拦截，等待已有草稿事务完成才关闭练习。
+页面空白处的横滑走同一返回操作，输入控件、播放器、弹层和纵向滚动不抢手势。
+不承诺自定义预测返回动画，系统两侧边缘行为需对应 Nothing 版本真机验收。
+
+IncomingFilesPlugin 仅处理用户交来的本地 content URI 或分享文本，在后台限量读取 UTF-8 JSON。
+不申请整盘读取权限、不请求网络 URL。data/intake 负责格式预览；确认后调用已有导入事务。
+外部文件在练习中到达会等待退出，备份不能伪装成题包自动恢复。

@@ -1,5 +1,6 @@
 import { WordDetails } from '../../shared/components/WordDetails';
 import { exercises, type Pack, type Progress } from '../../domain/models';
+import { ReadableText } from '../reading/ReadableText';
 
 export function Library({
   packs,
@@ -45,10 +46,14 @@ export function Library({
                 <WordDetails word={e.item} />
               ) : (
                 <div className="word-details">
-                  {e.item.passage && <p lang="en">{e.item.passage}</p>}
+                  {e.item.passage && (
+                    <p lang="en">
+                      <ReadableText text={e.item.passage} packId={e.packId} />
+                    </p>
+                  )}
                   {e.item.options.map((o) => (
                     <p key={o.id}>
-                      {o.id} · {o.text}
+                      {o.id} · <ReadableText text={o.text} packId={e.packId} />
                     </p>
                   ))}
                   <p>

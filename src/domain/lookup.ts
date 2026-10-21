@@ -9,7 +9,10 @@ export function normalizeQuery(text: string) {
 export function dictionaryWords(packs: Pack[], base: Word[]) {
   // Imported learning cards provide richer personal context than the basic glossary.
   const unique = new Map<string, Word>();
-  for (const word of [...packs.flatMap((p) => p.words), ...base]) {
+  for (const word of [
+    ...packs.flatMap((p) => [...p.words, ...(p.schemaVersion === 2 ? (p.glossary ?? []) : [])]),
+    ...base,
+  ]) {
     const key = normalizeQuery(word.term);
     if (!unique.has(key)) unique.set(key, word);
   }

@@ -582,12 +582,8 @@
     "meaning": "v. 接近；处理；n. 方法",
     "example": "We need a new approach to this problem.",
     "exampleTranslation": "我们需要一种处理这个问题的新方法。",
-    "collocations": [
-      "an approach to sth 处理某事的方法"
-    ],
-    "otherMeanings": [
-      "n. 路径；通路"
-    ],
+    "collocations": ["an approach to sth 处理某事的方法"],
+    "otherMeanings": ["n. 路径；通路"],
     "confusion": "approach 强调处理问题的方法；access 强调进入或使用的机会。",
     "acceptedAnswers": []
   },
@@ -598,9 +594,7 @@
     "meaning": "n. 证据；依据",
     "example": "There is little evidence to support this claim.",
     "exampleTranslation": "支持这一说法的证据很少。",
-    "collocations": [
-      "provide evidence 提供证据"
-    ],
+    "collocations": ["provide evidence 提供证据"],
     "otherMeanings": [],
     "confusion": "evidence 通常为不可数名词；不要写成 an evidence。",
     "acceptedAnswers": []
@@ -612,12 +606,8 @@
     "meaning": "v. 维持；保养；坚持认为",
     "example": "Regular exercise helps maintain good health.",
     "exampleTranslation": "经常锻炼有助于保持健康。",
-    "collocations": [
-      "maintain a balance 保持平衡"
-    ],
-    "otherMeanings": [
-      "v. 坚持声称"
-    ],
+    "collocations": ["maintain a balance 保持平衡"],
+    "otherMeanings": ["v. 坚持声称"],
     "confusion": "maintain 强调维持状态；retain 强调保留已有事物。",
     "acceptedAnswers": []
   },
@@ -628,9 +618,7 @@
     "meaning": "adj. 重要的；显著的",
     "example": "Sleep has a significant effect on memory.",
     "exampleTranslation": "睡眠对记忆有重要影响。",
-    "collocations": [
-      "a significant difference 显著差异"
-    ],
+    "collocations": ["a significant difference 显著差异"],
     "otherMeanings": [],
     "confusion": "significant 在日常语境可指重要；统计学显著不等于效应大或具有实际意义。",
     "acceptedAnswers": []
@@ -642,9 +630,7 @@
     "meaning": "adj. 可获得的；有空的",
     "example": "The report is available online.",
     "exampleTranslation": "这份报告可以在线获取。",
-    "collocations": [
-      "be available to sb 可供某人使用"
-    ],
+    "collocations": ["be available to sb 可供某人使用"],
     "otherMeanings": [],
     "confusion": "available 指可以获取或有空；accessible 指可以接近、进入或理解。",
     "acceptedAnswers": []
@@ -656,9 +642,7 @@
     "meaning": "v. 需要；要求",
     "example": "This task requires careful planning.",
     "exampleTranslation": "这项任务需要周密规划。",
-    "collocations": [
-      "require sb to do sth 要求某人做某事"
-    ],
+    "collocations": ["require sb to do sth 要求某人做某事"],
     "otherMeanings": [],
     "confusion": "require 表示需要或正式要求；request 更强调请求。",
     "acceptedAnswers": []
@@ -670,9 +654,7 @@
     "meaning": "v. 减少；降低",
     "example": "Walking can help reduce stress.",
     "exampleTranslation": "步行有助于减轻压力。",
-    "collocations": [
-      "reduce the risk 降低风险"
-    ],
+    "collocations": ["reduce the risk 降低风险"],
     "otherMeanings": [],
     "confusion": "reduce 强调使数量变小；decrease 也可用作不及物动词，表示数量自行减少。",
     "acceptedAnswers": []
@@ -684,12 +666,8 @@
     "meaning": "n. 益处；v. 受益；有益于",
     "example": "Students can benefit from regular reading.",
     "exampleTranslation": "学生能从经常阅读中受益。",
-    "collocations": [
-      "benefit from 从……中受益"
-    ],
-    "otherMeanings": [
-      "n. 福利；补贴"
-    ],
+    "collocations": ["benefit from 从……中受益"],
+    "otherMeanings": ["n. 福利；补贴"],
     "confusion": "benefit 作动词常搭配 from；profit 更常强调利润或获利。",
     "acceptedAnswers": []
   },
@@ -700,13 +678,8 @@
     "meaning": "v. 进行；实施",
     "example": "The team will conduct a survey next week.",
     "exampleTranslation": "团队下周将开展一次调查。",
-    "collocations": [
-      "conduct a survey 开展调查"
-    ],
-    "otherMeanings": [
-      "n. 行为；举止",
-      "v. 导电；指挥"
-    ],
+    "collocations": ["conduct a survey 开展调查"],
+    "otherMeanings": ["n. 行为；举止", "v. 导电；指挥"],
     "confusion": "conduct 常搭配研究、调查或实验；conclude 表示结束或得出结论。",
     "acceptedAnswers": []
   },
@@ -717,13 +690,8 @@
     "meaning": "n. 问题；议题",
     "example": "We discussed the issue at the meeting.",
     "exampleTranslation": "我们在会议上讨论了这个问题。",
-    "collocations": [
-      "address an issue 处理问题"
-    ],
-    "otherMeanings": [
-      "n. 期号",
-      "v. 发布；发放"
-    ],
+    "collocations": ["address an issue 处理问题"],
+    "otherMeanings": ["n. 期号", "v. 发布；发放"],
     "confusion": "issue 常指待讨论议题；problem 更突出需要解决的困难。",
     "acceptedAnswers": []
   },
@@ -734,9 +702,7 @@
     "meaning": "n. 患病率；流行程度",
     "example": "The study estimated the prevalence of asthma.",
     "exampleTranslation": "这项研究估计了哮喘的患病率。",
-    "collocations": [
-      "disease prevalence 疾病患病率"
-    ],
+    "collocations": ["disease prevalence 疾病患病率"],
     "otherMeanings": [],
     "confusion": "prevalence 描述特定人群在某一时间点或时期已有病例的比例；incidence 关注新发病例。",
     "acceptedAnswers": []
@@ -748,11 +714,219 @@
     "meaning": "n. 队列；具有共同特征的一组人",
     "example": "The researchers followed a cohort of 500 adults.",
     "exampleTranslation": "研究者随访了一个由500名成年人组成的队列。",
-    "collocations": [
-      "cohort study 队列研究"
-    ],
+    "collocations": ["cohort study 队列研究"],
     "otherMeanings": [],
     "confusion": "cohort 是具有共同特征或经历的一组人；sample 是从总体中选取的样本。",
     "acceptedAnswers": []
+  },
+  {
+    "id": "base-university",
+    "term": "university",
+    "level": "CET-4",
+    "meaning": "n. 大学"
+  },
+  {
+    "id": "base-library",
+    "term": "library",
+    "level": "CET-4",
+    "meaning": "n. 图书馆"
+  },
+  {
+    "id": "base-study",
+    "term": "study",
+    "level": "CET-4",
+    "meaning": "n. 学习；研究；v. 学习，研究"
+  },
+  {
+    "id": "base-room",
+    "term": "room",
+    "level": "CET-4",
+    "meaning": "n. 房间；空间"
+  },
+  {
+    "id": "base-book",
+    "term": "book",
+    "level": "CET-4",
+    "meaning": "n. 书；v. 预订"
+  },
+  {
+    "id": "base-seat",
+    "term": "seat",
+    "level": "CET-4",
+    "meaning": "n. 座位"
+  },
+  {
+    "id": "base-online",
+    "term": "online",
+    "level": "CET-4",
+    "meaning": "adv. 在网上；adj. 在线的"
+  },
+  {
+    "id": "base-walking",
+    "term": "walking",
+    "level": "CET-4",
+    "meaning": "n. 步行"
+  },
+  {
+    "id": "base-exercise",
+    "term": "exercise",
+    "level": "CET-4",
+    "meaning": "n. 锻炼；练习；v. 锻炼"
+  },
+  {
+    "id": "base-sleep",
+    "term": "sleep",
+    "level": "CET-4",
+    "meaning": "n. 睡眠；v. 睡觉"
+  },
+  {
+    "id": "base-brain",
+    "term": "brain",
+    "level": "CET-4",
+    "meaning": "n. 大脑"
+  },
+  {
+    "id": "base-information",
+    "term": "information",
+    "level": "CET-4",
+    "meaning": "n. 信息，资料"
+  },
+  {
+    "id": "base-organize",
+    "term": "organize",
+    "level": "CET-4",
+    "meaning": "v. 组织；整理"
+  },
+  {
+    "id": "base-organizes",
+    "term": "organizes",
+    "level": "CET-4",
+    "meaning": "v. 整理（organize 的第三人称单数）"
+  },
+  {
+    "id": "base-anonymous",
+    "term": "anonymous",
+    "level": "CET-4",
+    "meaning": "adj. 匿名的"
+  },
+  {
+    "id": "base-team",
+    "term": "team",
+    "level": "CET-4",
+    "meaning": "n. 团队"
+  },
+  {
+    "id": "base-term",
+    "term": "term",
+    "level": "CET-4",
+    "meaning": "n. 学期；术语；期限"
+  },
+  {
+    "id": "base-project",
+    "term": "project",
+    "level": "CET-4",
+    "meaning": "n. 项目；课题"
+  },
+  {
+    "id": "base-survey",
+    "term": "survey",
+    "level": "CET-4",
+    "meaning": "n. 调查；问卷调查"
+  },
+  {
+    "id": "base-result",
+    "term": "result",
+    "level": "CET-4",
+    "meaning": "n. 结果"
+  },
+  {
+    "id": "base-laptop",
+    "term": "laptop",
+    "level": "CET-4",
+    "meaning": "n. 笔记本电脑"
+  },
+  {
+    "id": "base-final",
+    "term": "final",
+    "level": "CET-4",
+    "meaning": "adj. 最后的；期末的"
+  },
+  {
+    "id": "base-exam",
+    "term": "exam",
+    "level": "CET-4",
+    "meaning": "n. 考试"
+  },
+  {
+    "id": "base-regular",
+    "term": "regular",
+    "level": "CET-4",
+    "meaning": "adj. 规律的；定期的"
+  },
+  {
+    "id": "base-bedtime",
+    "term": "bedtime",
+    "level": "CET-4",
+    "meaning": "n. 就寝时间"
+  },
+  {
+    "id": "base-cause",
+    "term": "cause",
+    "level": "CET-4",
+    "meaning": "v. 导致；n. 原因"
+  },
+  {
+    "id": "base-caused",
+    "term": "caused",
+    "level": "CET-4",
+    "meaning": "v. 导致（cause 的过去式）"
+  },
+  {
+    "id": "base-remember",
+    "term": "remember",
+    "level": "CET-4",
+    "meaning": "v. 记住；回想起"
+  },
+  {
+    "id": "base-prepare",
+    "term": "prepare",
+    "level": "CET-4",
+    "meaning": "v. 准备"
+  },
+  {
+    "id": "base-morning",
+    "term": "morning",
+    "level": "CET-4",
+    "meaning": "n. 早晨；上午"
+  },
+  {
+    "id": "base-afternoon",
+    "term": "afternoon",
+    "level": "CET-4",
+    "meaning": "n. 下午"
+  },
+  {
+    "id": "base-instead",
+    "term": "instead",
+    "level": "CET-4",
+    "meaning": "adv. 代替；反而"
+  },
+  {
+    "id": "base-report",
+    "term": "report",
+    "level": "CET-4",
+    "meaning": "v. 报告；n. 报告"
+  },
+  {
+    "id": "base-reported",
+    "term": "reported",
+    "level": "CET-4",
+    "meaning": "v. 报告（report 的过去式）"
+  },
+  {
+    "id": "base-allowed",
+    "term": "allowed",
+    "level": "CET-4",
+    "meaning": "v. 允许（allow 的过去式/过去分词）"
   }
 ]

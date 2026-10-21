@@ -100,23 +100,22 @@ test('首次缓存完成后可断网重开并作答', async ({ page, context }) 
   });
 });
 
-test('离线查词、自填生词与生词练习', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('button', { name: '阅读查词', exact: true }).click();
-  await page.getByLabel('输入或粘贴不认识的英文单词 / 短语').fill('cohorts');
-  await page.getByRole('button', { name: '查词', exact: true }).click();
-  await page.getByRole('button', { name: 'cohort', exact: true }).click();
-  await expect(page.getByText('本地释义', { exact: true })).toBeVisible();
-  await page.getByRole('button', { name: '加入阅读生词', exact: true }).click();
-  await expect(page.getByRole('status')).toContainText('已加入我的阅读生词');
-  await page.getByLabel('输入或粘贴不认识的英文单词 / 短语').fill('newterm');
-  await page.getByRole('button', { name: '查词', exact: true }).click();
-  await page.getByLabel('自填中文释义').fill('测试词义');
-  await page.getByRole('button', { name: '保存自填生词', exact: true }).click();
-  await expect(page.getByRole('status')).toContainText('已加入我的阅读生词');
-  await page.getByRole('button', { name: '练习阅读生词 →' }).click();
-  await expect(page.getByRole('textbox', { name: '你的拼写' })).toBeVisible();
+test('答题后原位查词与收藏，没有独立查词导航', async ({ page }) => {
+  await loadSample(page);
+  await expect(page.getByRole('button', { name: '阅读查词', exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: '开始练题 →' }).click();
+  await expect(page.getByRole('button', { name: /^查询 / })).toHaveCount(0);
+  await page.getByRole('radio', { name: 'A available', exact: true }).check();
+  await page.getByRole('button', { name: '检查答案' }).click();
+  await expect(page.getByRole('status').filter({ hasText: '回答正确' })).toBeVisible();
+  await page.getByRole('button', { name: '查询 available', exact: true }).first().click();
+  const dialog = page.getByRole('dialog', { name: '单词释义' });
+  await expect(dialog.getByText('本地释义', { exact: true })).toBeVisible();
+  await dialog.getByRole('button', { name: '加入生词本', exact: true }).click();
+  await expect(dialog.getByRole('status')).toContainText('已加入生词本');
+  await page.screenshot({ animations: 'disabled', path: 'outputs/题后点词释义.png' });
+  await dialog.getByRole('button', { name: '关闭释义' }).click();
   await page.getByRole('button', { name: '暂时退出' }).click();
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await page.screenshot({ animations: 'disabled', path: 'outputs/阅读查词.png', fullPage: true });
+  await page.getByRole('button', { name: '词汇手册', exact: true }).click();
+  await expect(page.locator('summary').getByText('available', { exact: true })).toHaveCount(2);
 });

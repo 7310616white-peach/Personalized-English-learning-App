@@ -93,6 +93,10 @@ export function useListeningSession(packId: string, set: ListeningSet) {
   }
   async function exit(onExit: () => void) {
     if (lock.current) return;
+    if (!loaded) {
+      onExit();
+      return;
+    }
     lock.current = true;
     setBusy(true);
     try {

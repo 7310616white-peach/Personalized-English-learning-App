@@ -1,0 +1,52 @@
+.lookup-word {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  box-shadow: none;
+  text-decoration: underline dotted #9aa99d;
+  text-underline-offset: 3px;
+}
+.lookup-word:hover,
+.lookup-word:focus-visible {
+  background: #eaf1e6;
+  color: #245c4b;
+}
+.meaning-dialog {
+  color: #273b32;
+  background: #fffefa;
+  border: 1px solid #dce4d6;
+  border-radius: 20px;
+  padding: 24px;
+  width: min(540px, calc(100vw - 32px));
+  max-height: min(80dvh, 760px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.meaning-dialog::backdrop {
+  background: #152c2470;
+}
+.meaning-dialog h3 {
+  margin: 0;
+}
+.meaning-dialog blockquote small {
+  display: block;
+  margin-top: 6px;
+}
+.meaning-dialog .meaning-definition {
+  font-size: 18px;
+  line-height: 1.7;
+}
+.meaning-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

@@ -7,7 +7,7 @@ import { importPack } from '../src/data/learning';
 import { LearningDB } from '../src/data/db';
 import { backup, restore } from '../src/data/transfer';
 import sample from '../public/examples/day-001.json';
-import glossary from '../src/features/lookup/glossary.json';
+import glossary from '../src/features/reading/glossary.json';
 
 const base = glossary.map((w) => wordSchema.parse(w));
 describe('阅读查词与生词持久化', () => {
