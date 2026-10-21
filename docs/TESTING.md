@@ -6,7 +6,8 @@
 新增覆盖 v2→v3 原地升级、题包/空位/引用校验、提交回滚与幂等、主观题待批改、
 v3 JSON与带WAV的ZIP恢复、逐题结果导出、新题型草稿恢复、存储失败拒绝退出。
 隔离浏览器检查四种新界面无横向溢出，并检查选词/作文截图。
-Android APK构建结果见对应 Actions；Nothing真机、原生键盘与分享仍未验收。
+Android 0.4.0 [构建与签名校验通过](https://github.com/7310616white-peach/Personalized-English-learning-App/actions/runs/39662756947)，
+[Web CI也通过](https://github.com/7310616white-peach/Personalized-English-learning-App/actions/runs/39662757078)；Nothing真机、原生键盘与分享仍未验收。
 
 ## 首轮结果（2026-10-21）
 

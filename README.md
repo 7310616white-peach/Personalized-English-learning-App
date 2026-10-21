@@ -127,12 +127,12 @@ pnpm exec cap open android
 
 也可在配置好 JDK/SDK 后运行 `cd android && ./gradlew assembleDebug`。
 当前开发机尚未安装 Android SDK，因此本地尚未编译 APK。
-0.3.0 已通过 [Android 云端构建与签名检查](https://github.com/7310616white-peach/Personalized-English-learning-App/actions/runs/39650128103)，
+0.4.0 已通过 [Android 云端构建与签名检查](https://github.com/7310616white-peach/Personalized-English-learning-App/actions/runs/39662756947)，
 手机手势与外部文件接收尚未通过 Nothing 真机验收。
 仓库提供 Android debug 构建工作流，相关主分支代码更新时运行，也支持手动触发；
 实际成功与否以该次 Actions 日志为准，成功后从运行页面 Artifacts 下载 APK 压缩包。
 CI 的 debug 签名用于体验，不承诺跨构建签名一致；更换构建或签名前先导出完整备份。
-已确认 0.3.0 与旧 0.2.1 CI 测试包签名不同，不能直接覆盖；请保留旧安装，勿直接卸载或清理记录。
+已确认 0.4.0 与旧 0.3.0/0.2.1 CI 测试包签名不同，不能直接覆盖；请保留旧安装，先将完整备份另存至App之外，勿直接卸载或清理记录。
 正式使用前完成 [Android 验收清单](docs/TESTING.md#android-真机验收)。
 升级时应使用相同 applicationId 和签名，避免变成另一份 App 或无法覆盖安装。
 
