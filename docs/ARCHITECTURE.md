@@ -95,7 +95,7 @@ Android 先复用同一存储层；如果真机发现 WebView 存储限制或数
 
 Android 插件仅接收 `ACTION_PROCESS_TEXT` 的明确选中文本，限制到 100 字符。
 冷启动暂存后由 JS 消费，热启动通过事件传递。练习中接收选词会等待使用者退出，避免打断未保存答案。
-该插件已按安装的 Capacitor Java 接口实现，仍须编译与真机测试。
+该插件已按安装的 Capacitor Java 接口实现并通过 Android CI 编译，仍须真机测试。
 
 ## 离线与扩展
 
