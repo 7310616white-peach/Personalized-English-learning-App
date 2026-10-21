@@ -1,0 +1,105 @@
+{
+  "format": "english-pocket-listening-library",
+  "schemaVersion": 1,
+  "id": "demo-campus-english",
+  "title": "格式示例：Unit 1 与 Unit 2（非真实课程材料）",
+  "tracks": [
+    {
+      "id": "u1-news",
+      "unit": "unit-1",
+      "section": "news-report",
+      "title": "Unit 1 · News report",
+      "audioFile": "unit1-news.wav",
+      "transcript": {
+        "status": "draft",
+        "text": "The university library will open a new study room on Monday. Students can book a seat online."
+      },
+      "segments": []
+    },
+    {
+      "id": "u1-conversation",
+      "unit": "unit-1",
+      "section": "conversation",
+      "title": "Unit 1 · Conversation",
+      "audioFile": "unit1-conversation.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    },
+    {
+      "id": "u1-passage1",
+      "unit": "unit-1",
+      "section": "passage-1",
+      "title": "Unit 1 · Passage 1",
+      "audioFile": "unit1-passage1.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    },
+    {
+      "id": "u1-passage2",
+      "unit": "unit-1",
+      "section": "passage-2",
+      "title": "Unit 1 · Passage 2",
+      "audioFile": "unit1-passage2.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    },
+    {
+      "id": "u2-news",
+      "unit": "unit-2",
+      "section": "news-report",
+      "title": "Unit 2 · News report",
+      "audioFile": "unit2-news.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    },
+    {
+      "id": "u2-conversation",
+      "unit": "unit-2",
+      "section": "conversation",
+      "title": "Unit 2 · Conversation",
+      "audioFile": "unit2-conversation.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    },
+    {
+      "id": "u2-passage1",
+      "unit": "unit-2",
+      "section": "passage-1",
+      "title": "Unit 2 · Passage 1",
+      "audioFile": "unit2-passage1.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    },
+    {
+      "id": "u2-passage2",
+      "unit": "unit-2",
+      "section": "passage-2",
+      "title": "Unit 2 · Passage 2",
+      "audioFile": "unit2-passage2.wav",
+      "transcript": {
+        "status": "missing",
+        "text": null
+      },
+      "segments": []
+    }
+  ],
+  "target": "campus"
+}

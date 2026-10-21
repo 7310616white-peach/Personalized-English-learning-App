@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { makeQueues } from '../domain/queue';
 import type { Exercise } from '../domain/models';
+
+import { ListeningSummary } from '../features/listening/ListeningSummary';
 import { Practice } from '../features/practice/Practice';
 import { Library } from '../features/library/Library';
-import { Transfer } from '../features/transfer/Transfer';
+
 import { Dashboard } from '../features/dashboard/Dashboard';
 import { Lookup } from '../features/lookup/Lookup';
 import { StorageBoundary } from '../shared/components/StorageBoundary';
@@ -12,6 +14,13 @@ import { vocabularyPackId } from '../data/vocabulary';
 import { AppShell } from './AppShell';
 import { useClock, useLearningData } from './useLearningData';
 import type { Page } from './navigation';
+
+const ListeningPage = lazy(() =>
+  import('../features/listening/ListeningPage').then((m) => ({ default: m.ListeningPage })),
+);
+const Transfer = lazy(() =>
+  import('../features/transfer/Transfer').then((m) => ({ default: m.Transfer })),
+);
 
 type Session = { title: string; queue: Exercise[] };
 export function App() {
@@ -23,6 +32,7 @@ export function App() {
 }
 
 function LearningApp() {
+  const [listeningActive, setListeningActive] = useState(false);
   const [page, setPage] = useState<Page>('home');
   const [packId, setPackId] = useState('');
   const [session, setSession] = useState<Session>();
@@ -53,11 +63,11 @@ function LearningApp() {
     };
   }, []);
   useEffect(() => {
-    if (pendingLookup && !session) {
+    if (pendingLookup && !session && !listeningActive) {
       setPage('lookup');
       setPendingLookup(false);
     }
-  }, [pendingLookup, session]);
+  }, [pendingLookup, session, listeningActive]);
   if (!data)
     return (
       <div className="loading" role="status">
@@ -76,7 +86,7 @@ function LearningApp() {
     refresh();
   }
   return (
-    <AppShell page={page} practicing={!!session} onNavigate={setPage}>
+    <AppShell page={page} practicing={!!session || listeningActive} onNavigate={setPage}>
       {nativeError && (
         <p className="notice" role="status">
           {nativeError}
@@ -94,17 +104,25 @@ function LearningApp() {
       ) : (
         <>
           {page === 'home' && (
-            <Dashboard
-              packs={packs}
-              progress={progress}
-              attempts={attempts}
-              now={now}
-              currentPack={currentPack}
-              queues={queues}
-              onPackChange={setPackId}
-              onNavigate={setPage}
-              onStart={start}
-            />
+            <>
+              <ListeningSummary onOpen={() => setPage('listening')} />
+              <Dashboard
+                packs={packs}
+                progress={progress}
+                attempts={attempts}
+                now={now}
+                currentPack={currentPack}
+                queues={queues}
+                onPackChange={setPackId}
+                onNavigate={setPage}
+                onStart={start}
+              />
+            </>
+          )}
+          {page === 'listening' && (
+            <Suspense fallback={<p role="status">正在打开听力训练…</p>}>
+              <ListeningPage onActiveChange={setListeningActive} />
+            </Suspense>
           )}
           {page === 'words' && <Library packs={packs} progress={progress} />}
           {page === 'lookup' && (
@@ -122,16 +140,19 @@ function LearningApp() {
                   再练一组错题 →
                 </button>
               </div>
+              <ListeningSummary onOpen={() => setPage('listening')} mistakes />
               <Library packs={packs} progress={progress} mistakes />
             </>
           )}
           {page === 'transfer' && (
-            <Transfer
-              onRestored={() => {
-                setPackId('');
-                refresh();
-              }}
-            />
+            <Suspense fallback={<p role="status">正在打开题包与数据…</p>}>
+              <Transfer
+                onRestored={() => {
+                  setPackId('');
+                  refresh();
+                }}
+              />
+            </Suspense>
           )}
         </>
       )}

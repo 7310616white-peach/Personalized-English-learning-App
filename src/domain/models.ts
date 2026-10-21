@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { listeningSetSchema } from './listening';
 const text = z.string().trim().min(1).max(10000);
 const id = z.string().regex(/^[a-zA-Z0-9_-]{1,80}$/, 'ID 仅允许字母、数字、下划线和短横线');
 export const wordSchema = z
@@ -33,26 +34,42 @@ export const choiceSchema = z
     )
       ctx.addIssue({ code: 'custom', message: '选项 ID 必须唯一且包含正确答案' });
   });
+const packFields = {
+  id,
+  title: text,
+  date: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .refine(
+      (s) => !Number.isNaN(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s,
+      '日期无效',
+    ),
+  words: z.array(wordSchema).max(500),
+  choices: z.array(choiceSchema).max(500),
+};
 export const packSchema = z
-  .object({
-    schemaVersion: z.literal(1),
-    id,
-    title: text,
-    date: z
-      .string()
-      .regex(/^\d{4}-\d{2}-\d{2}$/)
-      .refine(
-        (s) => !Number.isNaN(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s,
-        '日期无效',
-      ),
-    words: z.array(wordSchema).max(500),
-    choices: z.array(choiceSchema).max(500),
-  })
-  .strict()
+  .discriminatedUnion('schemaVersion', [
+    z.object({ ...packFields, schemaVersion: z.literal(1) }).strict(),
+    z
+      .object({
+        ...packFields,
+        schemaVersion: z.literal(2),
+        listening: z.array(listeningSetSchema).max(100),
+      })
+      .strict(),
+  ])
   .superRefine((p, ctx) => {
-    const ids = [...p.words, ...p.choices].map((x) => x.id);
-    if (ids.length === 0 || new Set(ids).size !== ids.length)
-      ctx.addIssue({ code: 'custom', message: '题包不能为空，题目 ID 必须唯一' });
+    const ids = [...p.words, ...p.choices, ...(p.schemaVersion === 2 ? p.listening : [])].map(
+      (i) => i.id,
+    );
+    if (!ids.length || new Set(ids).size !== ids.length)
+      ctx.addIssue({ code: 'custom', message: '题包不能为空，题目/听力组 ID 必须唯一' });
+    const keys =
+      p.schemaVersion === 2
+        ? p.listening.flatMap((s) => s.questions.map((q) => JSON.stringify([s.libraryId, q.id])))
+        : [];
+    if (new Set(keys).size !== keys.length)
+      ctx.addIssue({ code: 'custom', message: '同一材料库的听力题不能在题包中重复' });
   });
 export type Pack = z.infer<typeof packSchema>;
 export type Word = Pack['words'][number];

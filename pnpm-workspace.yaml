@@ -1,2 +1,4 @@
 allowBuilds:
   esbuild: true
+# Install explicitly; running a check must not silently recreate/download dependencies.
+verifyDepsBeforeRun: false

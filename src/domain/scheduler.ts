@@ -1,6 +1,10 @@
 import type { Progress } from './models';
 const intervals = [1, 3, 7, 14];
-export function nextSchedule(previous: Progress | undefined, correct: boolean, now: Date) {
+export function nextSchedule(
+  previous: Pick<Progress, 'stage' | 'due' | 'reviews' | 'errors'> | undefined,
+  correct: boolean,
+  now: Date,
+) {
   if (previous && correct && previous.due > now.toISOString())
     return {
       stage: previous.stage,

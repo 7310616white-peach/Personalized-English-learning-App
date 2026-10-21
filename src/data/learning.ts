@@ -1,3 +1,4 @@
+import { registerListeningQuestions } from './listening/questions';
 import { vocabularyPackId } from './vocabulary';
 import { db, type LearningDB } from './db';
 import { grade } from '../domain/grading';
@@ -6,11 +7,18 @@ import { exercises, packSchema, type Exercise } from '../domain/models';
 export async function importPack(input: unknown, store: LearningDB = db) {
   const pack = packSchema.parse(input);
   if (pack.id === vocabularyPackId) throw new Error('此题包 ID 为个人生词本保留，请使用其他 ID');
-  await store.transaction('rw', store.packs, async () => {
-    if (await store.packs.get(pack.id))
-      throw new Error('这个题包 ID 已存在。为保护学习记录，请为新题包使用新 ID。');
-    await store.packs.add(pack);
-  });
+  await store.transaction(
+    'rw',
+    store.packs,
+    store.listeningLibraries,
+    store.listeningQuestions,
+    async () => {
+      if (await store.packs.get(pack.id))
+        throw new Error('这个题包 ID 已存在。为保护学习记录，请为新题包使用新 ID。');
+      await registerListeningQuestions(pack, store);
+      await store.packs.add(pack);
+    },
+  );
   return pack;
 }
 export async function submitAnswer(

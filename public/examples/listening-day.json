@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 2,
+  "id": "demo-listening-20261021",
+  "title": "格式示例：听力选择与听写填空",
+  "date": "2026-10-21",
+  "words": [],
+  "choices": [],
+  "listening": [
+    {
+      "id": "set-u1-news",
+      "libraryId": "demo-campus-english",
+      "trackId": "u1-news",
+      "questions": [
+        {
+          "id": "u1-news-extra-choice-001",
+          "type": "listening-choice",
+          "origin": "chatgpt-extra",
+          "prompt": "What will the university library open on Monday?",
+          "options": [
+            {
+              "id": "A",
+              "text": "A new cafe."
+            },
+            {
+              "id": "B",
+              "text": "A new study room."
+            },
+            {
+              "id": "C",
+              "text": "A new sports hall."
+            },
+            {
+              "id": "D",
+              "text": "A new bookshop."
+            }
+          ],
+          "grading": {
+            "status": "draft",
+            "answerId": "B",
+            "explanation": "示例原文明确说 a new study room，故选 B。此为虚构格式示例。"
+          }
+        },
+        {
+          "id": "u1-news-extra-cloze-001",
+          "type": "listening-cloze",
+          "origin": "chatgpt-extra",
+          "prompt": "Students can book a seat {{b1}}.",
+          "blankIds": [
+            "b1"
+          ],
+          "grading": {
+            "status": "draft",
+            "acceptedAnswers": {
+              "b1": [
+                "online"
+              ]
+            },
+            "explanation": "示例句末为 online；大小写与首尾空格不影响判定。"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -39,7 +39,7 @@ App 与 AppShell 分离，Dashboard 与 AnswerCard 分离，答题状态抽出 u
 ## 本地数据
 
 数据库名称 `english-pocket-v1` 是稳定标识，不在应用升级时随意更换。
-Dexie schema version 1 包含四张表：
+初版 Dexie schema version 1 包含四张基础表：
 
 | 表       | 主键 | 内容                               |
 | -------- | ---- | ---------------------------------- |
@@ -115,3 +115,10 @@ Android 静态资源嵌入安装包。导入 JSON 不加载其中 HTML，不执�
 - [Dexie 事务](<https://dexie.org/docs/Dexie/Dexie.transaction()>)
 - [Capacitor 文件系统](https://capacitorjs.com/docs/apis/filesystem) 与 [分享](https://capacitorjs.com/docs/apis/share)
 - [Android Intent API](https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT)
+
+## 听力扩展
+
+听力采用 schema version 2 增加材料、媒体、题目、作答、进度、草稿与备注表，保持原数据库名称和四张表。
+原题身份独立于每日题包，复用同一复习算法；听力界面放 features/listening，数据服务放 data/listening。
+媒体与纯 JSON 分开。完整迁移支持带 WAV 的受限 ZIP STORE，轻量 JSON 明确不含音频。
+详细协议、事务边界、限制与验证范围见 [LISTENING.md](LISTENING.md)。

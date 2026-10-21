@@ -1,0 +1,226 @@
+.listening-page > p {
+  font-size: 13px;
+}
+.listening-import,
+.material-status {
+  margin: 20px 0;
+}
+.listening-import summary,
+.material-status summary,
+.transcript summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.listening-import p,
+.material-status p {
+  font-size: 12px;
+}
+.listening-import summary {
+  margin-bottom: 12px;
+}
+.listening-file-row {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+}
+.listening-file-row .file-button {
+  flex: 1;
+}
+.audio-bindings {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.audio-bindings > label {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+}
+.audio-bindings small {
+  display: block;
+  color: #85917e;
+  overflow-wrap: anywhere;
+}
+.audio-bindings select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c5d1bd;
+  border-radius: 8px;
+  background: #f7faf2;
+}
+.listening-filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 24px 0 18px;
+}
+.listening-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+.listening-groups p {
+  font-size: 12px;
+}
+.missing-audio {
+  display: block;
+  margin-top: 9px;
+  color: #976c37;
+}
+.listening-player audio {
+  width: 100%;
+  display: block;
+}
+.playback-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.playback-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.playback-controls select {
+  padding: 8px;
+  border: 1px solid #d1ddc8;
+  border-radius: 8px;
+  background: white;
+}
+.listening-question {
+  margin: 26px 0 32px;
+}
+.listening-question legend {
+  font-size: 12px;
+  color: #75856d;
+}
+.listening-question > p {
+  color: #263c35;
+  font-size: 18px;
+  white-space: pre-wrap;
+}
+.cloze-inputs {
+  display: grid;
+  gap: 15px;
+}
+.cloze-inputs label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+}
+.cloze-inputs input {
+  min-width: 0;
+  flex: 1;
+  font-size: 20px;
+  padding: 13px;
+  border: 1px solid #bdccb3;
+  border-radius: 8px;
+  background: #f8faf5;
+}
+.listening-feedback {
+  margin: 25px 0;
+}
+.listening-feedback > p,
+.listening-explanation p {
+  font-size: 13px;
+}
+.listening-explanation,
+.transcript {
+  margin: 18px 0;
+  overflow-wrap: anywhere;
+}
+.transcript p {
+  white-space: pre-wrap;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  line-height: 1.9;
+}
+.error-note {
+  margin-top: 20px;
+  border-top: 1px solid #dce4d5;
+  padding-top: 18px;
+}
+.error-note legend,
+.error-note > p,
+.error-note label {
+  font-size: 12px;
+}
+.reason-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.reason-options label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.error-note textarea {
+  display: block;
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  background: #f8faf4;
+  border: 1px solid #c5d1bc;
+  border-radius: 8px;
+  padding: 10px;
+  font: inherit;
+  margin: 8px 0 12px;
+}
+.listening-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.listening-summary h3 {
+  margin: 0 0 7px;
+}
+.listening-summary p {
+  font-size: 12px;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .listening-file-row,
+  .listening-summary {
+    display: block;
+  }
+  .listening-file-row .file-button {
+    margin-bottom: 12px;
+  }
+  .audio-bindings > label {
+    grid-template-columns: 1fr;
+  }
+  .listening-filters button {
+    font-size: 12px;
+    padding: 8px 13px;
+  }
+  .listening-summary button {
+    width: 100%;
+    margin-top: 18px;
+  }
+  .playback-controls {
+    gap: 10px;
+  }
+  .playback-controls button {
+    font-size: 12px;
+  }
+  .mobile-nav {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .mobile-nav button {
+    font-size: 9px;
+  }
+  .listening-question .option {
+    font-size: 13px;
+  }
+}

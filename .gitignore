@@ -15,3 +15,12 @@ android/**/build/
 *.backup.json
 *.results.json
 *.tsbuildinfo
+*.progress.json
+*.backup.zip
+*.wav
+*.WAV
+*.ppt
+*.PPT
+*.pptx
+*.PPTX
+user-materials/
