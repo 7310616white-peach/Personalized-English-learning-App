@@ -1,4 +1,4 @@
-export type Page = 'home' | 'words' | 'mistakes' | 'transfer' | 'listening' | 'essays';
+export type Page = 'home' | 'words' | 'mistakes' | 'transfer' | 'listening' | 'essays' | 'written';
 export const pages: { id: Page; icon: string; title: string }[] = [
   { id: 'home', icon: '◷', title: '学习台' },
   { id: 'words', icon: 'Aa', title: '词汇手册' },
@@ -12,4 +12,8 @@ export const mobilePages = (['words', 'listening', 'home', 'mistakes', 'transfer
 );
 
 export const pageTitle = (page: Page) =>
-  page === 'essays' ? '范文栏' : pages.find((p) => p.id === page)?.title;
+  page === 'essays'
+    ? '范文栏'
+    : page === 'written'
+      ? '拓展练习'
+      : pages.find((p) => p.id === page)?.title;

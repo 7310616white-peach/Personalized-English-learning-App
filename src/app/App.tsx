@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState } from 'react';
+import { demoFeaturesEnabled } from './buildOptions';
 import { makeDailyPlan, type DailyTask } from '../domain/dailyPlan';
 import { localDate } from '../domain/queue';
 import type { StudyActivity } from '../domain/studyActivity';
@@ -24,6 +25,9 @@ const ListeningPage = lazy(() =>
 );
 const Transfer = lazy(() =>
   import('../features/transfer/Transfer').then((m) => ({ default: m.Transfer })),
+);
+const WrittenLibrary = lazy(() =>
+  import('../features/written/WrittenLibrary').then((m) => ({ default: m.WrittenLibrary })),
 );
 const ModelEssays = lazy(() =>
   import('../features/essays/ModelEssays').then((m) => ({ default: m.ModelEssays })),
@@ -110,9 +114,13 @@ function LearningApp() {
             {pendingLookup && (
               <p className="notice">已收到选中词「{incoming}」，保存退出练习后显示释义。</p>
             )}
-            <StudySessionView activity={session} onExit={exitPractice} />
+            <StudySessionView
+              activity={session}
+              onExit={exitPractice}
+              returnLabel={page === 'written' ? '返回题目列表' : '返回学习台'}
+            />
           </>
-        ) : experience ? (
+        ) : demoFeaturesEnabled && experience ? (
           <Suspense fallback={<p role="status">正在打开题型体验…</p>}>
             <CetExperience onExit={() => setExperience(false)} onChoice={start} />
           </Suspense>
@@ -151,9 +159,18 @@ function LearningApp() {
                   </button>
                 </div>
                 <ListeningSummary onOpen={() => setPage('listening')} mistakes />
-                <WrittenSummary onOpen={() => setExperience(true)} />
+                <WrittenSummary onOpen={() => setPage('written')} />
                 <Library packs={packs} progress={progress} mistakes />
               </>
+            )}
+            {page === 'written' && (
+              <Suspense fallback={<p role="status">正在打开拓展练习…</p>}>
+                <WrittenLibrary
+                  packs={packs}
+                  onStart={(packId, task) => setSession({ type: 'written', packId, task })}
+                  onBack={() => setPage('mistakes')}
+                />
+              </Suspense>
             )}
             {page === 'essays' && (
               <Suspense fallback={<p role="status">正在打开范文栏…</p>}>

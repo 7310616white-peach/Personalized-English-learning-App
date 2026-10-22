@@ -10,7 +10,7 @@ export default defineConfig({
   },
   projects: [{ name: 'mobile-chromium', use: { ...devices['Pixel 7'] } }],
   webServer: {
-    command: 'pnpm preview --port 4175',
+    command: 'pnpm build:demo && pnpm preview --port 4175',
     url: 'http://127.0.0.1:4175',
     reuseExistingServer: !process.env.CI,
   },

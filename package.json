@@ -1,6 +1,6 @@
 {
   "name": "english-pocket",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.25.0",
@@ -10,9 +10,11 @@
     "preview": "vite preview --host 127.0.0.1 --strictPort",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "android:sync": "pnpm build && cap sync android",
+    "android:sync": "VITE_ENABLE_DEMOS=false pnpm build && cap sync android",
     "format": "prettier --write src scripts tests docs *.ts *.json *.md .github/workflows/*.yml",
-    "format:check": "prettier --check src scripts tests docs *.ts *.json *.md .github/workflows/*.yml"
+    "format:check": "prettier --check src scripts tests docs *.ts *.json *.md .github/workflows/*.yml",
+    "build:demo": "VITE_ENABLE_DEMOS=true pnpm build",
+    "test:release": "playwright test --config playwright.release.config.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",

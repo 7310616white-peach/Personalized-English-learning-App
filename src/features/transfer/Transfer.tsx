@@ -1,5 +1,6 @@
-import { loadDailyPreview } from '../../data/dailyPreview';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
+import { demoFeaturesEnabled } from '../../app/buildOptions';
+const DemoImports = lazy(() => import('../demo/DemoImports'));
 import { ZodError } from 'zod';
 import { backup, readJson, results } from '../../data/transfer';
 import { importPack } from '../../data/learning';
@@ -11,7 +12,6 @@ import {
 } from '../../data/listening/archive';
 import { saveBinaryFile } from '../../platform/binaryFiles';
 import { saveFile } from '../../platform/files';
-import example from '../../../public/examples/day-001.json';
 import { PhoneGuide } from './PhoneGuide';
 import { previewIncoming, commitIncoming } from '../../data/intake';
 
@@ -137,31 +137,11 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
               校验并导入粘贴的 JSON
             </button>
           </details>
-          <button
-            className="secondary"
-            onClick={() =>
-              run(async () => {
-                await loadDailyPreview();
-                setMessage('每日流程预览已载入，回到学习台试试六项任务。');
-              })
-            }
-          >
-            载入每日六项流程预览（含音频）
-          </button>
-          <button
-            className="secondary"
-            onClick={() =>
-              run(async () => {
-                await importPack(example);
-                setMessage('示例题包已导入，可以开始练习。');
-              })
-            }
-          >
-            载入示例：10 个四级词 + 2 个科研词
-          </button>
-          <a href="/examples/day-001.json" download>
-            下载题包格式示例 ↗
-          </a>
+          {demoFeaturesEnabled && (
+            <Suspense fallback={null}>
+              <DemoImports run={run} setMessage={setMessage} />
+            </Suspense>
+          )}
         </div>
         <div className="card">
           <span className="step-number">02</span>

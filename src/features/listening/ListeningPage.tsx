@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
+import { demoFeaturesEnabled } from '../../app/buildOptions';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../../data/db';
 import { listeningKey, type ListeningSet, type MediaRecord } from '../../domain/listening';
 import { ListeningHistory } from './ListeningHistory';
 import { ListeningImport } from './ListeningImport';
 import { ListeningSession } from './ListeningSession';
-import { ListeningDemo } from './ListeningDemo';
+const ListeningDemo = lazy(() =>
+  import('./ListeningDemo').then((m) => ({ default: m.ListeningDemo })),
+);
 
 export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boolean) => void }) {
   const data = useLiveQuery(
@@ -70,7 +73,11 @@ export function ListeningPage({ onActiveChange }: { onActiveChange: (active: boo
         <span className="tag">到期 {due.length} 题</span>
       </div>
       <p>选择一组开始练习。自己的音频可在页面底部导入，每日学习包在“我的”中导入。</p>
-      <ListeningDemo />
+      {demoFeaturesEnabled && (
+        <Suspense fallback={null}>
+          <ListeningDemo />
+        </Suspense>
+      )}
       <ListeningHistory />
       <div className="listening-filters" role="group" aria-label="听力练习筛选">
         {(

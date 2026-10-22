@@ -1,3 +1,4 @@
+import { demoFeaturesEnabled } from '../../app/buildOptions';
 import type { Pack } from '../../domain/models';
 import type { DailyTask, makeDailyPlan } from '../../domain/dailyPlan';
 import { cetLabels, cetTypesForDate } from '../../domain/daily';
@@ -76,9 +77,9 @@ export function Dashboard({
       ) : (
         <section className="card onboarding">
           <h2>把今天的英语，装进口袋。</h2>
-          <p>在“我的”导入每日英语生成的题包，或者先载入预览，试一遍这六项流程。</p>
+          <p>在“我的”导入每日英语生成的题包，开始今天的学习。</p>
           <button className="primary" onClick={() => onNavigate('transfer')}>
-            导入或载入示例 →
+            {demoFeaturesEnabled ? '导入或载入示例 →' : '导入今日题包 →'}
           </button>
         </section>
       )}
@@ -113,13 +114,15 @@ export function Dashboard({
           打开范文栏 →
         </button>
       </section>
-      <details className="card preview-entry">
-        <summary>预览与题型演示（验收后移除入口）</summary>
-        <p>正式每日任务按上方安排。这里保留全题型演示，方便本轮检查。</p>
-        <button className="secondary" onClick={onExperience}>
-          打开四级题型体验 →
-        </button>
-      </details>
+      {demoFeaturesEnabled && (
+        <details className="card preview-entry">
+          <summary>预览与题型演示（验收后移除入口）</summary>
+          <p>正式每日任务按上方安排。这里保留全题型演示，方便本轮检查。</p>
+          <button className="secondary" onClick={onExperience}>
+            打开四级题型体验 →
+          </button>
+        </details>
+      )}
       <p className="footnote">
         开始按钮会顺着已保存的完成记录往下走。学习统计、每日提示词和备份都在“我的”。
       </p>

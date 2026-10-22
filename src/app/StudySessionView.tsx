@@ -10,9 +10,11 @@ const ListeningSession = lazy(() =>
 export function StudySessionView({
   activity,
   onExit,
+  returnLabel = '返回学习台',
 }: {
   activity: StudyActivity;
   onExit: () => void;
+  returnLabel?: string;
 }) {
   if (activity.type === 'exercise')
     return <Practice queue={activity.queue} title={activity.title} onExit={onExit} />;
@@ -22,7 +24,7 @@ export function StudySessionView({
         <WrittenSession
           packId={activity.packId}
           task={activity.task}
-          returnLabel="返回学习台"
+          returnLabel={returnLabel}
           onExit={onExit}
         />
       ) : (

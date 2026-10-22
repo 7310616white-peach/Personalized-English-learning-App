@@ -25,3 +25,5 @@ android/**/build/
 *.PPTX
 user-materials/
 !public/examples/listening-demo/*.wav
+
+private-signing/
