@@ -79,8 +79,6 @@ run(values.java, [
   'shici-release',
   '--ks-pass',
   'file:' + password,
-  '--key-pass',
-  'file:' + password,
   '--v2-signing-enabled',
   'true',
   '--v3-signing-enabled',
