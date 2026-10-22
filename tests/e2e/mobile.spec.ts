@@ -1,3 +1,4 @@
+import { startSpelling } from '../helpers/wordStudy';
 import type { Page } from '@playwright/test';
 import { expect, test } from './fixtures';
 
@@ -26,7 +27,7 @@ async function words(page: Page) {
   await page.getByRole('button', { name: '我的', exact: true }).click();
   await page.getByRole('button', { name: '载入示例：10 个四级词 + 2 个科研词' }).click();
   await page.getByRole('button', { name: '学习台', exact: true }).click();
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await startSpelling(page);
   await expect(page.getByLabel('你的拼写')).toBeEnabled();
 }
 test('页面左右滑均保存退出，输入控件和纵向滚动不误触', async ({ page }) => {
@@ -37,12 +38,12 @@ test('页面左右滑均保存退出，输入控件和纵向滚动不误触', as
   await swipe(page, '.answer-card', 120, 170);
   await expect(page.getByLabel('你的拼写')).toBeVisible();
   await swipe(page, '.answer-card', -150);
-  await expect(page.getByRole('button', { name: '开始拼写 →' })).toBeVisible();
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await expect(page.getByRole('button', { name: '开始学习 →' })).toBeVisible();
+  await startSpelling(page);
   await expect(page.getByLabel('你的拼写')).toHaveValue('appr');
   await page.getByLabel('你的拼写').fill('appro');
   await swipe(page, '.answer-card', 150);
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await startSpelling(page);
   await expect(page.getByLabel('你的拼写')).toHaveValue('appro');
 });
 test('写入失败时滑动不能离开答题，重试成功后才退出', async ({ page }) => {
@@ -69,7 +70,7 @@ test('写入失败时滑动不能离开答题，重试成功后才退出', async
     (window as unknown as { restoreDraftWrites(): void }).restoreDraftWrites(),
   );
   await swipe(page, '.answer-card', 150);
-  await expect(page.getByRole('button', { name: '开始拼写 →' })).toBeVisible();
+  await expect(page.getByRole('button', { name: '开始学习 →' })).toBeVisible();
 });
 test('听力导入在任务最底部，题后原文可点词，水平滑动恢复草稿', async ({ page }) => {
   await page.goto('/');

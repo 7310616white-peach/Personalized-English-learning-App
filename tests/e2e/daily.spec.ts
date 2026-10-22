@@ -1,3 +1,4 @@
+import { startSpelling } from '../helpers/wordStudy';
 import { expect, test } from './fixtures';
 import type { Page } from '@playwright/test';
 async function complete(page: Page, count: number, spelling = false) {
@@ -23,14 +24,14 @@ test('六项完成后高亮依次顺延，复习/听力/双阅读/文献/一句�
   await page.getByRole('button', { name: '我的', exact: true }).click();
   await page.getByRole('button', { name: '载入示例：10 个四级词 + 2 个科研词' }).click();
   await page.getByRole('button', { name: '学习台', exact: true }).click();
-  await page.getByRole('button', { name: '开始拼写 →', exact: true }).click();
+  await startSpelling(page);
   await page.getByLabel('你的拼写').fill('practice');
   await page.getByRole('button', { name: '检查答案', exact: true }).click();
   await page.getByRole('button', { name: '暂时退出', exact: true }).click();
   await page.clock.setFixedTime(new Date('2026-10-22T02:00:00Z'));
   await preview(page);
   await expect(page.locator('.main-task')).toHaveAttribute('data-task', 'words');
-  await page.getByRole('button', { name: '开始拼写 →', exact: true }).click();
+  await startSpelling(page);
   await complete(page, 12, true);
   await expect(page.locator('.main-task')).toHaveAttribute('data-task', 'review');
   await page.getByRole('button', { name: '开始复习 →', exact: true }).click();

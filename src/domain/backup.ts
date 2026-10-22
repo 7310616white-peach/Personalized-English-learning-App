@@ -107,6 +107,8 @@ export function validateBackup(input: unknown) {
       throw new Error('备份含有无法关联的答题记录');
   }
   if (data.drafts.some((d) => !items.has(d.key))) throw new Error('备份含有无法关联的草稿');
+  if (data.drafts.some((d) => d.wordStudy && items.get(d.key)?.kind !== 'spelling'))
+    throw new Error('词汇学习草稿只能关联单词');
   if (data.version === 1) {
     if (data.packs.some((p) => p.schemaVersion !== 1)) throw new Error('v1 备份缺少听力资源数据');
     return data;

@@ -68,10 +68,10 @@ export function makeDailyPlan(data: PlanData, pack: Pack | undefined, now: Date)
     ? {
         id: 'words',
         title: '今日词汇',
-        detail: `10个四级词＋2个科研词 · 还有 ${queues.words.length} 个新词`,
+        detail: `先学中文释义，再拼写巩固 · 还有 ${queues.words.length} 个新词（10＋2）`,
         status: 'ready',
-        actionLabel: '开始拼写',
-        activity: { type: 'exercise', title: '今日单词拼写', queue: queues.words },
+        actionLabel: '开始学习',
+        activity: { type: 'word-study', queue: queues.words },
       }
     : queues.introduced
       ? {

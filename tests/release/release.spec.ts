@@ -1,3 +1,4 @@
+import { startSpelling } from '../helpers/wordStudy';
 import { expect, test } from '@playwright/test';
 test('正式界面不展示演示/载入入口，正常题包导入和记录保存继续可用', async ({ page }) => {
   await page.clock.setFixedTime(new Date('2026-10-22T02:00:00Z'));
@@ -9,7 +10,7 @@ test('正式界面不展示演示/载入入口，正常题包导入和记录保�
   await page.getByLabel('选择题包 JSON').setInputFiles('public/examples/day-001.json');
   await expect(page.getByRole('status').filter({ hasText: '已导入' })).toBeVisible();
   await page.getByRole('button', { name: '学习台', exact: true }).click();
-  await page.getByRole('button', { name: '开始拼写 →', exact: true }).click();
+  await startSpelling(page);
   await page.getByLabel('你的拼写').fill('approach');
   await page.getByRole('button', { name: '检查答案', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: '回答正确' })).toBeVisible();

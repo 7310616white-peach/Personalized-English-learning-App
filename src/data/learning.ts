@@ -4,6 +4,14 @@ import { db, type LearningDB } from './db';
 import { grade } from '../domain/grading';
 import { nextSchedule } from '../domain/scheduler';
 import { exercises, packSchema, type Exercise } from '../domain/models';
+/** Keep preparation metadata when the learner starts typing a spelling answer. */
+export async function saveAnswerDraft(key: string, answer: string, store: LearningDB = db) {
+  return store.transaction('rw', store.drafts, async () => {
+    const draft = await store.drafts.get(key);
+    await store.drafts.put({ ...draft, key, answer });
+  });
+}
+
 export async function importPack(input: unknown, store: LearningDB = db) {
   const pack = packSchema.parse(input);
   if (pack.id === vocabularyPackId) throw new Error('此题包 ID 为个人生词本保留，请使用其他 ID');

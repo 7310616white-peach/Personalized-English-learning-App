@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Attempt, Exercise } from '../../domain/models';
 import { db } from '../../data/db';
-import { submitAnswer } from '../../data/learning';
+import { submitAnswer, saveAnswerDraft } from '../../data/learning';
 
 /** Coordinates serialized draft writes and idempotent answer submission. */
 export function useAnswerSession(exercise: Exercise, onNext: () => void, onExit: () => void) {
@@ -50,7 +50,7 @@ export function useAnswerSession(exercise: Exercise, onNext: () => void, onExit:
     // Serialize writes: a slower older input must never overwrite a newer draft.
     writes.current = writes.current
       .catch(() => undefined)
-      .then(() => db.drafts.put({ key: exercise.key, answer: value }));
+      .then(() => saveAnswerDraft(exercise.key, value));
     writes.current
       .then(() => {
         if (alive.current && currentRevision === revision.current) setSaveStatus('草稿已保存');
@@ -67,7 +67,7 @@ export function useAnswerSession(exercise: Exercise, onNext: () => void, onExit:
     try {
       await writes.current;
     } catch {
-      writes.current = db.drafts.put({ key: exercise.key, answer });
+      writes.current = saveAnswerDraft(exercise.key, answer);
       await writes.current;
     }
   }

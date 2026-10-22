@@ -149,7 +149,16 @@ export const attemptSchema = z
     createdAt: z.string().datetime(),
   })
   .strict();
-export const draftSchema = z.object({ key: z.string(), answer: z.string().max(10000) }).strict();
+export const draftSchema = z
+  .object({
+    key: z.string(),
+    answer: z.string().max(10000),
+    wordStudy: z
+      .object({ version: z.literal(1), viewedAt: z.string().datetime() })
+      .strict()
+      .optional(),
+  })
+  .strict();
 export type Progress = z.infer<typeof progressSchema>;
 export type Attempt = z.infer<typeof attemptSchema>;
 export type Draft = z.infer<typeof draftSchema>;

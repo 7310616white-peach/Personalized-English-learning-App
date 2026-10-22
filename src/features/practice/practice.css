@@ -3,6 +3,29 @@
   margin: auto;
 }
 
+.word-study-steps {
+  color: var(--accent);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.word-study-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 26px 0 14px;
+}
+
+.word-study-actions button {
+  flex: 1 1 140px;
+}
+
+.word-study .word-details > p:first-of-type {
+  font-size: 20px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
 .practice-wrap progress {
   display: block;
   width: 100%;

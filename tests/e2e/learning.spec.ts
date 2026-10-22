@@ -1,3 +1,4 @@
+import { startSpelling } from '../helpers/wordStudy';
 import type { Page } from '@playwright/test';
 import { expect, test } from './fixtures';
 import { readFile } from 'node:fs/promises';
@@ -12,14 +13,14 @@ async function loadSample(page: Page) {
 
 test('手机端：草稿跨刷新、拼写反馈、连续答题、错题和选择题', async ({ page }) => {
   await loadSample(page);
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await startSpelling(page);
   const input = page.getByRole('textbox', { name: '你的拼写' });
   await expect(input).toHaveAttribute('autocapitalize', 'none');
   await expect(input).toHaveAttribute('spellcheck', 'false');
   await input.fill('appr');
   await expect(page.getByRole('status')).toContainText('草稿已保存');
   await page.reload();
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await startSpelling(page);
   await expect(input).toHaveValue('appr');
   await input.fill('aproach');
   await input.press('Enter');
@@ -54,7 +55,7 @@ test('文件导入、结果导出、备份到全新学习库的恢复', async ({
   await page.getByLabel('选择题包 JSON').setInputFiles('public/examples/day-001.json');
   await expect(page.getByRole('alert')).toContainText('已存在');
   await page.getByRole('button', { name: '学习台', exact: true }).click();
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await startSpelling(page);
   await page.getByLabel('你的拼写').fill('approach');
   await page.getByRole('button', { name: '检查答案' }).click();
   await expect(page.getByRole('status').filter({ hasText: '回答正确' })).toBeVisible();
@@ -90,7 +91,7 @@ test('首次缓存完成后可断网重开并作答', async ({ page, context }) 
   });
   await context.setOffline(true);
   await page.reload();
-  await page.getByRole('button', { name: '开始拼写 →' }).click();
+  await startSpelling(page);
   await page.getByLabel('你的拼写').fill('approach');
   await page.getByRole('button', { name: '检查答案' }).click();
   await expect(page.getByRole('status').filter({ hasText: '回答正确' })).toBeVisible();

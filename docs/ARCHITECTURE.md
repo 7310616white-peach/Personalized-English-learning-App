@@ -156,3 +156,14 @@ Dashboard与DailyTaskCard展示顺延状态；StudySessionView通过StudyActivit
 usePlatformInbox集中原生桥接，不让App继续堆积平台副作用。
 范文随Pack.daily保存，不新增数据库；每日完成从保存的attempt推导，不引入第二份完成标记。
 完整规则见[DAILY_WORKFLOW.md](DAILY_WORKFLOW.md)。
+
+## 新词先学后练
+
+每日新词使用独立的word-study活动，WordStudySession与useWordStudy负责词义阶段，
+过完本组后复用原Practice拼写界面。复习、错题和阅读入口仍直接练习。
+data/wordStudy检查词汇与当前题包一致，在原drafts表保存可选wordStudy元数据
+（version=1、viewedAt）；不创建答题记录或改动progress，不需要数据库结构升级。
+按词确认成功后才前进，重开从第一个未确认的词继续；已过完直接提示进入拼写。
+saveAnswerDraft在事务中合并已有学习元数据；拼写提交沿用原事务和草稿清理规则。
+备份携带学习草稿，继续支持旧v1/v2/v3备份。新增元数据带自身版本，关联必须为单词；
+含此元数据的备份需用1.1.2及以上应用恢复，旧应用会在校验时拒绝未知字段。
