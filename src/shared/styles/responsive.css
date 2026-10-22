@@ -113,17 +113,17 @@
     font-size: 11px;
   }
   .task-grid {
+    grid-template-columns: minmax(0, 1fr);
     gap: 14px;
   }
   .card {
     padding: 21px;
     border-radius: 13px;
   }
-  .main-task {
-    grid-column: span 2;
-  }
+  .task-grid > .card,
   .task-grid > .card:not(.main-task) {
-    grid-column: span 2;
+    grid-column: 1 / -1;
+    min-width: 0;
   }
   .main-task h2 {
     font-size: 22px;
