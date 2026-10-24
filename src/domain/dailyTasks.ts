@@ -1,6 +1,6 @@
 import { exercises, type Pack, type Exercise } from './models';
 import { localDate } from './queue';
-import { cetLabels, cetTypesForDate } from './daily';
+import { cetLabels, cetTypesForPack } from './daily';
 import { writtenKey, type WrittenTask } from './written';
 import type { DailyTask, PlanData } from './dailyPlan';
 
@@ -14,11 +14,12 @@ export function missingTask(id: DailyTask['id'], title: string, detail: string):
     destination: 'transfer',
   };
 }
-export function taskBuilder(data: PlanData, pack: Pack | undefined, now: Date) {
-  const onDay = (createdAt: string) => localDate(new Date(createdAt)) === localDate(now);
-  const todayKeys = new Set(data.attempts.filter((a) => onDay(a.createdAt)).map((a) => a.key));
-  const todayWritten = new Set(
-    data.writtenAttempts.filter((a) => onDay(a.createdAt)).map((a) => a.key),
+export function taskBuilder(data: PlanData, pack: Pack | undefined) {
+  const completedKeys = new Set(
+    data.attempts.filter((a) => a.packId === pack?.id).map((a) => a.key),
+  );
+  const completedWritten = new Set(
+    data.writtenAttempts.filter((a) => a.packId === pack?.id).map((a) => a.key),
   );
   return {
     exercise(
@@ -29,7 +30,7 @@ export function taskBuilder(data: PlanData, pack: Pack | undefined, now: Date) {
       label: string,
     ): DailyTask {
       if (!queue.length) return missingTask(id, title, '题包还没有这项内容，请在“我的”导入。');
-      const pending = queue.filter((e) => !todayKeys.has(e.key));
+      const pending = queue.filter((e) => !completedKeys.has(e.key));
       return {
         id,
         title,
@@ -50,7 +51,7 @@ export function taskBuilder(data: PlanData, pack: Pack | undefined, now: Date) {
             id,
             title,
             detail,
-            status: todayWritten.has(writtenKey(pack.id, task.id)) ? 'done' : 'ready',
+            status: completedWritten.has(writtenKey(pack.id, task.id)) ? 'done' : 'ready',
             actionLabel: '开始' + title,
             activity: { type: 'written', packId: pack.id, task },
           }
@@ -59,9 +60,10 @@ export function taskBuilder(data: PlanData, pack: Pack | undefined, now: Date) {
   };
 }
 export function dailyCet(data: PlanData, pack: Pack | undefined, now: Date): DailyTask {
-  const types = cetTypesForDate(localDate(now));
+  const types = cetTypesForPack(pack, localDate(now));
   const daily = pack?.schemaVersion === 3 ? pack.daily : undefined;
-  const build = taskBuilder(data, pack, now);
+  const build = taskBuilder(data, pack);
+  if (!types.length) return missingTask('cet', '四级习题每日练', '本题包没有安排四级任务。');
   const all = pack ? exercises(pack) : [];
   const parts = types.map((type) => {
     const assignment = daily?.cet.find((c) => c.type === type);
@@ -90,7 +92,7 @@ export function dailyCet(data: PlanData, pack: Pack | undefined, now: Date): Dai
       'cet',
       cetLabels[type],
       task,
-      type === 'translation' ? '每三天一次段落翻译' : '今天的阅读搭配',
+      type === 'translation' ? '本题包的段落翻译' : '本题包的阅读搭配',
     );
   });
   const next = parts.find((p) => p.status !== 'done') ?? parts[0];
@@ -98,7 +100,7 @@ export function dailyCet(data: PlanData, pack: Pack | undefined, now: Date): Dai
     ...next,
     id: 'cet',
     title: '四级习题每日练',
-    detail: `今天：${types.map((t) => cetLabels[t]).join('＋')} · 阅读三选二${types.includes('translation') ? '，加一次段落翻译' : ''}`,
+    detail: `本题包：${types.map((t) => cetLabels[t]).join('＋')}`,
     status: parts.every((p) => p.status === 'done') ? 'done' : next.status,
     parts,
   };

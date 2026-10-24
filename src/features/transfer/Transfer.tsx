@@ -3,7 +3,6 @@ import { demoFeaturesEnabled } from '../../app/buildOptions';
 const DemoImports = lazy(() => import('../demo/DemoImports'));
 import { ZodError } from 'zod';
 import { backup, readJson, results } from '../../data/transfer';
-import { importPack } from '../../data/learning';
 import {
   completeBackup,
   readBackupFile,
@@ -13,18 +12,26 @@ import {
 import { saveBinaryFile } from '../../platform/binaryFiles';
 import { saveFile } from '../../platform/files';
 import { PhoneGuide } from './PhoneGuide';
-import { previewIncoming, commitIncoming } from '../../data/intake';
+import { previewIncoming, commitIncoming, commitPack } from '../../data/intake';
 
-export function Transfer({ onRestored }: { onRestored: () => void }) {
+export function Transfer({
+  onRestored,
+  onOpenPack,
+}: {
+  onRestored: () => void;
+  onOpenPack: (id: string) => void;
+}) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [pending, setPending] = useState<PendingBackup>();
   const [paste, setPaste] = useState('');
+  const [importedPackId, setImportedPackId] = useState<string>();
   async function run(action: () => Promise<void>) {
     setBusy(true);
     setMessage('');
     setError('');
+    setImportedPackId(undefined);
     try {
       await action();
     } catch (e) {
@@ -106,10 +113,9 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
                 e.target.value = '';
                 if (file)
                   void run(async () => {
-                    const pack = await importPack(await readJson(file));
-                    setMessage(
-                      `已导入「${pack.title}」：${pack.words.length} 个单词，${pack.choices.length} 道选择题。`,
-                    );
+                    const result = await commitPack(await readJson(file));
+                    setMessage(result.message);
+                    setImportedPackId(result.packId);
                   });
               }}
             />
@@ -129,7 +135,9 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
               disabled={!paste.trim()}
               onClick={() =>
                 run(async () => {
-                  setMessage(await commitIncoming(previewIncoming(paste)));
+                  const result = await commitIncoming(previewIncoming(paste));
+                  setMessage(result.message);
+                  setImportedPackId(result.packId);
                   setPaste('');
                 })
               }
@@ -137,6 +145,11 @@ export function Transfer({ onRestored }: { onRestored: () => void }) {
               校验并导入粘贴的 JSON
             </button>
           </details>
+          {importedPackId && (
+            <button className="primary" onClick={() => onOpenPack(importedPackId)}>
+              继续学习此题包 →
+            </button>
+          )}
           {demoFeaturesEnabled && (
             <Suspense fallback={null}>
               <DemoImports run={run} setMessage={setMessage} />

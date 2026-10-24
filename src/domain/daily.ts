@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { Pack } from './models';
 const id = z.string().regex(/^[a-zA-Z0-9_-]{1,80}$/);
 const text = z.string().trim().min(1).max(30000);
 export const readingTypes = ['choice', 'word-bank', 'matching'] as const;
@@ -21,6 +22,13 @@ export function cetTypesForDate(date: string): CetType[] {
     ['word-bank', 'matching'],
   ];
   return [...pairs[day], ...(day === 2 ? ['translation' as const] : [])];
+}
+/** Explicit pack assignments win; older packs fall back to their own local calendar date. */
+export function cetTypesForPack(pack: Pack | undefined, today: string): CetType[] {
+  if (pack && pack.schemaVersion !== 3) return pack.choices.length ? ['choice'] : [];
+  return pack?.schemaVersion === 3 && pack.daily
+    ? pack.daily.cet.map((task) => task.type)
+    : cetTypesForDate(pack?.date ?? today);
 }
 export const modelEssaySchema = z
   .object({ id, title: text, topic: text, body: text, notes: text, source: text })

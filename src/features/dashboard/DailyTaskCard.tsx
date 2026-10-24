@@ -33,7 +33,7 @@ export function DailyTaskCard({
       <h2>{task.title}</h2>
       <p className="daily-detail">{task.detail}</p>
       {task.parts && (
-        <div className="daily-parts" aria-label="今日四级安排">
+        <div className="daily-parts" aria-label="题包四级安排">
           {task.parts.map((part) => (
             <button className="text-button" key={part.title} onClick={() => onStart(part)}>
               {part.status === 'done' ? '✓ ' : ''}

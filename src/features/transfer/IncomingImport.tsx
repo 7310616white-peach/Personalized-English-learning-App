@@ -4,11 +4,20 @@ import { previewIncoming, commitIncoming } from '../../data/intake';
 import type { IncomingFile } from '../../platform/incomingFiles';
 import { useBackAction } from '../../shared/useBackAction';
 
-export function IncomingImport({ file, onClose }: { file: IncomingFile; onClose: () => void }) {
+export function IncomingImport({
+  file,
+  onClose,
+  onOpenPack,
+}: {
+  file: IncomingFile;
+  onClose: () => void;
+  onOpenPack: (id: string) => void;
+}) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState('');
   const [error, setError] = useState('');
+  const [packId, setPackId] = useState<string>();
   const [preview] = useState(() => {
     try {
       if (file.error) throw new Error(file.error);
@@ -63,7 +72,9 @@ export function IncomingImport({ file, onClose }: { file: IncomingFile; onClose:
                 setBusy(true);
                 setError('');
                 try {
-                  setStatus(await commitIncoming(preview.data!));
+                  const result = await commitIncoming(preview.data!);
+                  setStatus(result.message);
+                  setPackId(result.packId);
                 } catch (e) {
                   setError(e instanceof Error ? e.message : '导入失败，请重试');
                 } finally {
@@ -82,6 +93,11 @@ export function IncomingImport({ file, onClose }: { file: IncomingFile; onClose:
         </p>
       )}
       {status && <p role="status">{status}</p>}
+      {packId && (
+        <button className="primary" disabled={busy} onClick={() => onOpenPack(packId)}>
+          继续学习此题包 →
+        </button>
+      )}
       <button className="secondary" disabled={busy} onClick={onClose}>
         {status ? '完成' : '取消'}
       </button>

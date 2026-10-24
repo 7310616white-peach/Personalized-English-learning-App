@@ -36,8 +36,18 @@ export function useLearningData() {
 export function useClock() {
   const [now, setNow] = useState(new Date());
   useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 30000);
-    return () => clearInterval(timer);
+    const refresh = () => setNow(new Date());
+    const visible = () => {
+      if (document.visibilityState === 'visible') refresh();
+    };
+    const timer = setInterval(refresh, 30000);
+    window.addEventListener('focus', refresh);
+    document.addEventListener('visibilitychange', visible);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('focus', refresh);
+      document.removeEventListener('visibilitychange', visible);
+    };
   }, []);
   return { now, refresh: () => setNow(new Date()) };
 }

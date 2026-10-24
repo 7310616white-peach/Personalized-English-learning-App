@@ -15,10 +15,10 @@ export function WrittenSummary({ onOpen }: { onOpen: () => void }) {
   const mistakes = progress?.filter((p) => p.errors > 0) ?? [];
   const due = progress?.filter((p) => p.due <= new Date().toISOString()) ?? [];
   const pending = attempts?.filter((a) => a.correct === null).length ?? 0;
-  if (!mistakes.length && !pending && !due.length) return null;
   return (
     <section className="card cet-entry">
-      <h3>选词、匹配与写作记录</h3>
+      <h3>拓展练习</h3>
+      <p>查看各日期题包中的选词填空、信息匹配、翻译和写作题。</p>
       <p>
         {mistakes.length} 篇历史错题 · {due.length} 篇到期复习 · {pending} 次翻译/作文待批改
       </p>

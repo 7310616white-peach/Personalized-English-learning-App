@@ -4,6 +4,7 @@ import { db, type LearningDB } from './db';
 import { grade } from '../domain/grading';
 import { nextSchedule } from '../domain/scheduler';
 import { exercises, packSchema, type Exercise } from '../domain/models';
+import { canonicalJson } from '../domain/packIdentity';
 /** Keep preparation metadata when the learner starts typing a spelling answer. */
 export async function saveAnswerDraft(key: string, answer: string, store: LearningDB = db) {
   return store.transaction('rw', store.drafts, async () => {
@@ -13,21 +14,30 @@ export async function saveAnswerDraft(key: string, answer: string, store: Learni
 }
 
 export async function importPack(input: unknown, store: LearningDB = db) {
+  return (await importPackWithStatus(input, store)).pack;
+}
+export async function importPackWithStatus(input: unknown, store: LearningDB = db) {
   const pack = packSchema.parse(input);
   if (pack.id === vocabularyPackId) throw new Error('此题包 ID 为个人生词本保留，请使用其他 ID');
-  await store.transaction(
+  return store.transaction(
     'rw',
     store.packs,
     store.listeningLibraries,
     store.listeningQuestions,
     async () => {
-      if (await store.packs.get(pack.id))
-        throw new Error('这个题包 ID 已存在。为保护学习记录，请为新题包使用新 ID。');
+      const existing = await store.packs.get(pack.id);
+      if (existing) {
+        if (canonicalJson(packSchema.parse(existing)) !== canonicalJson(pack))
+          throw new Error(
+            '题包 ID 已存在，但内容冲突。未覆盖原题包，答案、草稿和复习进度均已保留。请先核对文件；内容更新需另行设计明确的版本迁移。',
+          );
+        return { pack: existing, status: 'existing' as const };
+      }
       await registerListeningQuestions(pack, store);
       await store.packs.add(pack);
+      return { pack, status: 'imported' as const };
     },
   );
-  return pack;
 }
 export async function submitAnswer(
   exercise: Exercise,

@@ -62,7 +62,7 @@ function LearningApp() {
   const { incoming, pendingLookup, externalLookup, nativeError, files, dismissFile } =
     usePlatformInbox(!!session || listeningActive || experience);
   useBackAction(page !== 'home' && !session && !listeningActive && !experience, () =>
-    setPage('home'),
+    setPage(page === 'written' ? 'mistakes' : 'home'),
   );
   if (!data)
     return (
@@ -89,6 +89,11 @@ function LearningApp() {
     setSession(undefined);
     refresh();
   }
+  function openPack(id: string) {
+    setPackId(id);
+    setPage('home');
+    refresh();
+  }
   return (
     <ReadingProvider packs={packs} external={externalLookup}>
       <AppShell
@@ -106,7 +111,15 @@ function LearningApp() {
         )}
         {files[0] && !session && !listeningActive && !experience && (
           <Suspense fallback={<p role="status">正在检查分享的文件…</p>}>
-            <IncomingImport key={files[0].token} file={files[0]} onClose={dismissFile} />
+            <IncomingImport
+              key={files[0].token}
+              file={files[0]}
+              onClose={dismissFile}
+              onOpenPack={(id) => {
+                openPack(id);
+                dismissFile();
+              }}
+            />
           </Suspense>
         )}
         {session ? (
@@ -167,6 +180,8 @@ function LearningApp() {
               <Suspense fallback={<p role="status">正在打开拓展练习…</p>}>
                 <WrittenLibrary
                   packs={packs}
+                  selectedPackId={packId}
+                  onPackChange={setPackId}
                   onStart={(packId, task) => setSession({ type: 'written', packId, task })}
                   onBack={() => setPage('mistakes')}
                 />
@@ -181,6 +196,7 @@ function LearningApp() {
               <Suspense fallback={<p role="status">正在打开我的…</p>}>
                 <MyProgress data={data} onMistakes={() => setPage('mistakes')} />
                 <Transfer
+                  onOpenPack={openPack}
                   onRestored={() => {
                     setPackId('');
                     refresh();

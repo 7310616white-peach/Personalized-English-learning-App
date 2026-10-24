@@ -29,7 +29,9 @@ export function makeQueues(
       (e) =>
         e.kind === 'spelling' && (e.item.level === '科研英语') === research && newToday.has(e.key),
     ).length;
-  const available = all.filter((e) => e.packId === packId && !learned.has(e.key));
+  const available = all.filter(
+    (e) => e.packId === packId && !learned.has(e.key) && !first.has(e.key),
+  );
   const words: Exercise[] = [
     ...available
       .filter((e) => e.kind === 'spelling' && e.item.level !== '科研英语')

@@ -73,7 +73,7 @@ it('v2语境词释义可查询、备份恢复；旧v1和旧词汇记录仍可读
       dictionaryWords(await target.packs.toArray(), []).find((w) => w.term === 'findings')?.meaning,
     ).toBe('n. 研究发现');
     expect(previewIncoming(JSON.stringify(sample)).kind).toBe('pack');
-    await expect(commitIncoming(preview, store)).rejects.toThrow('已存在');
+    expect((await commitIncoming(preview, store)).message).toContain('该题包已导入');
     expect(await store.packs.count()).toBe(1);
   } finally {
     await store.delete();

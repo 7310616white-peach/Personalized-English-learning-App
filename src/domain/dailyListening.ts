@@ -5,7 +5,7 @@ import { listeningKey } from './listening';
 
 /** Prefer actual campus material; missing audio is an explicit prerequisite, never a fake completion. */
 export function dailyListening(data: PlanData, packId: string, now: Date): DailyTask {
-  const day = localDate(now);
+  const day = data.packs.find((p) => p.id === packId)?.date ?? localDate(now);
   const candidates = data.packs
     .filter((p) => p.date <= day)
     .flatMap((p) =>
@@ -51,7 +51,10 @@ export function dailyListening(data: PlanData, packId: string, now: Date): Daily
     chosen &&
     data.listeningAttempts.some(
       (a) =>
-        localDate(new Date(a.createdAt)) === day &&
+        a.packId === chosen.packId &&
+        a.setId === chosen.set.id &&
+        // Supplementary practice from another pack remains a real-day activity.
+        (chosen.packId === packId || localDate(new Date(a.createdAt)) === localDate(now)) &&
         a.libraryId === chosen.set.libraryId &&
         a.trackId === chosen.set.trackId &&
         chosen.set.questions.every((q) => a.questions.some((x) => x.id === q.id)),

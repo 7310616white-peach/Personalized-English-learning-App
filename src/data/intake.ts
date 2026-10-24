@@ -1,6 +1,6 @@
 import { packSchema } from '../domain/models';
 import { listeningLibrarySchema } from '../domain/listening';
-import { importPack } from './learning';
+import { importPackWithStatus } from './learning';
 import { importListeningLibrary } from './listening/materials';
 import { db, type LearningDB } from './db';
 
@@ -26,8 +26,20 @@ export type IncomingPreview = ReturnType<typeof previewIncoming>;
 export async function commitIncoming(preview: IncomingPreview, store: LearningDB = db) {
   if (preview.kind === 'library') {
     const result = await importListeningLibrary(preview.value, {}, store);
-    return `材料清单已导入：${result.bound} 段已绑定，${result.missing} 段待补绑。请到听力训练底部选择对应 WAV。`;
+    return {
+      message: `材料清单已导入：${result.bound} 段已绑定，${result.missing} 段待补绑。请到听力训练底部选择对应 WAV。`,
+      packId: undefined,
+    };
   }
-  const pack = await importPack(preview.value, store);
-  return `已导入「${pack.title}」：${pack.words.length} 个单词，${pack.choices.length} 道选择，${pack.schemaVersion !== 1 ? pack.listening.length : 0} 组听力${pack.schemaVersion === 3 ? `，${pack.written.length} 篇拓展题型` : ''}。`;
+  return commitPack(preview.value, store);
+}
+export async function commitPack(input: unknown, store: LearningDB = db) {
+  const { pack, status } = await importPackWithStatus(input, store);
+  return {
+    packId: pack.id,
+    message:
+      status === 'existing'
+        ? `该题包已导入「${pack.title}」。可直接切换继续学习，原有记录已保留。`
+        : `已导入「${pack.title}」：${pack.words.length} 个单词，${pack.choices.length} 道选择，${pack.schemaVersion !== 1 ? pack.listening.length : 0} 组听力${pack.schemaVersion === 3 ? `，${pack.written.length} 篇拓展题型` : ''}。`,
+  };
 }

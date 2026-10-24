@@ -1,7 +1,7 @@
 import { demoFeaturesEnabled } from '../../app/buildOptions';
 import type { Pack } from '../../domain/models';
 import type { DailyTask, makeDailyPlan } from '../../domain/dailyPlan';
-import { cetLabels, cetTypesForDate } from '../../domain/daily';
+import { cetLabels } from '../../domain/daily';
 import type { Page } from '../../app/navigation';
 import { DailyTaskCard } from './DailyTaskCard';
 type Props = {
@@ -43,19 +43,16 @@ export function Dashboard({
           </strong>
         </div>
         <div>
-          <span>今日流程</span>
+          <span>题包流程</span>
           <strong>
             {plan.completed}
             <small> / 6</small>
           </strong>
         </div>
         <div>
-          <span>今天的阅读搭配</span>
+          <span>所选题包的四级安排</span>
           <b className="rotation-label">
-            {cetTypesForDate(plan.day)
-              .filter((t) => t !== 'translation')
-              .map((t) => cetLabels[t])
-              .join('＋')}
+            {plan.cetTypes.map((t) => cetLabels[t]).join('＋') || '本题包未安排'}
           </b>
         </div>
       </div>
@@ -69,7 +66,7 @@ export function Dashboard({
           >
             {packs.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.title}
+                {p.date} · {p.title}
               </option>
             ))}
           </select>
@@ -85,7 +82,9 @@ export function Dashboard({
       )}
       {currentPack && currentPack.date !== plan.day && (
         <p className="notice">
-          正在使用 {currentPack.date} 的题包。今天的内容请在“我的”导入；提交记录按实际练习日期保存。
+          当前正在{currentPack.date < plan.day ? '补做' : '预习'}
+          {currentPack.date}的任务。
+          题型与完成状态按所选题包显示；作答时间和复习到期仍按实际时间保存。
         </p>
       )}
       <div className="task-grid daily-grid">
@@ -101,7 +100,8 @@ export function Dashboard({
       </div>
       {plan.recommended === -1 && (
         <p className="notice" role="status">
-          今天的六项流程已完成，休息一下，也可以读一篇范文。
+          {plan.taskDay === plan.day ? '今天的六项流程已完成' : '所选题包任务与当前到期复习已完成'}
+          ，休息一下，也可以读一篇范文。
         </p>
       )}
       <section className="card essay-entry">

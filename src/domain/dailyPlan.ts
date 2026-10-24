@@ -6,6 +6,7 @@ import type { StudyActivity } from './studyActivity';
 import { dailyListening, listeningReview } from './dailyListening';
 import { dailyCet, missingTask, taskBuilder } from './dailyTasks';
 import { exercises } from './models';
+import { cetTypesForPack } from './daily';
 
 export type DailyTask = {
   id: 'words' | 'review' | 'listening' | 'cet' | 'research' | 'sentence';
@@ -14,7 +15,7 @@ export type DailyTask = {
   actionLabel: string;
   status: 'ready' | 'done' | 'missing';
   activity?: StudyActivity;
-  destination?: 'transfer' | 'listening';
+  destination?: 'transfer' | 'listening' | 'words';
   parts?: DailyTask[];
 };
 export type PlanData = {
@@ -63,7 +64,13 @@ function reviewTask(
 }
 export function makeDailyPlan(data: PlanData, pack: Pack | undefined, now: Date) {
   const queues = makeQueues(data.packs, data.progress, data.attempts, pack?.id ?? '', now);
-  const build = taskBuilder(data, pack, now);
+  const build = taskBuilder(data, pack);
+  const assignedWords = pack ? exercises(pack).filter((e) => e.kind === 'spelling') : [];
+  const learned = new Set([
+    ...data.progress.map((p) => p.key),
+    ...data.attempts.filter((a) => a.kind === 'spelling').map((a) => a.key),
+  ]);
+  const remaining = assignedWords.filter((e) => !learned.has(e.key));
   const words: DailyTask = queues.words.length
     ? {
         id: 'words',
@@ -73,15 +80,24 @@ export function makeDailyPlan(data: PlanData, pack: Pack | undefined, now: Date)
         actionLabel: '开始学习',
         activity: { type: 'word-study', queue: queues.words },
       }
-    : queues.introduced
+    : assignedWords.length && !remaining.length
       ? {
           id: 'words',
           title: '今日词汇',
-          detail: `今日已新学 ${queues.introduced} 个词`,
+          detail: `本题包 ${assignedWords.length} 个词已完成拼写`,
           status: 'done',
           actionLabel: '已完成',
         }
-      : missingTask('words', '今日词汇', '还没有可学的新词，请导入今天的10＋2词包。');
+      : remaining.length
+        ? {
+            id: 'words',
+            title: '今日词汇',
+            status: 'missing',
+            detail: `本题包还有 ${remaining.length} 个未学词；今日对应的新词额度已用完，可改日继续。`,
+            actionLabel: '查看词汇',
+            destination: 'words',
+          }
+        : missingTask('words', '今日词汇', '本题包还没有可学的新词，请导入10＋2词包。');
   const daily = pack?.schemaVersion === 3 ? pack.daily : undefined;
   const research = build.exercise(
     'research',
@@ -116,5 +132,7 @@ export function makeDailyPlan(data: PlanData, pack: Pack | undefined, now: Date)
     completed: tasks.filter((t) => t.status === 'done').length,
     queues,
     day: localDate(now),
+    taskDay: pack?.date ?? localDate(now),
+    cetTypes: cetTypesForPack(pack, localDate(now)),
   };
 }
