@@ -10,7 +10,11 @@ export function useBackAction(enabled: boolean, action: () => void | Promise<voi
   }, [enabled, priority]);
 }
 
-export function useExitGestures(enabled: boolean, exit: () => void | Promise<void>) {
+export function useExitGestures(
+  enabled: boolean,
+  exit: () => void | Promise<void>,
+  swipeTargets = '',
+) {
   useBackAction(enabled, exit, 10);
   useEffect(() => {
     if (!enabled) return;
@@ -20,14 +24,12 @@ export function useExitGestures(enabled: boolean, exit: () => void | Promise<voi
     };
     const begin = (event: TouchEvent) => {
       start = undefined;
-      if (
-        event.touches.length !== 1 ||
-        !(event.target instanceof Element) ||
-        event.target.closest(
-          'input,textarea,select,button,a,audio,summary,dialog,[contenteditable],[data-no-swipe]',
-        )
-      )
-        return;
+      if (event.touches.length !== 1 || !(event.target instanceof Element)) return;
+      if (event.target.closest('dialog,[contenteditable],[data-no-swipe]')) return;
+      const control = event.target.closest(
+        'input,textarea,select,button,a,audio,summary,dialog,[contenteditable],[data-no-swipe]',
+      );
+      if (control && !(swipeTargets && control.matches(swipeTargets))) return;
       const touch = event.touches[0];
       start = { x: touch.clientX, y: touch.clientY, time: Date.now() };
     };
@@ -50,5 +52,5 @@ export function useExitGestures(enabled: boolean, exit: () => void | Promise<voi
       document.removeEventListener('touchend', end);
       document.removeEventListener('touchcancel', cancel);
     };
-  }, [enabled]);
+  }, [enabled, swipeTargets]);
 }

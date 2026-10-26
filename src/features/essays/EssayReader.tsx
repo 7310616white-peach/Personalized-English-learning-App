@@ -17,7 +17,7 @@ export function EssayReader({
   onBack: () => void;
 }) {
   const essay = essayEntries(packs, attempts).find((e) => e.key === essayKey);
-  useExitGestures(true, onBack);
+  useExitGestures(true, onBack, '.lookup-word');
   return (
     <article className="essay-reader">
       <button className="text-button" onClick={onBack}>

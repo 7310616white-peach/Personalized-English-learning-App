@@ -16,7 +16,7 @@ export function ModelEssays({
   onOpen: (key: string) => void;
 }) {
   const essays = essayEntries(packs, attempts);
-  useExitGestures(true, onBack);
+  useExitGestures(true, onBack, '.essay-list-item');
   return (
     <section>
       <div className="section-heading">

@@ -71,12 +71,18 @@ test('范文独立详情、左右滑与按钮返回都恢复父页面滚动位�
   await expect(page.getByRole('heading', { name: '原创范文 12', exact: true })).toBeVisible();
   await expect(page.locator('.essay-list')).toHaveCount(0);
   await expect(page.locator('.model-essay')).toHaveCount(0);
+  await page
+    .getByRole('button', { name: /^查询 / })
+    .first()
+    .click();
+  await expect(page.getByRole('dialog', { name: '单词释义' })).toBeVisible();
+  await page.getByRole('button', { name: '关闭释义' }).click();
   await page.evaluate(() => scrollTo(0, 500));
   await paint(page);
-  await swipe(page, '.essay-body', -1);
+  await swipe(page, '.essay-body .lookup-word:first-child', -1);
   await expect(page.locator('.essay-list')).toBeVisible();
   await expect.poll(() => page.evaluate(() => scrollY)).toBeCloseTo(listY, 0);
-  await swipe(page, '.essay-list', 1);
+  await swipe(page, '.essay-list-item:nth-child(12)', 1);
   await expect(page.locator('.welcome')).toBeAttached();
   await expect.poll(() => page.evaluate(() => scrollY)).toBeCloseTo(homeY, 0);
   await open.click();
