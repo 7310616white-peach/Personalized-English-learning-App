@@ -3,6 +3,37 @@
   gap: 14px;
 }
 
+.word-date-group {
+  border-bottom: 1px solid var(--border);
+}
+.word-date-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.word-date-heading strong {
+  font-size: 17px;
+  font-weight: 600;
+}
+.word-date-heading > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.word-date-heading > span::after {
+  content: ' ＋';
+  margin-left: 12px;
+}
+.word-date-group[open] > .word-date-heading > span::after {
+  content: ' −';
+}
+.word-date-group .library-list {
+  padding-bottom: 20px;
+}
+
 .library-item {
   padding: 18px 22px;
 }

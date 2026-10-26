@@ -32,6 +32,9 @@ const WrittenLibrary = lazy(() =>
 const ModelEssays = lazy(() =>
   import('../features/essays/ModelEssays').then((m) => ({ default: m.ModelEssays })),
 );
+const EssayReader = lazy(() =>
+  import('../features/essays/EssayReader').then((m) => ({ default: m.EssayReader })),
+);
 const MyProgress = lazy(() =>
   import('../features/profile/MyProgress').then((m) => ({ default: m.MyProgress })),
 );
@@ -56,13 +59,14 @@ function LearningApp() {
   const [listeningActive, setListeningActive] = useState(false);
   const [page, setPage] = useState<Page>('home');
   const [packId, setPackId] = useState('');
+  const [essayKey, setEssayKey] = useState('');
   const [session, setSession] = useState<StudyActivity>();
   const { now, refresh } = useClock();
   const data = useLearningData();
   const { incoming, pendingLookup, externalLookup, nativeError, files, dismissFile } =
     usePlatformInbox(!!session || listeningActive || experience);
   useBackAction(page !== 'home' && !session && !listeningActive && !experience, () =>
-    setPage(page === 'written' ? 'mistakes' : 'home'),
+    setPage(page === 'essay' ? 'essays' : page === 'written' ? 'mistakes' : 'home'),
   );
   if (!data)
     return (
@@ -98,6 +102,7 @@ function LearningApp() {
     <ReadingProvider packs={packs} external={externalLookup}>
       <AppShell
         page={page}
+        viewKey={page === 'essay' ? 'essay:' + essayKey : page}
         practicing={!!session || listeningActive || experience}
         onNavigate={setPage}
       >
@@ -158,7 +163,9 @@ function LearningApp() {
                 <ListeningPage onActiveChange={setListeningActive} />
               </Suspense>
             )}
-            {page === 'words' && <Library packs={packs} progress={progress} />}
+            {page === 'words' && (
+              <Library packs={packs} progress={progress} attempts={data.attempts} />
+            )}
             {page === 'mistakes' && (
               <>
                 <div className="mistake-action">
@@ -189,7 +196,25 @@ function LearningApp() {
             )}
             {page === 'essays' && (
               <Suspense fallback={<p role="status">正在打开范文栏…</p>}>
-                <ModelEssays packs={packs} onBack={() => setPage('home')} />
+                <ModelEssays
+                  packs={packs}
+                  attempts={data.writtenAttempts}
+                  onOpen={(key) => {
+                    setEssayKey(key);
+                    setPage('essay');
+                  }}
+                  onBack={() => setPage('home')}
+                />
+              </Suspense>
+            )}
+            {page === 'essay' && (
+              <Suspense fallback={<p role="status">正在打开范文…</p>}>
+                <EssayReader
+                  packs={packs}
+                  attempts={data.writtenAttempts}
+                  essayKey={essayKey}
+                  onBack={() => setPage('essays')}
+                />
               </Suspense>
             )}
             {page === 'transfer' && (

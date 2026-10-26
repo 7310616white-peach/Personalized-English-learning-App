@@ -1,22 +1,26 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { pages, mobilePages, pageTitle, type Page } from './navigation';
+import { useScrollRestoration } from './useScrollRestoration';
 
 export function AppShell({
   page,
   practicing,
   onNavigate,
   children,
+  viewKey = page,
 }: {
   page: Page;
   practicing: boolean;
   onNavigate: (page: Page) => void;
   children: ReactNode;
+  viewKey?: string;
 }) {
   const main = useRef<HTMLElement>(null);
+  const content = useRef<HTMLDivElement>(null);
+  useScrollRestoration(practicing ? viewKey + ':practice' : viewKey, content, !practicing);
   useEffect(() => {
     document.title = `${practicing ? '练习中' : pageTitle(page)} · 拾词`;
     main.current?.focus({ preventScroll: true });
-    window.scrollTo(0, 0);
   }, [page, practicing]);
   const navigation = (items: typeof pages) =>
     items.map((p) => (
@@ -72,7 +76,9 @@ export function AppShell({
         <header className="topbar">
           <span>{practicing ? '练习中' : pageTitle(page)}</span>
         </header>
-        <div className="main-content">{children}</div>
+        <div className="main-content" ref={content}>
+          {children}
+        </div>
       </main>
       <nav className="mobile-nav" aria-label="手机导航">
         {navigation(mobilePages)}

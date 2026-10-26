@@ -14,5 +14,5 @@ test('旧版懒加载资源失败不谎报数据库错误，重新加载保留�
   await page.getByRole('button', { name: '重新加载页面', exact: true }).click();
   await expect(page.getByLabel('当前题包')).toHaveValue('daily-preview-20261022');
   await page.getByRole('button', { name: '打开范文栏 →', exact: true }).click();
-  await expect(page.locator('.model-essay summary')).toHaveCount(1);
+  await expect(page.locator('.essay-list-item')).toHaveCount(1);
 });

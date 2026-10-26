@@ -65,7 +65,7 @@ test('六项完成后高亮依次顺延，复习/听力/双阅读/文献/一句�
   await page.getByRole('button', { name: '我的', exact: true }).click();
   await expect(page.getByRole('heading', { name: '每一次练习，都有迹可循' })).toBeVisible();
 });
-test('新栏目、彩色首页按钮、范文独立阅读和按日复制提示词', async ({ page }) => {
+test('新栏目、填充首页按钮、范文独立阅读和按日复制提示词', async ({ page }) => {
   await preview(page);
   await expect(page.getByText('离线优先', { exact: true })).toHaveCount(0);
   const labels = await page.locator('.mobile-nav button').allTextContents();
@@ -78,9 +78,10 @@ test('新栏目、彩色首页按钮、范文独立阅读和按日复制提示�
   ]);
   await expect(page.locator('.mobile-nav .study-home-icon svg')).toBeVisible();
   await page.getByRole('button', { name: '打开范文栏 →' }).click();
-  await page.locator('.model-essay summary').first().click();
+  await page.locator('.essay-list-item').first().click();
   await expect(page.getByText('表达与思路', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: '提交本篇答案' })).toHaveCount(0);
+  await page.getByRole('button', { name: '← 返回范文栏', exact: true }).click();
   await page.getByRole('button', { name: '返回学习台', exact: true }).click();
   await page.getByRole('button', { name: '我的', exact: true }).click();
   await page.getByText('手机使用流程与每日英语提示词', { exact: true }).click();

@@ -140,9 +140,8 @@ main:focus {
   height: 34px;
   flex-shrink: 0;
   border-radius: 12px;
-  background: #3d8dde;
+  background: var(--accent);
   color: white;
-  box-shadow: 0 4px 10px #2b6da32b;
 }
 .study-home-icon svg {
   width: 23px;

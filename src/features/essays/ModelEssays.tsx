@@ -1,33 +1,22 @@
-import { useLiveQuery } from 'dexie-react-hooks';
-import { db } from '../../data/db';
 import type { Pack } from '../../domain/models';
-import { writtenKey } from '../../domain/written';
-import { ReadableText } from '../reading/ReadableText';
-export function ModelEssays({ packs, onBack }: { packs: Pack[]; onBack: () => void }) {
-  const attempts = useLiveQuery(() => db.writtenAttempts.toArray(), []);
-  const completed = new Set(attempts?.map((a) => a.key));
-  const essays = packs.flatMap((p) =>
-    p.schemaVersion === 3
-      ? [
-          ...(p.daily?.modelEssays ?? []).map((e) => ({ ...e, packId: p.id, date: p.date })),
-          ...p.written
-            .filter((t) => t.type === 'writing' && completed.has(writtenKey(p.id, t.id)))
-            .map((t) => {
-              if (t.type !== 'writing') throw new Error('Invalid essay');
-              return {
-                id: t.id,
-                title: t.title,
-                topic: t.prompt,
-                body: t.reference,
-                notes: t.explanation,
-                source: t.source,
-                packId: p.id,
-                date: p.date,
-              };
-            }),
-        ]
-      : [],
-  );
+import type { WrittenAttempt } from '../../domain/written';
+import { essayEntries } from '../../domain/essays';
+import { useExitGestures } from '../../shared/useBackAction';
+import './essays.css';
+
+export function ModelEssays({
+  packs,
+  attempts,
+  onBack,
+  onOpen,
+}: {
+  packs: Pack[];
+  attempts: WrittenAttempt[];
+  onBack: () => void;
+  onOpen: (key: string) => void;
+}) {
+  const essays = essayEntries(packs, attempts);
+  useExitGestures(true, onBack);
   return (
     <section>
       <div className="section-heading">
@@ -39,34 +28,30 @@ export function ModelEssays({ packs, onBack }: { packs: Pack[]; onBack: () => vo
           返回学习台
         </button>
       </div>
-      <p>范文按题包收好，想读时再打开。日常任务不安排作文；写作练习由你另外提出。</p>
+      <p>选一篇，安静读一会儿。</p>
       {!essays.length && (
         <section className="card empty">
           <h3>还没有范文</h3>
-          <p>
-            请让每日英语在题包的 daily.modelEssays
-            中附一篇范文，再到“我的”导入。已完成作文练习的参考范文也会收在这里。
-          </p>
+          <p>在“我的”导入带 daily.modelEssays 的题包。已完成作文练习的参考范文也会收在这里。</p>
         </section>
       )}
-      {essays.map((e) => (
-        <details className="card model-essay" key={JSON.stringify([e.packId, e.id])}>
-          <summary>
-            <b>{e.title}</b>
-            <span className="tag">{e.date}</span>
-          </summary>
-          <p className="footnote">{e.source}</p>
-          <h3>主题</h3>
-          <p>{e.topic}</p>
-          <div className="passage">
-            <ReadableText text={e.body} packId={e.packId} />
-          </div>
-          <h3>表达与思路</h3>
-          <p>
-            <ReadableText text={e.notes} packId={e.packId} />
-          </p>
-        </details>
-      ))}
+      <div className="essay-list">
+        {essays.map((e) => (
+          <button
+            className="essay-list-item"
+            key={e.key}
+            aria-label={'阅读范文：' + e.title}
+            onClick={() => onOpen(e.key)}
+          >
+            <span className="essay-date">{e.date}</span>
+            <strong>{e.title}</strong>
+            <span className="essay-topic">{e.topic}</span>
+            <span className="essay-open" aria-hidden="true">
+              阅读 →
+            </span>
+          </button>
+        ))}
+      </div>
     </section>
   );
 }

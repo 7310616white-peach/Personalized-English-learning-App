@@ -1,20 +1,20 @@
-/* Shared light-blue palette for every feature; incorrect answers retain their warm tint. */
+/* Quiet neutral surfaces shared by the Web app and native shell. */
 :root {
   color-scheme: light;
-  --canvas: #edf6ff;
-  --surface: #fafdff;
-  --surface-nav: #f3f9ff;
-  --surface-tint: #deeeff;
-  --field: #f4f9ff;
-  --text: #27485f;
-  --muted: #5b7589;
-  --accent: #2b6da3;
-  --accent-soft: #e2effc;
-  --accent-muted: #3f6e92;
-  --decoration: #b7d5ee;
-  --border: #cddfec;
-  --border-strong: #93b3c8;
-  --placeholder: #71899b;
-  --focus: #5086b0;
-  --overlay: #163a5570;
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-nav: #f9f9f9;
+  --surface-tint: #f5f5f5;
+  --field: #f7f7f7;
+  --text: #171717;
+  --muted: #666666;
+  --accent: #171717;
+  --accent-soft: #f1f1f1;
+  --accent-muted: #555555;
+  --decoration: #dddddd;
+  --border: #e5e5e5;
+  --border-strong: #b5b5b5;
+  --placeholder: #777777;
+  --focus: #8a8a8a;
+  --overlay: #00000066;
 }
